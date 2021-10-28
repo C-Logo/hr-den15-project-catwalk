@@ -5,9 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config prod.config.js",
     "react-dev": "webpack -d -w",
-    "start": "nodemon backend/server/index.js"
+    "start": "nodemon server/index.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +25,7 @@
     "jquery": "^3.5.1",
     "mysql": "^2.18.1",
     "needle": "^2.6.0",
+    "http-proxy-middleware": "^2.0.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0"
   },
