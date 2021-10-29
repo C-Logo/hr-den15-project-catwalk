@@ -18,10 +18,9 @@ app.use('*', (req, res) => {
       Authorization: API_KEY,
     },
     data: req.body,
-  })
-    .then((response) => {
-      res.send(response.data);
-    });
+  }).then((response) => {
+    res.send(response.data);
+  });
 });
 
 app.listen(3000, () => {
