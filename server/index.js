@@ -10,7 +10,6 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.use('*', (req, res) => {
-  console.log('URL', API_URL + req.originalUrl);
   // format URL's on frontend
   axios({
     method: req.method.toLowerCase(),
