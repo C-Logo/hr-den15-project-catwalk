@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express'); // npm installed
-const router = require('./routes.js');
+const axios = require('axios');
+const { API_URL, API_KEY } = require('../config');
 
 const app = express();
 app.set('port', 3000);
@@ -8,11 +9,21 @@ app.set('port', 3000);
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
-app.use('/reviews', router);
-app.use('/products', router);
-app.use('/qa/questions', router);
-
-// app.use('/*', router);
+app.use('*', (req, res) => {
+  console.log('URL', API_URL + req.originalUrl);
+  // format URL's on frontend
+  axios({
+    method: req.method.toLowerCase(),
+    url: API_URL + req.originalUrl,
+    headers: {
+      Authorization: API_KEY,
+    },
+    data: req.body,
+  })
+    .then((response) => {
+      res.send(response.data);
+    });
+});
 
 app.listen(3000, () => {
   console.log('listening on port: ', 3000);
