@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Overview from './Overview.jsx';
+import Overview from './Overview/Overview.jsx';
 import Questions from './Questions/Questions.jsx';
 import Reviews from './reviews/Reviews.jsx';
 

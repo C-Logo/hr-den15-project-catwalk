@@ -18,6 +18,7 @@ module.exports = {
   plugins: [
     'react',
   ],
+  ignorePatterns: ['bundle.js'],
   rules: {
     'no-console': 0,
   },
