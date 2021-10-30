@@ -9,7 +9,6 @@ export default function Image() {
     <div className="overview-image">
       <div className="thumbnails">
         Thumbnails
-        {value}
       </div>
       <button
         type="button"
@@ -17,7 +16,7 @@ export default function Image() {
         height="20"
         width="20"
         alt="resizer"
-        // onClick={changeExtend}
+        onClick={() => { value(); }}
       />
     </div>
   );

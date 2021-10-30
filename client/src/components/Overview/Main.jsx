@@ -7,9 +7,12 @@ export default function Main() {
   const [extend, setExtend] = useState(false);
   // const [changeExtend, setChangeExtend] = useState(setExtend(!extend));
 
-  const changeExtend = 
+  const changeExtend = () => {
+    setExtend(!extend);
+  };
+
   return (
-    <ExtendUpdateContext.Provider value={extend}>
+    <ExtendUpdateContext.Provider value={changeExtend}>
       <div>
         <button type="button" onClick={() => { setExtend(!extend); }}>Extend</button>
         <div className="overview-main">
