@@ -21,7 +21,9 @@ app.use('*', (req, res) => {
   }).then((response) => {
     res.send(response.data);
   })
-    .catch();
+    .catch(() => {
+      res.end();
+    });
 });
 
 app.listen(3000, () => {
