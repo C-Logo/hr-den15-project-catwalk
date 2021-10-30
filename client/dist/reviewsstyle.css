@@ -1,36 +1,43 @@
+#reviews {
+  overflow: hidden;
+}
+
 #reviewTitle {
 
 }
 
 #reviewsLeft {
   float: left;
-  width: 40%;
+  width: 36%;
+  margin: 2%;
 }
 
-#productStars {
+#reviewProductStars {
 
 }
 
-#starAverage {
+#reviewsStarAverage {
   float: left;
   width: 40%;
-  font-size: large;
+  height: 50px;
+  font-size: 40px;
+  font-weight: bold;
 }
 
 #starGraph {
   float: right;
   width: 60%;
+  text-align: left;
 }
 
 #reviewsRight {
   float: right;
-  width: 60%;
+  width: 56%;
+  margin: 2%;
 }
 
-
-
 #recommendationPercentage {
-
+display:inline-block;
 }
 
 #starBarChart {
@@ -38,31 +45,35 @@
 }
 
 #reviewsBreakdown {
-
+  margin-top: 20px;
 }
 
 #reviewsFilter {
-
+  text-align: left;
+  font-size: larger;
+  margin-bottom: 20px;
 }
 
 #reviewList {
-
+  overflow-y:visible;
 }
 
 .starBarChartContainer {
-
+  display: flex;
+  justify-content: flex-start;
 }
 
 .starCount {
-
+  margin: 1%;
+  text-decoration: underline;
 }
 
 .starBarChart {
-
+  margin: 1%;
 }
 
 .breakdownTitle {
-
+ text-align: left;
 }
 
 .breakdownGraph {
@@ -78,31 +89,39 @@
 }
 
 .reviewStars {
-
+  float: left;
+  width: 30%;
+  text-align: left;
 }
 
 .reviewerData {
-
+  width: 70%;
+  float: right;
+  text-align: right;
+  font-size: smaller;
 }
 
 .reviewSummary {
-
+  display: inline-block;
+  font-weight: bold;
+  text-align: left;
 }
 
 .reviewBody {
-
+  text-align: left;
 }
 
 .reviewRecommendation {
-
+  text-align: left;
 }
 
 .reviewResponse {
-
+  background-color: gray;
+  text-align: left;
 }
 
 .reviewResponseTitle {
-
+  
 }
 
 .reviewResponseBody {
@@ -110,10 +129,11 @@
 }
 
 .reviewFooter {
-
+  text-align: left;
+  font-size: smaller;
 }
 
-.helpful {
+.reviewHelpful {
 
 }
 

@@ -3,4 +3,23 @@
   text-align: center;
   background-color: gainsboro;
   margin: auto;
+  
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  font-family: "adobe-clean", sans-serif;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  display: block;
+  overflow: hidden;
+  display: inline-block;
+  position: relative;
+}
+
+body {
+  font-family: "adobe-clean", sans-serif;
+  height: 100%;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

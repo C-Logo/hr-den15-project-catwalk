@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export default function IndividualQuestion() {
   let [helpfulQuestionYes, setHelpfulQuestionYes] = useState(0);
@@ -11,20 +12,28 @@ export default function IndividualQuestion() {
   function handleAnswerOnClick() {
     setHelpfulAnswerYes(helpfulAnswerYes += 1);
   }
+  function getReq() {
+    return axios.get('/questions');
+  }
 
   return (
     <div>
       <div>Q:Who what which where why whether how?</div>
       <div>A:One two threee four five six seven</div>
-      <div>Helpful? </div>
-      <span onClick={handleQuestionOnClick}>
-        Yes
-        (
-        {helpfulQuestionYes}
-        )
-      </span>
+      <div>
+        <span>Helpful? </span>
+        <span className="inline" onClick={handleQuestionOnClick}>
+          Yes
+          (
+          {helpfulQuestionYes}
+          )
+        </span>
+        <span className="inline"> | </span>
+        <span className="inline" onClick={getReq}> Add answer </span>
+      </div>
       <div>
         <span>by User1234, Octotober 30th, 2021 |</span>
+        <span> | </span>
         <span> Helpful? </span>
         <span onClick={handleAnswerOnClick}>
           Yes
@@ -32,6 +41,7 @@ export default function IndividualQuestion() {
           {helpfulAnswerYes}
           )
         </span>
+        <span> | </span>
       </div>
     </div>
   );
