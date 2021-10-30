@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import Image from './Image.jsx';
+import RightColumn from './RightColumn.jsx';
 
 export const ExtendUpdateContext = React.createContext();
 
@@ -14,11 +15,11 @@ export default function Main() {
   return (
     <ExtendUpdateContext.Provider value={changeExtend}>
       <div>
-        <button type="button" onClick={() => { setExtend(!extend); }}>Extend</button>
         <div className="overview-main">
           <Image click={setExtend} extend={extend} />
-          {extend ? '' : <div className="overview-right">Right Side Bar</div>}
+          {extend ? '' : <RightColumn />}
         </div>
+        <div className="overview-information"> Product Information </div>
       </div>
     </ExtendUpdateContext.Provider>
   );
