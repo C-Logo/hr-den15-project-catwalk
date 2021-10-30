@@ -12,8 +12,9 @@ export default function Image() {
       </div>
       <button
         type="button"
+        className="overview-resizing-button"
         src="./img/square.png"
-        height="20"
+        height="10"
         width="20"
         alt="resizer"
         onClick={() => { value(); }}

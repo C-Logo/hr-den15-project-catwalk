@@ -15,7 +15,6 @@ export default function Main() {
   return (
     <ExtendUpdateContext.Provider value={changeExtend}>
       <div>
-        <button type="button" onClick={() => { setExtend(!extend); }}>Extend</button>
         <div className="overview-main">
           <Image click={setExtend} extend={extend} />
           {extend ? '' : <RightColumn />}
