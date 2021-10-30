@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import ImageThumbnails from './ImageThumbnails.jsx'
+import ImageThumbnails from './ImageThumbnails.jsx';
 import { ExtendUpdateContext } from './Main.jsx';
 
 export default function Image() {
@@ -13,7 +13,7 @@ export default function Image() {
         type="button"
         className="overview-resizing-button"
         src="./img/square.png"
-        height="10"
+        height="20"
         width="20"
         alt="resizer"
         onClick={() => { value(); }}

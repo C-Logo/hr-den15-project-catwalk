@@ -11,7 +11,7 @@ export default function RightColumn() {
       <div className="small">Category</div>
       <div className="medium"><h2>Expanded Product Name</h2></div>
       <div className="small">$369</div>
-      <div className="large">Style &gt Selected Style</div>
+      <div className="large">Style > Selected Style</div>
       <div className="medium">Select Size</div>
       <div className="medium">Add to Bag</div>
       <div className="small"> </div>
