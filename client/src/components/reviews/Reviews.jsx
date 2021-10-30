@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 
-export default function Review() {
+export default function Reviews() {
   // declare state variables here
   // example: const [count, setCount] = useState(0);
 
