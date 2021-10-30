@@ -4,6 +4,22 @@
   margin: 10px;
   border: 2px solid black
 }
-.inline {
-  display: inline
+#qandaheader {
+  float: left
+}
+#searchbar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  padding: 3 px
+}
+.inline1, .inline2, .inline3, .inline4 {
+  color: blue;
+  display: inline-block
+}
+.helpfulq {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex end, space-around;
 }
