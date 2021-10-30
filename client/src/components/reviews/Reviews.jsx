@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 
 export default function Reviews() {
   // declare state variables here
@@ -9,15 +9,25 @@ export default function Reviews() {
 
   // function fetchAllReviews() {
   //   axios
-  //     .get('/reviews/')
+  //     .get('/reviews')
   //     .then((err, data) => {
   //       if (err) {
   //         throw err;
   //       } else {
   //         setAllReviews(data);
   //       }
+  //     })
+  //     .then(() => {
+  //       console.log(allReviews);
+  //     })
+  //     .catch((err) => {
+  //       throw err;
   //     });
   // }
+
+  useEffect(() => {
+    // fetchAllReviews();
+  });
 
   return (
     <div id="reviews">
