@@ -1,9 +1,33 @@
 body {
   text-align: center;
 }
+span + span {
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 70%;
+}
 
 .header {
-  background-color: coral;
-  width: 70%;
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgb(254, 158, 123);
   border: 2px solid black;
+  border-radius: 4px;
+  width: 70%;
+  height: 50px;
+  line-height: 50px;
+}
+
+.announcements {
+  background-color: rgb(223, 223, 223);
+  border: 2px solid black;
+  border-radius: 4px;
+  text-align: center;
+  width: 70%;
+  height: 20px;
+  line-height: 20px;
+  justify-content: center;
+  margin: 0.2rem 0;
 }
