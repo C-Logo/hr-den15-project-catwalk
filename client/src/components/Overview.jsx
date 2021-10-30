@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
-import Header from './Header.jsx';
+import Announcements from './Header/Announcements.jsx';
+import Header from './Header/Header.jsx';
 
 export default function Overview() {
   // declare state variables here
@@ -7,8 +8,8 @@ export default function Overview() {
   return (
     <div>
       <Header />
+      <Announcements />
       <div>Main Product Overview Container</div>
-      overview testingiuj
     </div>
   );
 }

@@ -3,9 +3,8 @@ import React from 'react';
 export default function Header() {
   return (
     <div className="header">
-      <span><h1>C-Logo</h1></span>
-      <span>Empty Space</span>
-      <span>Search Container</span>
+      <span className="flex-item">C-Logo</span>
+      <span className="flex-item">_____________ Search</span>
     </div>
   );
 }
