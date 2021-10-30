@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Overview from './Overview.jsx';
-import Questions from './Questions.jsx';
+import Questions from './Questions/Questions.jsx';
 import Review from './Reviews.jsx';
 
 export default function App() {

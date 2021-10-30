@@ -20,7 +20,8 @@ app.use('*', (req, res) => {
     data: req.body,
   }).then((response) => {
     res.send(response.data);
-  });
+  })
+    .catch();
 });
 
 app.listen(3000, () => {
