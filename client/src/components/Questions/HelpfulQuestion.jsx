@@ -14,23 +14,23 @@ export default function HelpfulQuestion() {
   }
   return (
     <div className="Helpfulq">
-      <span className="inline1">
-      <span> Helpful? </span>
-      </span>
-      <span className="inline4">
-      <span onClick={handleQuestionOnClick}>
-        Yes
-        (
-        {helpfulQuestionYes}
-        )
-      </span>
-      {/* </span> */}
-      <span className="inline2">
-        <span> | </span>
-      </span>
-      <span className="inline3">
-        <span onClick={getReq}> Add answer </span>
-      </span>
+      <div className="inline1">
+        <div> Helpful? </div>
+      </div>
+      <div className="inline4">
+        <div onClick={handleQuestionOnClick}>
+          Yes
+          (
+          {helpfulQuestionYes}
+          )
+        </div>
+      </div>
+      <div className="inline2">
+        <div> | </div>
+      </div>
+      <div className="inline3">
+        <div onClick={getReq}> Add answer </div>
+      </div>
     </div>
   );
 }
