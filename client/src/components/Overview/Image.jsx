@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { ExtendUpdateContext } from './Main.jsx';
 
 export default function Image() {
