@@ -1,0 +1,122 @@
+#reviewTitle {
+
+}
+
+#reviewsLeft {
+  float: left;
+  width: 40%;
+}
+
+#productStars {
+
+}
+
+#starAverage {
+  float: left;
+  width: 40%;
+  font-size: large;
+}
+
+#starGraph {
+  float: right;
+  width: 60%;
+}
+
+#reviewsRight {
+  float: right;
+  width: 60%;
+}
+
+
+
+#recommendationPercentage {
+
+}
+
+#starBarChart {
+
+}
+
+#reviewsBreakdown {
+
+}
+
+#reviewsFilter {
+
+}
+
+#reviewList {
+
+}
+
+.starBarChartContainer {
+
+}
+
+.starCount {
+
+}
+
+.starBarChart {
+
+}
+
+.breakdownTitle {
+
+}
+
+.breakdownGraph {
+
+}
+
+.breakdownAxis {
+
+}
+
+.review {
+
+}
+
+.reviewStars {
+
+}
+
+.reviewerData {
+
+}
+
+.reviewSummary {
+
+}
+
+.reviewBody {
+
+}
+
+.reviewRecommendation {
+
+}
+
+.reviewResponse {
+
+}
+
+.reviewResponseTitle {
+
+}
+
+.reviewResponseBody {
+
+}
+
+.reviewFooter {
+
+}
+
+.helpful {
+
+}
+
+.reviewReport {
+
+}
