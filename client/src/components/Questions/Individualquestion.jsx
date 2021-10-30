@@ -12,6 +12,9 @@ export default function IndividualQuestion() {
   function handleAnswerOnClick() {
     setHelpfulAnswerYes(helpfulAnswerYes += 1);
   }
+  function getReq() {
+    return axios.get('/questions');
+  }
 
   return (
     <div>
@@ -26,7 +29,7 @@ export default function IndividualQuestion() {
           )
         </span>
         <span className="inline"> | </span>
-        <span className="inline"> Add answer </span>
+        <span className="inline" onClick={getReq}> Add answer </span>
       </div>
       <div>
         <span>by User1234, Octotober 30th, 2021 |</span>
