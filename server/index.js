@@ -21,8 +21,8 @@ app.use('*', (req, res) => {
   }).then((response) => {
     res.send(response.data);
   })
-    .catch(() => {
-      res.end();
+    .catch((err) => {
+      res.send(err);
     });
 });
 
