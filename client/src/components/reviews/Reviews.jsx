@@ -1,8 +1,23 @@
 import React, { useState, useEffect, useContext } from 'react';
+// import axios from 'axios';
 
 export default function Reviews() {
   // declare state variables here
   // example: const [count, setCount] = useState(0);
+
+  const [allReviews, setAllReviews] = useState([]);
+
+  // function fetchAllReviews() {
+  //   axios
+  //     .get('/reviews/')
+  //     .then((err, data) => {
+  //       if (err) {
+  //         throw err;
+  //       } else {
+  //         setAllReviews(data);
+  //       }
+  //     });
+  // }
 
   return (
     <div id="reviews">
@@ -10,8 +25,8 @@ export default function Reviews() {
       <h1 id="reviewTitle">Ratings and Reviews</h1>
 
       <div id="reviewsLeft">
-        <div id="productStars">
-          <div id="starAverage">
+        <div id="reviewProductStars">
+          <div id="reviewsStarAverage">
             3.5
           </div>
           <div id="starGraph">
@@ -111,12 +126,13 @@ export default function Reviews() {
               </div>
             </div>
             <div className="reviewFooter">
-              <div className="helpful">
+              <div className="reviewHelpful">
                 Helpful? Yes (9)
               </div>
               <div className="reviewReport">
                 Report
               </div>
+              <hr />
             </div>
           </div>
         </div>
