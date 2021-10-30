@@ -1,9 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 // import { ExtendUpdateContext } from './Main.jsx';
 
 export default function RightColumn() {
   // declare state variables here
-  // const value = useContext(ExtendUpdateContext);
 
   return (
     <div className="overview-right">

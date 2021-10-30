@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import ImageThumbnails from './ImageThumbnails.jsx'
 import { ExtendUpdateContext } from './Main.jsx';
 
 export default function Image() {
@@ -7,9 +8,7 @@ export default function Image() {
 
   return (
     <div className="overview-image">
-      <div className="thumbnails">
-        Thumbnails
-      </div>
+      <ImageThumbnails />
       <button
         type="button"
         className="overview-resizing-button"
