@@ -13,7 +13,11 @@ export default function IndividualQuestion() {
     setHelpfulAnswerYes(helpfulAnswerYes += 1);
   }
   function getReq() {
-    return axios.get('/questions');
+    axios.get('/qa/questions', { params: { product_id: 44388 } })
+      .then((response) => {
+        console.log('response', response);
+      })
+      .catch();
   }
 
   return (
