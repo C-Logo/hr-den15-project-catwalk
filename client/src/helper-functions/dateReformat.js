@@ -17,10 +17,12 @@ export function getMonth(monthNum) {
 }
 
 export default function dateReformat(dateString) {
-  let reformatedDate = '';
-  const day = dateString.slice(8, 10);
-  const monthNum = dateString.slice(5, 7);
-  const year = dateString.slice(0, 4);
-  reformatedDate = `${getMonth(monthNum)} ${day}, ${year}`;
-  return reformatedDate;
+  if (dateString) {
+    let reformatedDate = '';
+    const day = dateString.slice(8, 10);
+    const monthNum = dateString.slice(5, 7);
+    const year = dateString.slice(0, 4);
+    reformatedDate = `${getMonth(monthNum)} ${day}, ${year}`;
+    return reformatedDate;
+  }
 }
