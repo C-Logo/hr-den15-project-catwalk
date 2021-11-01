@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import IndividualQuestion from './Individualquestion.jsx';
 import SearchQuestion from './QuestionSearch.jsx';
 import HelpfulQuestion from './HelpfulQuestion.jsx';
+import EachQuestion from './EachQuestion.jsx';
 
 export default function Questions() {
   // declare state variables here
@@ -12,8 +13,10 @@ export default function Questions() {
         {' '}
         <div id="qandaheader">QUESTIONS & ANSWERS</div>
         <div><SearchQuestion /></div>
-        <div><IndividualQuestion /></div>
-        <div><HelpfulQuestion /></div>
+        <div className="row1">
+          <EachQuestion />
+          <HelpfulQuestion />
+        </div>
       </div>
     </div>
   );

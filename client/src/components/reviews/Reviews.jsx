@@ -1,33 +1,32 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import ReviewList from './ReviewList.jsx';
+
+const ReviewsContext = React.createContext(Reviews);
 
 export default function Reviews() {
   // declare state variables here
   // example: const [count, setCount] = useState(0);
 
   const [allReviews, setAllReviews] = useState([]);
+  const [starRating, setStarRating] = useState('');
 
-  // function fetchAllReviews() {
-  //   axios
-  //     .get('/reviews')
-  //     .then((err, data) => {
-  //       if (err) {
-  //         throw err;
-  //       } else {
-  //         setAllReviews(data);
-  //       }
-  //     })
-  //     .then(() => {
-  //       console.log(allReviews);
-  //     })
-  //     .catch((err) => {
-  //       throw err;
-  //     });
-  // }
+  function fetchAllReviews() {
+    // '/reviews/meta?product_id=44388'
+    axios
+      .get('/reviews?product_id=44388')
+      .then((data) => {
+        console.log(data);
+        setAllReviews(data.data.results);
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
 
   useEffect(() => {
-    // fetchAllReviews();
-  });
+    fetchAllReviews();
+  }, []);
 
   return (
     <div id="reviews">
@@ -107,45 +106,9 @@ export default function Reviews() {
         <div id="reviewsFilter">
           248 reviews, sorted by relevance
         </div>
-        <div id="reviewList">
-          <div className="review">
-            <div className="reviewStars">
-              5 star graph
-            </div>
-            <div className="reviewerData">
-              User1234, January 1, 2019
-            </div>
-            <div className="reviewSummary">
-              Review title with word-break truncatino to prevent wrapping onto the next...
-            </div>
-            <div className="reviewBody">
-              ...line, if necessary. Donut gummi bears gingerbread gummies chocolate.
-              ice cream applie pie tiramisu
-              fruitcake chupa chups icing apple pie. lemon drops cake pudding pudding.
-            </div>
-            <div className="reviewRecommendation">
-              I recommend this product
-            </div>
-            <div className="reviewResponse">
-              <div className="reviewResponseTitle">
-                Response:
-              </div>
-              <div className="reviewResponseBody">
-                Marzipan danish jelly beans gummi bears applie pie cheesecake
-                topping biscuit sesame snaps.
-              </div>
-            </div>
-            <div className="reviewFooter">
-              <div className="reviewHelpful">
-                Helpful? Yes (9)
-              </div>
-              <div className="reviewReport">
-                Report
-              </div>
-              <hr />
-            </div>
-          </div>
-        </div>
+        <ReviewsContext.Provider>
+          <ReviewList />
+        </ReviewsContext.Provider>
       </div>
 
     </div>
