@@ -6,10 +6,10 @@ export default function ImageThumbnails() {
 
   return (
     <div>
-      <div className="overview-image-thumbnail">thumbnail 1</div>
-      <div className="overview-image-thumbnail"> thumbnail 2</div>
-      <div className="overview-image-thumbnail"> thumbnail 2</div>
-      <div className="overview-image-thumbnail"> thumbnail 2</div>
+      <div className="overview-image-thumbnail">thumb1</div>
+      <div className="overview-image-thumbnail">thumb2</div>
+      <div className="overview-image-thumbnail">thumb3</div>
+      <div className="overview-image-thumbnail">thumb4</div>
     </div>
   );
 }
