@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { QuestionContext } from './Questions.jsx';
 
 export default function EachQuestion() {
-  const [questions, setQuestions] = useState([]);
+  const questions = useContext(QuestionContext);
+  console.log('eachquestion', questions);
   let [helpfulQuestionYes, setHelpfulQuestionYes] = useState(0);
 
   function handleQuestionOnClick() {
@@ -21,7 +23,7 @@ export default function EachQuestion() {
       <div className="questionline">
         <div className="indivquestion">Q:</div>
         <div className="indivquestion">
-          {questions}
+          {/* {questions} */}
           {' '}
           placeholder
         </div>
