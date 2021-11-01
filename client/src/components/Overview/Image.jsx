@@ -10,7 +10,7 @@ export default function Image() {
   return (
     <div
       className="overview-image"
-      style={{ 'background-size': extend ? 'cover' : 'contain' }}
+      style={{ backgroundSize: extend ? 'cover' : 'contain' }}
       onClick={() => { changeExtend(); }}
       onKeyDown={() => { changeExtend(); }}
       role="button"
