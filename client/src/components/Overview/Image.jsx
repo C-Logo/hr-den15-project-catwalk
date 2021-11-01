@@ -11,6 +11,10 @@ export default function Image() {
     <div
       className="overview-image"
       style={{ 'background-size': extend ? 'cover' : 'contain' }}
+      onClick={() => { changeExtend(); }}
+      onKeyDown={() => { changeExtend(); }}
+      role="button"
+      tabIndex={0}
     >
       <ImageThumbnails />
       <div className="overview-image-prev">&#10094;</div>
