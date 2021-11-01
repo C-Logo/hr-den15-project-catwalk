@@ -13,7 +13,7 @@ export default function Main() {
   };
 
   return (
-    <ExtendUpdateContext.Provider value={changeExtend}>
+    <ExtendUpdateContext.Provider value={{ changeExtend, extend }}>
       <div>
         <div className="overview-main">
           <Image click={setExtend} extend={extend} />

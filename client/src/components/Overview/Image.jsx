@@ -4,10 +4,14 @@ import { ExtendUpdateContext } from './Main.jsx';
 
 export default function Image() {
   // declare state variables here
-  const value = useContext(ExtendUpdateContext);
+  const { extend, changeExtend } = useContext(ExtendUpdateContext);
+  // console.log(extend, changeExtend);
 
   return (
-    <div className="overview-image">
+    <div
+      className="overview-image"
+      style={{ 'background-size': extend ? 'cover' : 'contain' }}
+    >
       <ImageThumbnails />
       <div className="overview-image-prev">&#10094;</div>
       <div className="overview-image-next">&#10095;</div>
@@ -17,7 +21,7 @@ export default function Image() {
         version="1.1"
         viewBox="0 0 36 36"
         width="100%"
-        onClick={() => { value(); }}
+        onClick={() => { changeExtend(); }}
       >
         <path d="m 10,16 2,0 0,-4 4,0 0,-2 L 10,10 l 0,6 0,0 z" />
         <path d="m 20,10 0,2 4,0 0,4 2,0 L 26,10 l -6,0 0,0 z" />
