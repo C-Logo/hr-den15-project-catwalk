@@ -14,23 +14,15 @@ export default function HelpfulQuestion() {
   }
   return (
     <div className="Helpfulq">
-      <div className="inline1">
-        <div> Helpful? </div>
+      <div> Helpful? </div>
+      <div onClick={handleQuestionOnClick}>
+        Yes
+        (
+        {helpfulQuestionYes}
+        )
       </div>
-      <div className="inline4">
-        <div onClick={handleQuestionOnClick}>
-          Yes
-          (
-          {helpfulQuestionYes}
-          )
-        </div>
-      </div>
-      <div className="inline2">
-        <div> | </div>
-      </div>
-      <div className="inline3">
-        <div onClick={getReq}> Add answer </div>
-      </div>
+      <div> | </div>
+      <div onClick={getReq}> Add answer </div>
     </div>
   );
 }

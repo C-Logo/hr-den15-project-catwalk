@@ -1,7 +1,5 @@
 .questioncontainer {
-  /* display: flex; */
-  /* justify-content: flex-start; */
-  /* align-content: space-between; */
+
   margin-left: 5px;
   box-sizing: border-box;
   padding: 10px;
@@ -12,8 +10,9 @@
   float: left
 }
 .row1 {
-  font-display: flex;
-  flex-direction: row;
+  display: flex;
+  justify-content: space-around;
+
 }
 .askedquestion {
   display: flex;
@@ -34,13 +33,28 @@
   flex-direction: row;
   padding: 3 px
 }
+.indivquestion {
+  float: left;
+  width: 72%;
+  text-align: left;
+  margin: 2%;
+}
 .inline1, .inline2, .inline3, .inline4 {
   color: blue;
   display: inline-block
 
 }
-.helpfulq {
+.Helpfulq {
+  color: red;
+  float: right;
+  width: 20%;
+  text-align: right;
   display: flex;
-  flex-direction: row;
-  justify-content: flex end, space-around;
+  justify-content: space-between;
+  margin: 2%;
+  font-size: 12px;
+
+}
+#align {
+  display: inline-block;
 }
