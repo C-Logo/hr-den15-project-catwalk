@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import ReviewList from './ReviewList.jsx';
 
-const ReviewsContext = React.createContext(Reviews);
+export const ReviewsContext = React.createContext();
 
 export default function Reviews() {
   // declare state variables here
@@ -16,7 +16,6 @@ export default function Reviews() {
     axios
       .get('/reviews?product_id=44388')
       .then((data) => {
-        console.log(data);
         setAllReviews(data.data.results);
       })
       .catch((err) => {
@@ -106,7 +105,7 @@ export default function Reviews() {
         <div id="reviewsFilter">
           248 reviews, sorted by relevance
         </div>
-        <ReviewsContext.Provider>
+        <ReviewsContext.Provider value={allReviews}>
           <ReviewList />
         </ReviewsContext.Provider>
       </div>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
+import dateReformat from '../../helper-functions/dateReformat.js';
 
-export default function Review() {
+export default function Review(props) {
+  const date = dateReformat(props.review.date);
   return (
     <div id="reviewList">
       <div className="review">
@@ -8,6 +10,7 @@ export default function Review() {
           5 star graph
         </div>
         <div className="reviewerData">
+          {`${props.review.reviewer_name}, ${props.review.date}`}
           User1234, January 1, 2019
         </div>
         <div className="reviewSummary">
