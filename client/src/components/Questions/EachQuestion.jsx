@@ -17,7 +17,7 @@ export default function EachQuestion() {
   }
 
   return (
-    <div>
+    <div className="mainquestion">
       <div className="questionline">
         <div className="indivquestion">Q:</div>
         <div className="indivquestion">
