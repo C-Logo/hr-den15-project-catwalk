@@ -10,7 +10,7 @@ export default function Questions() {
     <div id="questioncontainer">
       <div id="qandaheader">QUESTIONS & ANSWERS</div>
       <div><SearchQuestion /></div>
-      <div className="row1"><EachQuestion /></div>
+      <div><EachQuestion /></div>
       <div><EachAnswer /></div>
     </div>
   );
