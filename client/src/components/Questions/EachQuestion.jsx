@@ -1,10 +1,13 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { QuestionContext } from './Questions.jsx';
 
 export default function EachQuestion() {
   const questions = useContext(QuestionContext);
   console.log('eachquestion', questions);
   let [helpfulQuestionYes, setHelpfulQuestionYes] = useState(0);
+  // useEffect(
+  //   questions = useContext(QuestionContext),
+  // );
 
   function handleQuestionOnClick() {
     setHelpfulQuestionYes(helpfulQuestionYes += 1);
@@ -24,6 +27,9 @@ export default function EachQuestion() {
         <div className="indivquestion">Q:</div>
         <div className="indivquestion">
           {/* {questions} */}
+          {if (questions) {questions.results.map((question) => (
+            <div>question.question_body</div>
+          ))}}
           {' '}
           placeholder
         </div>
