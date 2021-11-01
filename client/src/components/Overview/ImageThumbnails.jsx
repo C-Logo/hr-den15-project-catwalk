@@ -10,7 +10,7 @@ export default function ImageThumbnails() {
 
   return (
     <div>
-      {currentStyle.photos.map((item) => {
+      {/* {currentStyle.photos.map((item) => {
         console.log(currentStyle, 'item', item);
         if (item.style_id === currentStyle) {
           console.log('yes!');
@@ -21,12 +21,11 @@ export default function ImageThumbnails() {
             />
           );
         }
-      })}
+      })} */}
 
-      {/* <div className="overview-image-thumbnail">thumb1</div>
-      <div >thumb2</div>
+      <div className="overview-image-thumbnail">thumb1</div>
       <div className="overview-image-thumbnail">thumb3</div>
-      <div className="overview-image-thumbnail">thumb4</div> */}
+      <div className="overview-image-thumbnail">thumb4</div>
     </div>
   );
 }
