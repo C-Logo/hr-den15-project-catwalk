@@ -1,9 +1,9 @@
-.questioncontainer {
+#questioncontainer {
 
   margin-left: 5px;
   box-sizing: border-box;
-  padding: 10px;
-  margin: 10px;
+  padding: 2px;
+  margin: 2px;
   border: 2px solid black
 }
 #qandaheader {
@@ -11,7 +11,7 @@
 }
 .row1 {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 
 }
 .askedquestion {
@@ -27,7 +27,7 @@
   margin-left: 10px;
 }
 #searchbar {
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -35,26 +35,41 @@
 }
 .indivquestion {
   float: left;
-  width: 72%;
+  width: 74%;
   text-align: left;
-  margin: 2%;
-}
-.inline1, .inline2, .inline3, .inline4 {
-  color: blue;
-  display: inline-block
-
+  margin: 1%;
 }
 .Helpfulq {
   color: red;
   float: right;
-  width: 20%;
+  width: 22%;
   text-align: right;
   display: flex;
   justify-content: space-between;
-  margin: 2%;
+  margin: 1%;
   font-size: 12px;
 
 }
-#align {
-  display: inline-block;
+.questionline {
+  display: flex;
+  float: left;
+  justify-content: space-between;
+  margin: 1%;
+}
+.answerline {
+  display: flex;
+  float: left;
+  justify-content: space-between;
+  margin: 1%;
+}
+.helpfula {
+  color: blue;
+  float: left;
+  width: 45%;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  margin: 1%;
+  font-size: 12px;
+
 }
