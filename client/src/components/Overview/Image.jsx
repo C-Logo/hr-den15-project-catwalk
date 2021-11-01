@@ -9,10 +9,12 @@ export default function Image() {
   return (
     <div className="overview-image">
       <ImageThumbnails />
+      <div className="overview-image-prev">&#10094;</div>
+      <div className="overview-image-next">&#10095;</div>
       <button
         type="button"
         className="overview-resizing-button"
-        src="./img/square.png"
+        // src="./img/square.png"
         height="20"
         width="20"
         alt="resizer"
