@@ -51,7 +51,6 @@ display:inline-block;
 #reviewsFilter {
   text-align: left;
   font-size: larger;
-  margin-bottom: 20px;
 }
 
 #reviewList {
@@ -92,6 +91,8 @@ display:inline-block;
   float: left;
   width: 30%;
   text-align: left;
+
+
 }
 
 .reviewerData {
@@ -99,10 +100,16 @@ display:inline-block;
   float: right;
   text-align: right;
   font-size: smaller;
+  margin: auto;
+}
+
+.reviewFirstLine {
+  display: flex;
 }
 
 .reviewSummary {
-  display: inline-block;
+  width: 100%;
+  display: block;
   font-weight: bold;
   text-align: left;
 }
@@ -131,12 +138,21 @@ display:inline-block;
 .reviewFooter {
   text-align: left;
   font-size: smaller;
+  display: flex;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 .reviewHelpful {
-
+  margin: 2%;
 }
 
 .reviewReport {
-
+  margin: 2%;
 }
+
+.reviewFooterSeparator {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+

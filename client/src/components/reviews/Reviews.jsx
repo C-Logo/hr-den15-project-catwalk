@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import ReviewList from './ReviewList.jsx';
+import StarRating from '../StarRating.jsx';
 
 export const ReviewsContext = React.createContext();
 
@@ -9,7 +10,6 @@ export default function Reviews() {
   // example: const [count, setCount] = useState(0);
 
   const [allReviews, setAllReviews] = useState([]);
-  const [starRating, setStarRating] = useState('');
 
   function fetchAllReviews() {
     // '/reviews/meta?product_id=44388'
@@ -105,7 +105,8 @@ export default function Reviews() {
         <div id="reviewsFilter">
           248 reviews, sorted by relevance
         </div>
-        <ReviewsContext.Provider value={allReviews}>
+        <hr />
+        <ReviewsContext.Provider value={{ allReviews }}>
           <ReviewList />
         </ReviewsContext.Provider>
       </div>
