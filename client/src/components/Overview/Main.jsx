@@ -7,6 +7,8 @@ export const ExtendUpdateContext = React.createContext();
 
 export default function Main() {
   const [extend, setExtend] = useState(false);
+  const [styles, setStyles] = useState([]);
+  const [mainPhoto, setMainPhoto] = useState('');
   const [product, setProduct] = useState({
     campus: '',
     category: '',
@@ -29,11 +31,23 @@ export default function Main() {
     console.log(productId);
     axios
       .get(`/products/${productId}`)
-      .then((results) => {
-        setProduct({ ...product, ...results.data });
-        console.log(product);
-        console.log(results.data);
+      .then((response) => {
+        setProduct({ ...product, ...response.data });
+        // console.log(product);
+        // console.log(response.data);
+        return axios.get(`/products/${productId}/styles`);
       })
+      .then((response) => {
+        console.log('result styles:', response.data.results);
+        setStyles(response.data.results);
+        console.log('image-', response.data.results[0].photos[0].url);
+        setMainPhoto(response.data.results[0].photos[0].url);
+
+        // console.log(styles);
+        // return response;
+      })
+      // .then((response) => {
+      // })
       .catch((err) => {
         console.log('error on product get request:', err);
       });
@@ -41,10 +55,14 @@ export default function Main() {
 
   useEffect(() => {
     getReq();
+    setMainPhoto();
   }, []);
 
   return (
-    <ExtendUpdateContext.Provider value={{ changeExtend, extend, product }}>
+    <ExtendUpdateContext.Provider value={{
+      changeExtend, extend, product, styles, mainPhoto,
+    }}
+    >
       <div>
         <div className="overview-main">
           <Image click={setExtend} extend={extend} />
