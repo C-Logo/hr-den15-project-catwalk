@@ -32,12 +32,13 @@
 .mainquestion {
   display: flex;
   justify-content: space-between;
+  /* width: 100%; */
 }
 .indivquestion {
   float: left;
-  width: 74%;
+  /* width: 74%; */
   text-align: left;
-  margin: 1%;
+  /* margin: 1%; */
 }
 .Helpfulq {
   color: red;
