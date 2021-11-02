@@ -14,7 +14,7 @@ export default function RightColumn() {
       <div className="small">${product.default_price}</div>
       <div className="large overview-styles-container">
         <div className="overview-style-label">Style > Selected Style</div>
-        {console.log('styles', styles, 'current style', currentStyle)}
+        {/* {console.log('styles', styles, 'current style', currentStyle)} */}
         {styles.map((item,index) => {
           return <div
             className="overview-styles-circle"

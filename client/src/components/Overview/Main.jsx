@@ -43,7 +43,7 @@ export default function Main() {
         return axios.get(`/products/${productId}/styles`);
       })
       .then((response) => {
-        console.log('result styles:', response.data.results);
+        // console.log('result styles:', response.data.results);
         setStyles(response.data.results);
         // console.log('image-', response.data.results[0].photos[0].url);
         setMainPhoto(response.data.results[0].photos[0].url);
