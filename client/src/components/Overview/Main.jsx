@@ -12,21 +12,21 @@ export default function Main() {
   const [currentStyle, setCurrentStyle] = useState(0);
   const [styleThumbnails, setStyleThumbnails] = useState();
   const [product, setProduct] = useState({});
+  const [sizesAndQuantities, setSizesAndQuantities] = useState();
 
   const changeExtend = () => {
     setExtend(!extend);
   };
 
   const handleChangeStyle = (styleId, photo = 0) => {
-    // console.log('new Style:', styleId, styles);
     setCurrentStyle(styleId);
     for (let i = 0; i < styles.length; i++) {
       if (styleId === styles[i].style_id) {
-        // console.log('yes', i);
         setMainPhoto(styles[i].photos[photo].url);
         setStyleThumbnails(styles[i].photos);
         setCurrentStyle(styles[i]);
-        const style = styles;
+        const result = Object.values(currentStyle.skus);
+        setSizesAndQuantities(result);
       }
     }
   };
@@ -64,6 +64,7 @@ export default function Main() {
         currentStyle,
         handleChangeStyle,
         styleThumbnails,
+        sizesAndQuantities,
       }}
     >
       <div>

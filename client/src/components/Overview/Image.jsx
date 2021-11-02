@@ -36,15 +36,6 @@ export default function Image() {
         <path d="m 24,24 -4,0 0,2 L 26,26 l 0,-6 -2,0 0,4 0,0 z" />
         <path d="M 12,20 10,20 10,26 l 6,0 0,-2 -4,0 0,-4 0,0 z" />
       </svg>
-      {/* <button
-        type="button"
-        className="overview-resizing-button"
-        // src="./img/square.png"
-        height="20"
-        width="20"
-        alt="resizer"
-        onClick={() => { value(); }}
-      /> */}
     </div>
   );
 }

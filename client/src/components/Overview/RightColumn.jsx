@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
+// import Select from 'react-select'
 import { ExtendUpdateContext } from './Main.jsx';
 
 export default function RightColumn() {
   // declare state variables here
-  const { product, styles, handleChangeStyle, currentStyle } = useContext(ExtendUpdateContext);
+  const { product, styles, handleChangeStyle, currentStyle, sizesAndQuantities } = useContext(ExtendUpdateContext);
 
   return (
     <div className="overview-right">
@@ -32,11 +33,17 @@ export default function RightColumn() {
             }}
             key={index}
             onClick={() => handleChangeStyle(item.style_id)}>
-            {/* {(currentStyle.style_id === item.style_id) ? 'yes' : ''} */}
           </div>;
         })}
       </div>
-      <div className="medium">Select Size</div>
+      <div className="medium">Select Size:
+        {/* <select options={
+        //     sizesAndQuantities.map((item) => {
+        //       return item.size;
+        //       console.log('item>>>>', item);
+        //     })
+        // } /> */}
+      </div>
       <div className="medium">Add to Bag</div>
       <div className="small"> </div>
     </div>

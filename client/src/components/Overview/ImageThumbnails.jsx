@@ -19,9 +19,9 @@ export default function ImageThumbnails() {
           onClick={(event) => {
             event.stopPropagation();
             handleChangeStyle(currentStyle.style_id, index);
-            console.log(thumbImage);
+            // console.log(thumbImage);
             setThumbImage(index);
-            console.log(thumbImage);
+            // console.log(thumbImage);
           }}
           onKeyDown={() => {}}
           role="button"
