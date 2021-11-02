@@ -3,7 +3,7 @@ import { ExtendUpdateContext } from './Main.jsx';
 
 export default function RightColumn() {
   // declare state variables here
-  const { product, styles } = useContext(ExtendUpdateContext);
+  const { product, styles, handleChangeStyle } = useContext(ExtendUpdateContext);
 
   return (
     <div className="overview-right">
@@ -15,7 +15,9 @@ export default function RightColumn() {
       <div className="large">
         <div>Style > Selected Style</div>
         {styles.map((item,index) => {
-          return <div>{item.name}</div>;
+          return <div
+            key={index}
+            onClick={()=>handleChangeStyle(item.style_id)}>{item.name}</div>;
         })}
       </div>
       <div className="medium">Select Size</div>

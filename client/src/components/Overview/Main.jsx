@@ -10,6 +10,7 @@ export default function Main() {
   const [styles, setStyles] = useState([]);
   const [mainPhoto, setMainPhoto] = useState('');
   const [currentStyle, setCurrentStyle] = useState(0);
+  const [styleThumbnails, setStyleThumbnails] = useState();
   const [product, setProduct] = useState({
     campus: '',
     category: '',
@@ -22,14 +23,25 @@ export default function Main() {
     slogan: '',
     updated_at: '',
   });
-  // const [changeExtend, setChangeExtend] = useState(setExtend(!extend));
 
   const changeExtend = () => {
     setExtend(!extend);
   };
 
+  const handleChangeStyle = (styleId, photo = 0) => {
+    // console.log('new Style:', styleId, styles);
+    setCurrentStyle(styleId);
+    for (let i = 0; i < styles.length; i++) {
+      if (styleId === styles[i].style_id) {
+        // console.log('yes', i);
+        setMainPhoto(styles[i].photos[photo].url);
+        setStyleThumbnails(styles[i].photos);
+        setCurrentStyle(styles[i]);
+      }
+    }
+  };
+
   const getReq = (productId = 44388) => {
-    // console.log(productId);
     axios
       .get(`/products/${productId}`)
       .then((response) => {
@@ -39,7 +51,7 @@ export default function Main() {
         return axios.get(`/products/${productId}/styles`);
       })
       .then((response) => {
-        console.log('result styles:', response.data.results);
+        // console.log('result styles:', response.data.results);
         setStyles(response.data.results);
         // console.log('image-', response.data.results[0].photos[0].url);
         setMainPhoto(response.data.results[0].photos[0].url);
@@ -50,19 +62,23 @@ export default function Main() {
       });
   };
 
-  const handleChangeStyle = (styleId) => {
-    setCurrentStyle(styleId);
-  };
-
   useEffect(() => {
     getReq();
-    setMainPhoto();
+    // setMainPhoto();
   }, []);
 
   return (
-    <ExtendUpdateContext.Provider value={{
-      changeExtend, extend, product, styles, mainPhoto, currentStyle, handleChangeStyle,
-    }}
+    <ExtendUpdateContext.Provider
+      value={{
+        changeExtend,
+        extend,
+        product,
+        styles,
+        mainPhoto,
+        currentStyle,
+        handleChangeStyle,
+        styleThumbnails,
+      }}
     >
       <div>
         <div className="overview-main">
