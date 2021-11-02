@@ -1,15 +1,31 @@
 import React, { useContext } from 'react';
-// import { ExtendUpdateContext } from './Main.jsx';
+import { ExtendUpdateContext } from './Main.jsx';
 
 export default function ImageThumbnails() {
   // declare state variables here
+  const {
+    styles, product, currentStyle, handleChangeStyle, styleThumbnails,
+  } = useContext(ExtendUpdateContext);
 
   return (
     <div>
-      <div className="overview-image-thumbnail">thumb1</div>
-      <div className="overview-image-thumbnail">thumb2</div>
-      <div className="overview-image-thumbnail">thumb3</div>
-      <div className="overview-image-thumbnail">thumb4</div>
+      {styleThumbnails.map((item, index) =>
+        // console.log('print', index);
+        (
+          <div
+            className="overview-image-thumbnail"
+            style={{ backgroundImage: `url(${item.thumbnail_url})` }}
+            key={index}
+            onClick={(event) => {
+              event.stopPropagation();
+              // console.log(currentStyle.style_id, index);
+              handleChangeStyle(currentStyle.style_id, index);
+            }}
+            onKeyDown={() => {}}
+            role="button"
+            tabIndex={1}
+          />
+        ))}
     </div>
   );
 }
