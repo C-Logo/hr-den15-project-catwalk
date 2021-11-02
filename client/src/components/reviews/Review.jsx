@@ -3,23 +3,36 @@ import dateReformat from '../../helper-functions/dateReformat.js';
 import Response from './Response.jsx';
 import Recommended from './Recommended.jsx';
 import StarRating from '../StarRating.jsx';
+import ReviewBody from './ReviewBody.jsx';
 
 export const ReviewContext = React.createContext();
 
 export default function Review(props) {
-  const [review, setReview] = useState({});
+  const [review, setReview] = useState(props.review);
+  const [reviewBodyTrunc, setReviewBodyTrunc] = useState(review.body);
+  const [reviewBodyLength, setReviewBodyLength] = useState(50);
+  const [reviewBodyShowMore, setReviewBodyShowMore] = useState(true);
 
   useEffect(() => {
-    setReview(props.review);
-  }, []);
+    console.log(review);
+    if (review.body) {
+      if (review.body.length < reviewBodyLength) {
+        setReviewBodyShowMore(false);
+      } else {
+        setReviewBodyTrunc(`${review.body.slice(0, reviewBodyLength)} ...`);
+      }
+    }
+  }, [reviewBodyShowMore]);
 
   return (
-    <div id="reviewList">
+    <ReviewContext.Provider value={{
+      review, reviewBodyShowMore, reviewBodyTrunc, setReviewBodyShowMore,
+    }}
+    >
       <div className="review">
         <div className="reviewFirstLine">
           <div className="Stars">
             <StarRating rating={review.rating} />
-            {/* {starRatingFunction(review.rating)} */}
           </div>
           <div className="reviewerData">
             {`${review.reviewer_name}, ${dateReformat(review.date)}`}
@@ -29,14 +42,10 @@ export default function Review(props) {
           {review.summary}
         </div>
         <div className="reviewBody">
-          {review.body}
+          <ReviewBody />
         </div>
-        <ReviewContext.Provider value={review}>
-          <Recommended />
-        </ReviewContext.Provider>
-        <ReviewContext.Provider value={review}>
-          <Response />
-        </ReviewContext.Provider>
+        <Recommended />
+        <Response />
         <div className="reviewFooter">
           <div className="reviewHelpful">
             Helpful? Yes (9)
@@ -50,6 +59,6 @@ export default function Review(props) {
         </div>
         <hr />
       </div>
-    </div>
+    </ReviewContext.Provider>
   );
 }

@@ -1,15 +1,24 @@
-#reviews {
-  overflow: hidden;
+#reviewTitle {
+  
 }
 
-#reviewTitle {
+#reviews {
+  overflow: hidden;
+  margin: auto;
+  width: 95%;
+}
 
+#reviewsRight {
+  margin-left: 200px;
+}
+
+#reviewInfoContainer {
+  margin-left: 5%;
 }
 
 #reviewsLeft {
   float: left;
-  width: 36%;
-  margin: 2%;
+  max-width: 200px;
 }
 
 #reviewProductStars {
@@ -28,12 +37,6 @@
   float: right;
   width: 60%;
   text-align: left;
-}
-
-#reviewsRight {
-  float: right;
-  width: 56%;
-  margin: 2%;
 }
 
 #recommendationPercentage {
@@ -55,6 +58,38 @@ display:inline-block;
 
 #reviewList {
   overflow-y:visible;
+  overflow: scroll;
+  max-height: 400px;
+  display: block;
+}
+
+.reviewBodyShowMore {
+  text-align: center;
+  font-size: smaller;
+  margin-bottom: 2%;
+  margin-top: 2%;
+}
+
+.reviewBodyShowMoreButton {
+  background-color: transparent;
+  border: none;
+  text-align: center;
+}
+
+.reviewBodyShowMoreButton:hover {
+  color: blue;
+  text-decoration: underline;
+}
+
+#reviewList::-webkit-scrollbar {
+  display: block;
+  overflow: auto;
+  height: 0em;
+  background-color: #aaa;
+}
+
+#reviewList::-webkit-scrollbar-thumb {
+  background: #000;
 }
 
 .starBarChartContainer {
@@ -101,6 +136,7 @@ display:inline-block;
   text-align: right;
   font-size: smaller;
   margin: auto;
+  margin-right: 1%;
 }
 
 .reviewFirstLine {
@@ -112,6 +148,9 @@ display:inline-block;
   display: block;
   font-weight: bold;
   text-align: left;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  text-decoration: underline;
 }
 
 .reviewBody {
