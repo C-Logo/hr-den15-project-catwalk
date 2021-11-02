@@ -2,13 +2,25 @@ import React, { useState, useContext, useEffect } from 'react';
 import { QuestionContext } from './Questions.jsx';
 
 export default function EachQuestion(props) {
+  const [answers, setAnswers] = useState({});
   const [question, setQuestion] = useState('');
+  const [answerArray, setAnswerArray] = useState([]);
+
+  function answerArraySet() {
+    setAnswerArray(Object.values(answers));
+    // console.log('setAA', answerArray);
+  }
   useEffect(() => {
     // console.log('props', props.question);
     if (props.question) {
       setQuestion(props.question.question_body);
+      setAnswers(props.question.answers);
+      answerArraySet();
+      // console.log('answers', answers);
+      // console.log('answerArray', answerArray);
     } else {
       setQuestion('no questions');
+      setAnswers('no answers');
     }
   }, []);
 
@@ -24,6 +36,9 @@ export default function EachQuestion(props) {
         <div className="indivquestion">Q:</div>
         <div className="indivquestion">
           {question}
+          {answerArray.map((answer) => (
+            <div>answer</div>
+          ))}
         </div>
       </div>
       <div className="Helpfulq">

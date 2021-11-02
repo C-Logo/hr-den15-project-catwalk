@@ -9,14 +9,11 @@ export const QuestionContext = React.createContext();
 
 export default function Questions() {
   const [questionArray, setquestionArray] = useState([]);
-
   function getQuestions() {
     axios.get('/qa/questions', { params: { product_id: 44388 } })
       .then((response) => {
-        // console.log('response', response);
         const { data } = response;
         setquestionArray(data.results);
-        // console.log('questionsArray', questionArray);
       })
       .catch();
   }
