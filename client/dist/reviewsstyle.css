@@ -54,6 +54,17 @@ display:inline-block;
 #reviewsFilter {
   text-align: left;
   font-size: larger;
+  display: flex;
+}
+
+#reviewSortingSelect {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: "adobe-clean", sans-serif;
+  font-size:unset;
+  margin: auto;
+  margin-left: 5px;
 }
 
 #reviewList {
@@ -74,6 +85,7 @@ display:inline-block;
   background-color: transparent;
   border: none;
   text-align: center;
+  font-size: smaller;
 }
 
 .reviewBodyShowMoreButton:hover {
@@ -183,15 +195,20 @@ display:inline-block;
 }
 
 .reviewHelpful {
-  margin: 2%;
+  margin: 2px;
+
 }
 
 .reviewReport {
-  margin: 2%;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 2px;
 }
 
 .reviewFooterSeparator {
   margin-top: auto;
   margin-bottom: auto;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 

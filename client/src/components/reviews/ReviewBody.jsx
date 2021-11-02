@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { ReviewContext } from './Review.jsx';
 
-export default function ReviewBody() {
+export default function ReviewBody(props) {
   const {
     review, reviewBodyShowMore, reviewBodyTrunc, setReviewBodyShowMore,
   } = useContext(ReviewContext);
@@ -10,6 +10,7 @@ export default function ReviewBody() {
     setReviewBodyShowMore(false);
   }
 
+  console.log(reviewBodyShowMore);
   if (reviewBodyShowMore) {
     return (
       <div>
@@ -22,7 +23,7 @@ export default function ReviewBody() {
   }
   return (
     <div>
-      {review.body}
+      {props.body}
     </div>
   );
 }
