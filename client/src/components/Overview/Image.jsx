@@ -4,19 +4,23 @@ import { ExtendUpdateContext } from './Main.jsx';
 
 export default function Image() {
   // declare state variables here
-  const { extend, changeExtend } = useContext(ExtendUpdateContext);
-  // console.log(extend, changeExtend);
-
+  const {
+    extend, changeExtend, styles, mainPhoto, currentStyle, styleThumbnails,
+  } = useContext(ExtendUpdateContext);
+  // console.log('photo change', mainPhoto);
   return (
     <div
       className="overview-image"
-      style={{ backgroundSize: extend ? 'cover' : 'contain' }}
+      style={{
+        backgroundSize: extend ? 'cover' : 'contain',
+        backgroundImage: `url(${mainPhoto})`,
+      }}
       onClick={() => { changeExtend(); }}
       onKeyDown={() => { changeExtend(); }}
       role="button"
       tabIndex={0}
     >
-      <ImageThumbnails />
+      {styleThumbnails ? <ImageThumbnails /> : ''}
       <div className="overview-image-prev">&#10094;</div>
       <div className="overview-image-next">&#10095;</div>
       <svg
