@@ -95,6 +95,7 @@ body {
 }
 
 .small {
+  display: flex;
   height: 4%;
   background-color: rgb(255, 255, 255);
   border: 1px solid black;
@@ -184,9 +185,13 @@ body {
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
-  width: 20%;
-  height: 30%;
+  width: 18%;
+  height: 50px;
   margin: 2.5%;
   background-color: grey;
   border-radius: 50%
+}
+
+.overview-flex {
+  display:flex;
 }

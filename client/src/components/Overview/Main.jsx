@@ -27,8 +27,6 @@ export default function Main() {
         setStyleThumbnails(styles[i].photos);
         setCurrentStyle(styles[i]);
         const style = styles;
-        setStyles([]);
-        setStyles(style);
       }
     }
   };
@@ -38,14 +36,10 @@ export default function Main() {
       .get(`/products/${productId}`)
       .then((response) => {
         setProduct({ ...product, ...response.data });
-        // console.log(product);
-        // console.log(response.data);
         return axios.get(`/products/${productId}/styles`);
       })
       .then((response) => {
-        // console.log('result styles:', response.data.results);
         setStyles(response.data.results);
-        // console.log('image-', response.data.results[0].photos[0].url);
         setMainPhoto(response.data.results[0].photos[0].url);
         handleChangeStyle(response.data.results[0]);
       })

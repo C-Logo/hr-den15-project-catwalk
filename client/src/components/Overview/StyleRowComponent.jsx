@@ -7,5 +7,6 @@ export default function RightColumn() {
 
   return (
     <div className="overview-style-row" />
+    <div>Hello</div>
   );
 }
