@@ -11,18 +11,7 @@ export default function Main() {
   const [mainPhoto, setMainPhoto] = useState('');
   const [currentStyle, setCurrentStyle] = useState(0);
   const [styleThumbnails, setStyleThumbnails] = useState();
-  const [product, setProduct] = useState({
-    campus: '',
-    category: '',
-    created_at: '',
-    default_price: '',
-    description: '',
-    features: [],
-    id: 44388,
-    name: '',
-    slogan: '',
-    updated_at: '',
-  });
+  const [product, setProduct] = useState({});
 
   const changeExtend = () => {
     setExtend(!extend);
@@ -37,6 +26,9 @@ export default function Main() {
         setMainPhoto(styles[i].photos[photo].url);
         setStyleThumbnails(styles[i].photos);
         setCurrentStyle(styles[i]);
+        const style = styles;
+        setStyles([]);
+        setStyles(style);
       }
     }
   };
@@ -51,11 +43,11 @@ export default function Main() {
         return axios.get(`/products/${productId}/styles`);
       })
       .then((response) => {
-        // console.log('result styles:', response.data.results);
+        console.log('result styles:', response.data.results);
         setStyles(response.data.results);
         // console.log('image-', response.data.results[0].photos[0].url);
         setMainPhoto(response.data.results[0].photos[0].url);
-        handleChangeStyle(response.data.results[0].style_id);
+        handleChangeStyle(response.data.results[0]);
       })
       .catch((err) => {
         console.log('error on product get request:', err);
