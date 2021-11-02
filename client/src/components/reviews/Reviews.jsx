@@ -3,6 +3,7 @@ import axios from 'axios';
 import ReviewList from './ReviewList.jsx';
 import StarRating from '../StarRating.jsx';
 import RatingBar from './RatingBar.jsx';
+import Review from './Review.jsx';
 
 export const ReviewsContext = React.createContext();
 
@@ -12,14 +13,30 @@ export default function Reviews() {
 
   const [allReviews, setAllReviews] = useState([]);
   const [reviewCount, setReviewCount] = useState(2);
-  const [reviewSort, setReviewSort] = useState('relevant');
+  const [reviewSort, setReviewSort] = useState('newest');
+  const [moreReviews, setMoreReviews] = useState({ pointerEvents: 'auto' });
+  const [totalReviews, setTotalReviews] = useState(0);
+  let shownReviews = allReviews.slice(0, reviewCount);
 
   function fetchAllReviews() {
-    // '/reviews/meta?product_id=44388'
     axios
-      .get(`/reviews?sort=${reviewSort}&count=${reviewCount}&product_id=44388`)
+      .get(`/reviews?sort=${reviewSort}&count=10000&product_id=44388`)
       .then((data) => {
         setAllReviews(data.data.results);
+        setTotalReviews(data.data.results.length);
+        shownReviews = allReviews.slice(0, reviewCount - 1);
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
+
+  function markAsHelpful(reviewId) {
+    axios
+      .put(`/reviews/${reviewId}/helpful`)
+      .then((data) => {
+        console.log('coming through?');
+        console.log(data);
       })
       .catch((err) => {
         throw err;
@@ -28,17 +45,21 @@ export default function Reviews() {
 
   function fetchTestData() {
     axios
-      .get('/reviews?sort=relevant&count=2&product_id=44388')
+      .get(`/reviews?sort=${reviewSort}&count=${reviewCount}&product_id=44388`)
       .then((data) => {
         console.log('test data: ');
         console.log(data);
       });
   }
 
+  function sortClickHandler(e) {
+    setReviewSort(e.target.value);
+  }
+
   useEffect(() => {
     fetchAllReviews();
     // fetchTestData();
-  }, [reviewCount]);
+  }, [reviewCount, reviewSort]);
 
   return (
     <>
@@ -110,14 +131,35 @@ export default function Reviews() {
         <div id="reviewsRight">
           <div id="reviewInfoContainer">
             <div id="reviewsFilter">
-              248 reviews, sorted by relevance
+              {`${totalReviews} reviews, sorted by:`}
+              <select id="reviewSortingSelect" onClick={sortClickHandler}>
+                <option value="newest">Newest</option>
+                <option value="relevant">Relevant</option>
+                <option value="helpful">Helpful</option>
+              </select>
             </div>
             <hr />
-            <ReviewsContext.Provider value={{ allReviews }}>
-              <ReviewList />
+            <ReviewsContext.Provider value={{ allReviews, markAsHelpful, reviewSort }}>
+              <div id="reviewList">
+                {shownReviews.map((review, index) => (
+                  <div key={index}>
+                    <Review review={review} />
+                  </div>
+                ))}
+              </div>
             </ReviewsContext.Provider>
             <form>
-              <button type="button" onClick={() => { setReviewCount(reviewCount + 2); }}>Show More!</button>
+              <button
+                type="button"
+                style={moreReviews}
+                onClick={() => {
+                  setReviewCount(reviewCount + 2);
+                  shownReviews = allReviews.slice(0, reviewCount);
+                }}
+              >
+                Show More!
+
+              </button>
               <button type="button">Add a Review +</button>
             </form>
           </div>
