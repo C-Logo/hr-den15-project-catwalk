@@ -22,7 +22,7 @@ export default function RightColumn() {
       </div>
       <div className="large overview-styles-container">
         <div className="overview-style-label">Style > Selected Style</div>
-        {console.log('current style', currentStyle)}
+        {/* {console.log('current style', currentStyle)} */}
         {styles.map((item,index) => {
           return <div
             className="overview-styles-circle"
