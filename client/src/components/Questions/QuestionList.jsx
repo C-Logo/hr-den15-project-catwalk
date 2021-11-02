@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { QuestionContext } from './Questions.jsx';
 import EachQuestion from './EachQuestion.jsx';
-import EachAnswer from './EachAnswer.jsx';
 
 export default function QuestionList() {
   const { questionArray } = useContext(QuestionContext);

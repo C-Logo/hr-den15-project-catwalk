@@ -8,15 +8,15 @@ export default function EachQuestion(props) {
 
   function answerArraySet() {
     setAnswerArray(Object.values(answers));
-    console.log('setAA', answerArray);
+    // console.log('setAA', answerArray);
   }
   useEffect(() => {
-    console.log('props', props.question);
+    // console.log('props', props.question);
     if (props.question) {
       setQuestion(props.question.question_body);
       setAnswers(props.question.answers);
       answerArraySet();
-      console.log('answers', answers);
+      // console.log('answers', answers);
       // console.log('answerArray', answerArray);
     } else {
       setQuestion('no questions');
