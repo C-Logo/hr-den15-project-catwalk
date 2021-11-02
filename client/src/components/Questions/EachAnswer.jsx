@@ -1,9 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { QuestionContext } from './Questions.jsx';
 
-export default function EachAnswer() {
+export default function EachAnswer(props) {
   let [helpfulAnswerYes, setHelpfulAnswerYes] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [report, setReport] = useState(0);
+  const [userName, setUserName] = useState('');
+  const [date, setData] = useState(0);
+
+  // useEffect(() => {
+  //   console.log('props', props.question);
+  //   if (props.question) {
+  //     setAnswers(props.question);
+  //   } else {
+  //     setAnswers('no questions');
+  //   }
+  // }, []);
 
   function handleAnswerOnClick() {
     setHelpfulAnswerYes(helpfulAnswerYes += 1);
