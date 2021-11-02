@@ -32,6 +32,7 @@ export default function EachAnswer() {
         <span> | </span>
         <span>Report</span>
       </div>
+      <button>Load More Answers</button>
     </div>
   );
 }
