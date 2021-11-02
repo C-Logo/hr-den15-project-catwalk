@@ -14,7 +14,6 @@ export default function Review(props) {
   const [reviewBodyShowMore, setReviewBodyShowMore] = useState(true);
 
   useEffect(() => {
-    console.log(review);
     if (review.body) {
       if (review.body.length < reviewBodyLength) {
         setReviewBodyShowMore(false);
