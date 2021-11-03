@@ -3,9 +3,8 @@ import React, { useState, useContext, useEffect } from 'react';
 import EachAnswer from './EachAnswer.jsx';
 
 export default function EachQuestion(props) {
-  const [answers, setAnswers] = useState({});
   const [question, setQuestion] = useState('');
-  const [answerArray, setAnswerArray] = useState([]);
+  // const [answerArray, setAnswerArray] = useState([]);
   const [question_id, setQuestionID] = useState(0);
 
   useEffect(() => {

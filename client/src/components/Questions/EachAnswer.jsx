@@ -12,7 +12,6 @@ export default function EachAnswer(props) {
   function fetchAllAnswers() {
     axios.get(`/qa/questions/${questionID}/answers`, { params: { count: 10 } })
       .then((response) => {
-        // console.log('response', response);
         setAnswersArray(response.data.results);
         setDefaultAnswers(response.data.results.slice(0, 2));
       });
@@ -20,8 +19,6 @@ export default function EachAnswer(props) {
 
   useEffect(() => {
     if (props.answer) {
-      // const arrayOfAnswers = Object.values(props.answer);
-      // setAnswersArray(arrayOfAnswers);
       setQuestionID(props.id);
       fetchAllAnswers();
     } else {
