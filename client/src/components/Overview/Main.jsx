@@ -19,9 +19,15 @@ export default function Main() {
     setExtend(!extend);
   };
 
-  const handleChangePurchaseOptions = (sizeSelected, qtySelected) => {
+  const handleChangePurchaseOptions = (sizeSelected, qtySelected, index) => {
+    console.log('current Style', currentStyle);
     if (sizeSelected) {
       setPurchaseOptions({ ...purchaseOptions, size: sizeSelected });
+      setCurrentStyle({
+        ...currentStyle,
+        sizeSelected: [...Array(sizesAndQuantities[index].quantity).keys()],
+      });
+      console.log('s+q', currentStyle);
     }
     if (qtySelected) {
       setPurchaseOptions({ ...purchaseOptions, quantity: qtySelected });
@@ -37,6 +43,7 @@ export default function Main() {
         setMainPhoto(styles[i].photos[photo].url);
         setStyleThumbnails(styles[i].photos);
         setCurrentStyle(styles[i]);
+
         const result = Object.values(currentStyle.skus);
         // console.log('result', result);
         setSizesAndQuantities(result);

@@ -36,22 +36,21 @@ export default function RightColumn() {
         })}
       </div>
       <div className="medium">
-        <select name="size" id="size-selector" onChange={event=>{handleChangePurchaseOptions(event.target.value, null)}}>
+        <select name="size" id="size-selector" className="overview-selector overview-size" onChange={event=>{handleChangePurchaseOptions(event.target.value, null, event.target[event.target.selectedIndex].id)}}>
             <option value="">SELECT SIZE</option>
           {(sizesAndQuantities !== undefined) ?
             sizesAndQuantities.map((item, index) => {
-              return <option key={index} value={item.size}>{item.size}</option>
+              return <option id={index} key={index} value={item.size}>{item.size}</option>
               }) :
               <option value='0'>Please Choose a Style</option>
             }
         </select>
-        <select name="size" id="qty-selector" onChange={event=>{handleChangePurchaseOptions(null, event.target.value)}}>
-            <option value="">SELECT QTY</option>
-          {(sizesAndQuantities !== undefined) ?
-            sizesAndQuantities.map((item, index) => {
-              return <option key={index} value={item.quantity}>{item.quantity}</option>
+        <select name="size" id="qty-selector" className="overview-selector overview-qty" onChange={event=>{handleChangePurchaseOptions(null, event.target.value)}}>
+          {(currentStyle.sizeSelected !== undefined) ?
+            currentStyle.sizeSelected.map((item, index) => {
+              return <option key={index} value={item}>{item}</option>
               }) :
-              <option value='0'>Please Choose a Size</option>
+              <option value='0'>1</option>
             }
         </select>
       </div>
