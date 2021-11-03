@@ -13,9 +13,20 @@ export default function Main() {
   const [styleThumbnails, setStyleThumbnails] = useState();
   const [product, setProduct] = useState({});
   const [sizesAndQuantities, setSizesAndQuantities] = useState();
+  const [purchaseOptions, setPurchaseOptions] = useState({});
 
   const changeExtend = () => {
     setExtend(!extend);
+  };
+
+  const handleChangePurchaseOptions = (sizeSelected, qtySelected) => {
+    if (sizeSelected) {
+      setPurchaseOptions({ ...purchaseOptions, size: sizeSelected });
+    }
+    if (qtySelected) {
+      setPurchaseOptions({ ...purchaseOptions, quantity: qtySelected });
+    }
+    console.log(purchaseOptions);
   };
 
   const handleChangeStyle = (styleId, photo = 0) => {
@@ -44,7 +55,7 @@ export default function Main() {
       .then((response) => {
         setStyles(response.data.results);
         setMainPhoto(response.data.results[0].photos[0].url);
-        console.log(response.data.results[0]);
+        // console.log(response.data.results[0]);
         handleChangeStyle(response.data.results[0]);
       })
       .catch((err) => {
@@ -69,6 +80,7 @@ export default function Main() {
         handleChangeStyle,
         styleThumbnails,
         sizesAndQuantities,
+        handleChangePurchaseOptions,
       }}
     >
       <div>

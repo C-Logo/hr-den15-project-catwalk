@@ -4,7 +4,7 @@ import { ExtendUpdateContext } from './Main.jsx';
 
 export default function RightColumn() {
   // declare state variables here
-  const { product, styles, handleChangeStyle, currentStyle, sizesAndQuantities } = useContext(ExtendUpdateContext);
+  const { product, styles, handleChangeStyle, currentStyle, sizesAndQuantities, handleChangePurchaseOptions } = useContext(ExtendUpdateContext);
 
   return (
     <div className="overview-right">
@@ -36,15 +36,22 @@ export default function RightColumn() {
         })}
       </div>
       <div className="medium">
-        {/* {console.log(sizesAndQuantities)} */}
-        {/* {console.log(item, item.size)} */}
-        <select name="size" id="size-selector">
+        <select name="size" id="size-selector" onChange={event=>{handleChangePurchaseOptions(event.target.value, null)}}>
             <option value="">SELECT SIZE</option>
           {(sizesAndQuantities !== undefined) ?
-            sizesAndQuantities.map((item) => {
-              return <option value="1">{item.size}</option>
+            sizesAndQuantities.map((item, index) => {
+              return <option key={index} value={item.size}>{item.size}</option>
               }) :
-              <option value='0'>"no sizes loaded"</option>
+              <option value='0'>Please Choose a Style</option>
+            }
+        </select>
+        <select name="size" id="qty-selector" onChange={event=>{handleChangePurchaseOptions(null, event.target.value)}}>
+            <option value="">SELECT QTY</option>
+          {(sizesAndQuantities !== undefined) ?
+            sizesAndQuantities.map((item, index) => {
+              return <option key={index} value={item.quantity}>{item.quantity}</option>
+              }) :
+              <option value='0'>Please Choose a Size</option>
             }
         </select>
       </div>
