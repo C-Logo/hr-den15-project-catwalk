@@ -22,13 +22,13 @@ export default function RightColumn() {
       }
       </div>
       <div className="large overview-styles-container">
-        <div className="overview-style-label">Style > Selected Style</div>
+        <div className="overview-style-label" id="overview-stylebox">Style > Selected Style</div>
         {styles.map((item,index) => {
           return <div
             className="overview-styles-circle"
             style={{
               backgroundImage: `url(${item.photos[0].thumbnail_url})`,
-              border: (currentStyle.style_id === item.style_id) ? '2px solid orange' : '1px solid black'
+              border: (currentStyle.style_id === item.style_id) ? '2px solid orange' : '1px solid black',
             }}
             key={index}
             onClick={() => handleChangeStyle(item.style_id)}>

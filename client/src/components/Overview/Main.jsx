@@ -34,8 +34,8 @@ export default function Main() {
   };
 
   const handleChangeStyle = (styleId, photo = 0) => {
-    // console.log('styleId', styleId);
-    setCurrentStyle(styleId);
+    console.log('styleId', styleId, typeof styleId);
+    // setCurrentStyle(styleId);
     for (let i = 0; i < styles.length; i++) {
       if (styleId === styles[i].style_id) {
         setMainPhoto(styles[i].photos[photo].url);
@@ -43,9 +43,9 @@ export default function Main() {
         setCurrentStyle(styles[i]);
         setPurchaseOptions({}); // empty puchaseOptions
         const result = Object.values(currentStyle.skus);
-        console.log('result', result);
+        // console.log('result', result);
         setSizesAndQuantities(result);
-        // console.log('currentStyle', currentStyle);
+        console.log('currentStyle', currentStyle);
       }
     }
   };
@@ -59,9 +59,11 @@ export default function Main() {
       })
       .then((response) => {
         setStyles(response.data.results);
+        setCurrentStyle(response.data.results[0]);
+        handleChangeStyle(266902);
         setMainPhoto(response.data.results[0].photos[0].url);
         // console.log(response.data.results[0]);
-        handleChangeStyle(response.data.results[0]);
+        // handleChangeStyle(response.data.results[0]);
       })
       .catch((err) => {
         console.log('error on product get request:', err);
@@ -70,7 +72,7 @@ export default function Main() {
 
   useEffect(() => {
     getReq();
-    // handleChangeStyle(266902);
+    handleChangeStyle(266902);
   }, []);
 
   return (

@@ -11,6 +11,8 @@ export default function ImageThumbnails() {
 
   return (
     <div>
+      {currentStyle.name}
+      {/* <div className="small"></div> */}
       {styleThumbnails.map((item, index) => (
         <div
           className="overview-image-thumbnail"
