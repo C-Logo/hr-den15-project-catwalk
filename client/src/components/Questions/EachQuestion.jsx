@@ -3,9 +3,8 @@ import React, { useState, useContext, useEffect } from 'react';
 import EachAnswer from './EachAnswer.jsx';
 
 export default function EachQuestion(props) {
-  const [answers, setAnswers] = useState({});
   const [question, setQuestion] = useState('');
-  const [answerArray, setAnswerArray] = useState([]);
+  // const [answerArray, setAnswerArray] = useState([]);
   const [question_id, setQuestionID] = useState(0);
 
   useEffect(() => {
@@ -31,7 +30,7 @@ export default function EachQuestion(props) {
         <div className="indivquestion">
           {question}
           {}
-          <EachAnswer answer={props.question.answers} />
+          <EachAnswer answer={props.question.answers} id={props.question.question_id} />
         </div>
       </div>
       <div className="Helpfulq">
