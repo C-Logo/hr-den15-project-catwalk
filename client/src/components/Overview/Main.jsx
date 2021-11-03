@@ -41,9 +41,9 @@ export default function Main() {
         setMainPhoto(styles[i].photos[photo].url);
         setStyleThumbnails(styles[i].photos);
         setCurrentStyle(styles[i]);
-
+        setPurchaseOptions({}); // empty puchaseOptions
         const result = Object.values(currentStyle.skus);
-        // console.log('result', result);
+        console.log('result', result);
         setSizesAndQuantities(result);
         // console.log('currentStyle', currentStyle);
       }
@@ -86,6 +86,7 @@ export default function Main() {
         styleThumbnails,
         sizesAndQuantities,
         handleChangePurchaseOptions,
+        purchaseOptions,
       }}
     >
       <div>

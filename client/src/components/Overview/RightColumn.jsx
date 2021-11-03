@@ -4,7 +4,7 @@ import { ExtendUpdateContext } from './Main.jsx';
 
 export default function RightColumn() {
   // declare state variables here
-  const { product, styles, handleChangeStyle, currentStyle, sizesAndQuantities, handleChangePurchaseOptions } = useContext(ExtendUpdateContext);
+  const { product, styles, handleChangeStyle, currentStyle, sizesAndQuantities, handleChangePurchaseOptions, purchaseOptions  } = useContext(ExtendUpdateContext);
 
   return (
     <div className="overview-right">
@@ -58,8 +58,15 @@ export default function RightColumn() {
             }
         </select>
       </div>
-      <div className="medium">Add to Bag</div>
-      <div className="small"> </div>
+      <div className="medium overview-flex">
+        {purchaseOptions.size && purchaseOptions.quantity ?
+          <div className="overview-addtocart-button" onClick={() => { console.log('PURCHASED', purchaseOptions) }}>Add to Cart</div> :
+          <div className="overview-addtocart-button" disabled onClick={() => {alert('must select size and quantity')}}>Add to Cart</div>
+        }
+        <div className="overview-social">&#9734;</div>
+      </div>
+      <div className="small">
+      </div>
     </div>
   );
 }

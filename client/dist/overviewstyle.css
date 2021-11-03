@@ -209,3 +209,28 @@ body {
   width: 30%;
   margin: 5% 2.5%;
 }
+
+.overview-addtocart-button {
+  display: flex;
+  background: white;
+  border: 1px solid black;
+  height: 60%;
+  width: 70%;
+  margin: 5% 2.5%;
+  text-align: left;
+  align-content: stretch;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.overview-social {
+  display: flex;
+  align-content: stretch;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  border: 1px solid black;
+  height: 60%;
+  width: 15%;
+  margin: 5% 2.5%;
+}
