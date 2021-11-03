@@ -19,6 +19,7 @@ export default function Main() {
   };
 
   const handleChangeStyle = (styleId, photo = 0) => {
+    // console.log('styleId', styleId);
     setCurrentStyle(styleId);
     for (let i = 0; i < styles.length; i++) {
       if (styleId === styles[i].style_id) {
@@ -26,7 +27,9 @@ export default function Main() {
         setStyleThumbnails(styles[i].photos);
         setCurrentStyle(styles[i]);
         const result = Object.values(currentStyle.skus);
+        // console.log('result', result);
         setSizesAndQuantities(result);
+        // console.log('currentStyle', currentStyle);
       }
     }
   };
@@ -41,6 +44,7 @@ export default function Main() {
       .then((response) => {
         setStyles(response.data.results);
         setMainPhoto(response.data.results[0].photos[0].url);
+        console.log(response.data.results[0]);
         handleChangeStyle(response.data.results[0]);
       })
       .catch((err) => {
@@ -50,7 +54,7 @@ export default function Main() {
 
   useEffect(() => {
     getReq();
-    // setMainPhoto();
+    // handleChangeStyle(266902);
   }, []);
 
   return (

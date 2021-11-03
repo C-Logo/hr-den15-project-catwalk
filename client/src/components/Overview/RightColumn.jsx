@@ -23,7 +23,6 @@ export default function RightColumn() {
       </div>
       <div className="large overview-styles-container">
         <div className="overview-style-label">Style > Selected Style</div>
-        {/* {console.log('current style', currentStyle)} */}
         {styles.map((item,index) => {
           return <div
             className="overview-styles-circle"
@@ -36,13 +35,18 @@ export default function RightColumn() {
           </div>;
         })}
       </div>
-      <div className="medium">Select Size:
-        {/* <select options={
-        //     sizesAndQuantities.map((item) => {
-        //       return item.size;
-        //       console.log('item>>>>', item);
-        //     })
-        // } /> */}
+      <div className="medium">
+        {/* {console.log(sizesAndQuantities)} */}
+        {/* {console.log(item, item.size)} */}
+        <select name="size" id="size-selector">
+            <option value="">SELECT SIZE</option>
+          {(sizesAndQuantities !== undefined) ?
+            sizesAndQuantities.map((item) => {
+              return <option value="1">{item.size}</option>
+              }) :
+              <option value='0'>"no sizes loaded"</option>
+            }
+        </select>
       </div>
       <div className="medium">Add to Bag</div>
       <div className="small"> </div>
