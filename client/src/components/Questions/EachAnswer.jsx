@@ -5,14 +5,16 @@ import dateReformat from '../../helper-functions/dateReformat.js';
 export default function EachAnswer(props) {
   let [helpfulAnswerYes, setHelpfulAnswerYes] = useState(props.answer.helpfulness);
   const [answersArray, setAnswersArray] = useState([]);
-  const [moreAnswers, setMoreAnswers] = useState(false);
+  const [moreAnswers, setMoreAnswers] = useState(true);
   const [questionID, setQuestionID] = useState(props.id);
+  const [defaultAnswers, setDefaultAnswers] = useState([]);
 
   function fetchAllAnswers() {
     axios.get(`/qa/questions/${questionID}/answers`, { params: { count: 10 } })
       .then((response) => {
         // console.log('response', response);
         setAnswersArray(response.data.results);
+        setDefaultAnswers(response.data.results.slice(0, 2));
       });
   }
 
@@ -23,12 +25,16 @@ export default function EachAnswer(props) {
       setQuestionID(props.id);
       fetchAllAnswers();
     } else {
-      setAnswersArray('no questions');
+      setAnswersArray(['no questions']);
     }
   }, []);
 
   function handleAnswerOnClick() {
     setHelpfulAnswerYes(helpfulAnswerYes += 1);
+  }
+  function renderMoreAnswers() {
+    console.log('clicking', moreAnswers, !moreAnswers);
+    setMoreAnswers(!moreAnswers);
   }
 
   return (
@@ -36,7 +42,7 @@ export default function EachAnswer(props) {
       <div className="answerline">
         <div>
           {' '}
-          {answersArray.map((qanswer) => (
+          {moreAnswers ? defaultAnswers.map((qanswer) => (
             <div>
               A:
               {' '}
@@ -61,10 +67,38 @@ export default function EachAnswer(props) {
                 <span>Report</span>
               </div>
             </div>
-          ))}
+          ))
+            : answersArray.map((qanswer) => (
+              <div>
+                A:
+                {' '}
+                {qanswer.body}
+                <div className="helpful">
+                  by
+                  {' '}
+                  {qanswer.answerer_name}
+                  ,
+                  {' '}
+                  {dateReformat(qanswer.date)}
+                  {' '}
+                  |
+                  <span> Helpful? </span>
+                  <span onClick={handleAnswerOnClick}>
+                    Yes
+                    (
+                    {qanswer.helpfulness}
+                    )
+                  </span>
+                  <span> | </span>
+                  <span>Report</span>
+                  {/* thinking here could make a toggle that after click, changes
+                to a span that says 'thanks for reporting!' */}
+                </div>
+              </div>
+            ))}
         </div>
       </div>
-      <button>Load More Answers</button>
+      <button onClick={renderMoreAnswers}>Load More Answers</button>
     </div>
   );
 }
