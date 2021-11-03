@@ -31,7 +31,7 @@ export default function EachQuestion(props) {
         <div className="indivquestion">
           {question}
           {}
-          <EachAnswer answer={props.question.answers} />
+          <EachAnswer answer={props.question.answers} id={props.question.question_id} />
         </div>
       </div>
       <div className="Helpfulq">
