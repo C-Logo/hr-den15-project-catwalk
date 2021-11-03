@@ -62,7 +62,6 @@ export default function Main() {
         setCurrentStyle(response.data.results[0]);
         handleChangeStyle(266902);
         setMainPhoto(response.data.results[0].photos[0].url);
-        // console.log(response.data.results[0]);
         // handleChangeStyle(response.data.results[0]);
       })
       .catch((err) => {
