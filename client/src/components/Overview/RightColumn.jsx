@@ -61,7 +61,7 @@ export default function RightColumn() {
       <div className="medium overview-flex">
         {purchaseOptions.size && purchaseOptions.quantity ?
           <div className="overview-addtocart-button" onClick={() => { console.log('PURCHASED', purchaseOptions) }}>Add to Cart</div> :
-          <div className="overview-addtocart-button" disabled onClick={() => {alert('must select size and quantity')}}>Add to Cart</div>
+          <div className="overview-addtocart-button 2" onClick={() => {document.getElementById('size-selector').focus()}}>Add to Cart</div>
         }
         <div className="overview-social">&#9734;</div>
       </div>
