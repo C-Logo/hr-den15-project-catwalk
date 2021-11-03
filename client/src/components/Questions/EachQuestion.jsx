@@ -1,26 +1,20 @@
+import axios from 'axios';
 import React, { useState, useContext, useEffect } from 'react';
-import { QuestionContext } from './Questions.jsx';
+import EachAnswer from './EachAnswer.jsx';
 
 export default function EachQuestion(props) {
   const [answers, setAnswers] = useState({});
   const [question, setQuestion] = useState('');
   const [answerArray, setAnswerArray] = useState([]);
+  const [question_id, setQuestionID] = useState(0);
 
-  function answerArraySet() {
-    setAnswerArray(Object.values(answers));
-    // console.log('setAA', answerArray);
-  }
   useEffect(() => {
-    // console.log('props', props.question);
     if (props.question) {
       setQuestion(props.question.question_body);
-      setAnswers(props.question.answers);
-      answerArraySet();
-      // console.log('answers', answers);
-      // console.log('answerArray', answerArray);
+      setQuestionID(props.question.question_id);
+      // const arrayOfAnswers = Object.values(props.question.answers);
     } else {
       setQuestion('no questions');
-      setAnswers('no answers');
     }
   }, []);
 
@@ -36,9 +30,8 @@ export default function EachQuestion(props) {
         <div className="indivquestion">Q:</div>
         <div className="indivquestion">
           {question}
-          {answerArray.map((answer) => (
-            <div>answer</div>
-          ))}
+          {}
+          <EachAnswer answer={props.question.answers} />
         </div>
       </div>
       <div className="Helpfulq">

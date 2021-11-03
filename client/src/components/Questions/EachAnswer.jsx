@@ -3,19 +3,28 @@ import { QuestionContext } from './Questions.jsx';
 
 export default function EachAnswer(props) {
   let [helpfulAnswerYes, setHelpfulAnswerYes] = useState(0);
-  const [answers, setAnswers] = useState([]);
+  const [answersArray, setAnswersArray] = useState([]);
+  const [answer, setAnswer] = useState('');
   const [report, setReport] = useState(0);
   const [userName, setUserName] = useState('');
   const [date, setData] = useState(0);
 
-  // useEffect(() => {
-  //   console.log('props', props.question);
-  //   if (props.question) {
-  //     setAnswers(props.question);
-  //   } else {
-  //     setAnswers('no questions');
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (props.answer) {
+      const arrayOfAnswers = Object.values(props.answer);
+      setAnswersArray(arrayOfAnswers);
+    } else {
+      setAnswersArray('no questions');
+    }
+  }, []);
+
+  function mapAnswers() {
+    if (answersArray.length > 0) {
+      answersArray.map((qanswer) => <div>{qanswer.body}</div>);
+    } else {
+      return <div>no answers</div>;
+    }
+  }
 
   function handleAnswerOnClick() {
     setHelpfulAnswerYes(helpfulAnswerYes += 1);
@@ -24,11 +33,9 @@ export default function EachAnswer(props) {
   return (
     <div className="indivanswer">
       <div className="answerline">
-        <div>A:</div>
         <div>
-          {answers}
-          {' '}
-          placeholder
+          A:
+          {answersArray.map((qanswer) => <div>{qanswer.body}</div>)}
         </div>
       </div>
       <div className="helpfula">
