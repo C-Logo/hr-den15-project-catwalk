@@ -20,19 +20,17 @@ export default function Main() {
   };
 
   const handleChangePurchaseOptions = (sizeSelected, qtySelected, index) => {
-    console.log('current Style', currentStyle);
     if (sizeSelected) {
       setPurchaseOptions({ ...purchaseOptions, size: sizeSelected });
       setCurrentStyle({
         ...currentStyle,
-        sizeSelected: [...Array(sizesAndQuantities[index].quantity).keys()],
+        sizeSelected: [...Array(Math.min(sizesAndQuantities[index].quantity + 1, 16)).keys()],
       });
-      console.log('s+q', currentStyle);
     }
     if (qtySelected) {
       setPurchaseOptions({ ...purchaseOptions, quantity: qtySelected });
     }
-    console.log(purchaseOptions);
+    // console.log(purchaseOptions);
   };
 
   const handleChangeStyle = (styleId, photo = 0) => {
