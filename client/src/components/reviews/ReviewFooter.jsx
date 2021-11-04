@@ -4,7 +4,7 @@ import { ReviewsContext } from './Reviews.jsx';
 export default function ReviewFooter(props) {
   const { markAsHelpful } = useContext(ReviewsContext);
   return (
-    <>
+    <div className="reviewFooterInformation">
       <div className="reviewHelpful">
         Helpful?
       </div>
@@ -20,6 +20,6 @@ export default function ReviewFooter(props) {
       <div className="reviewReport">
         Report
       </div>
-    </>
+    </div>
   );
 }
