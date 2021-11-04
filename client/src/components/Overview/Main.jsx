@@ -25,9 +25,14 @@ export default function Main() {
     setImageZoomed(!imageZoomed);
   };
 
-  const handleChangePurchaseOptions = (sizeSelected, qtySelected, index) => {
+  const handleChangePurchaseOptions = (sizeSelected, qtySelected, index, itemSku) => {
+    // console.log('>>', Object.keys(currentStyle.skus)[itemSku], itemSku);
     if (sizeSelected) {
-      setPurchaseOptions({ ...purchaseOptions, size: sizeSelected });
+      setPurchaseOptions({
+        ...purchaseOptions,
+        size: sizeSelected,
+        sku: Object.keys(currentStyle.skus)[itemSku],
+      });
       setCurrentStyle({
         ...currentStyle,
         sizeSelected: [...Array(Math.min(sizesAndQuantities[index].quantity + 1, 16)).keys()],
@@ -75,6 +80,10 @@ export default function Main() {
       .catch((err) => {
         console.log('error on product get request:', err);
       });
+  };
+
+  const getCartUpdate = () => {
+    setCart();
   };
 
   useEffect(() => {
