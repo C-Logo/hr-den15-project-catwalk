@@ -7,6 +7,6 @@ export default function QuestionList(props) {
   const { showMoreQuestions } = useContext(QuestionContext);
   const defaultQuestions = questionArray.slice(0, 4);
   return showMoreQuestions
-    ? defaultQuestions.map((question) => <EachQuestion question={question} />)
-    : questionArray.map((question) => <EachQuestion question={question} />);
+    ? defaultQuestions.map((question, index) => <EachQuestion key={index} question={question} />)
+    : questionArray.map((question, index) => <EachQuestion key={index} question={question} />);
 }
