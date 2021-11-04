@@ -31,18 +31,6 @@ export default function Reviews(props) {
       });
   }
 
-  function markAsHelpful(reviewId) {
-    axios
-      .put(`/reviews/${reviewId}/helpful`)
-      .then((data) => {
-        console.log('coming through?');
-        console.log(data);
-      })
-      .catch((err) => {
-        throw err;
-      });
-  }
-
   function fetchTestData() {
     axios
       .get(`/reviews?sort=${reviewSort}&count=${reviewCount}&product_id=44388`)
@@ -139,7 +127,7 @@ export default function Reviews(props) {
               </select>
             </div>
             <hr />
-            <ReviewsContext.Provider value={{ allReviews, markAsHelpful, reviewSort }}>
+            <ReviewsContext.Provider value={{ allReviews, reviewSort }}>
               <div id="reviewList">
                 {shownReviews.map((review, index) => (
                   <div key={index}>
