@@ -6,7 +6,7 @@ import { ExtendUpdateContext } from './Main.jsx';
 export default function Image() {
   // declare state variables here
   const {
-    extend, changeExtend, mainPhoto, currentStyle, styleThumbnails,
+    extend, changeExtend, mainPhoto, currentStyle, styleThumbnails, changeZoomed, imageZoomed,
   } = useContext(ExtendUpdateContext);
   let index;
   let zoomIn = false;
@@ -30,8 +30,10 @@ export default function Image() {
       document.getElementById('overview-image-container').style.transform = 'scale(1)';
       document.getElementById('overview-image-container').style.cursor = 'auto';
       changeExtend();
+      // changeZoomed();
     } else {
       zoomIn = true;
+      // changeZoomed();
     }
   };
 

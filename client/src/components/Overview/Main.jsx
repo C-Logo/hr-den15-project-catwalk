@@ -15,9 +15,14 @@ export default function Main() {
   const [product, setProduct] = useState({});
   const [sizesAndQuantities, setSizesAndQuantities] = useState();
   const [purchaseOptions, setPurchaseOptions] = useState({});
+  const [imageZoomed, setImageZoomed] = useState(false);
 
   const changeExtend = () => {
     setExtend(!extend);
+  };
+
+  const changeZoomed = () => {
+    setImageZoomed(!imageZoomed);
   };
 
   const handleChangePurchaseOptions = (sizeSelected, qtySelected, index) => {
@@ -74,7 +79,6 @@ export default function Main() {
 
   useEffect(() => {
     getReq();
-    // handleChangeStyle(266902);
   }, []);
 
   return (
@@ -91,6 +95,8 @@ export default function Main() {
         sizesAndQuantities,
         handleChangePurchaseOptions,
         purchaseOptions,
+        imageZoomed,
+        changeZoomed,
       }}
     >
       <div>

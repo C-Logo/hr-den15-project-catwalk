@@ -14,11 +14,12 @@ body {
   flex: 1;
   flex-direction: row;
   justify-content: space-between;
-  background-color: rgb(254, 158, 123);
+  background-color: rgb(92, 164, 167);
   border: 2px solid black;
   border-radius: 4px;
   height: 60px;
   line-height: 60px;
+  align-items: center;
 }
 
 .announcements {
@@ -45,8 +46,9 @@ body {
   text-align: left;
   width: 70%;
   background-color: rgb(255, 255, 255);
-  border: 2px solid black;
-  border-radius: 4px;
+  padding: 2%;
+  /* border: 2px solid black; */
+  /* border-radius: 4px; */
 }
 
 .overview-image {
@@ -58,9 +60,9 @@ body {
   height: 100%;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: rgb(255, 255, 255);
-  border: 2px solid black;
-  border-radius: 4px;
+  background-color: rgb(223, 223, 223);
+  border: 1px solid black;
+  /* border-radius: 4px; */
   overflow-x: auto;
   overflow-y: auto;
 }
@@ -100,7 +102,7 @@ body {
   display: flex;
   height: 4%;
   background-color: rgb(255, 255, 255);
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 4px;
   font-size: small;
 }
@@ -108,7 +110,7 @@ body {
 .medium {
   height: 14%;
   background-color: rgb(255, 255, 255);
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 4px;
   font-size: large;
 }
@@ -116,7 +118,7 @@ body {
 .large {
   height: 34.5%;
   background-color: rgb(255, 255, 255);
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 4px;
 }
 
@@ -132,7 +134,7 @@ body {
   background-position: center;
   border: 1px solid black;
   font-size: 10%;
-  border-radius: 4px;
+  /* border-radius: 4px; */
   margin: 10px;
   height: 50px;
   width: 50px;
