@@ -5,6 +5,7 @@ import EachQuestion from './EachQuestion.jsx';
 import EachAnswer from './EachAnswer.jsx';
 import QuestionList from './QuestionList.jsx';
 import Modal from './Modal.jsx';
+import AnswerModal from './AnswerModal.jsx';
 
 export const QuestionContext = React.createContext();
 
