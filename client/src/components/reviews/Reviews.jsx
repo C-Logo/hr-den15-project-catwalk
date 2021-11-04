@@ -7,13 +7,13 @@ import Review from './Review.jsx';
 
 export const ReviewsContext = React.createContext();
 
-export default function Reviews() {
+export default function Reviews(props) {
   // declare state variables here
   // example: const [count, setCount] = useState(0);
 
   const [allReviews, setAllReviews] = useState([]);
   const [reviewCount, setReviewCount] = useState(2);
-  const [reviewSort, setReviewSort] = useState('newest');
+  const [reviewSort, setReviewSort] = useState('relevant');
   const [moreReviews, setMoreReviews] = useState({ pointerEvents: 'auto' });
   const [totalReviews, setTotalReviews] = useState(0);
   let shownReviews = allReviews.slice(0, reviewCount);
@@ -62,10 +62,10 @@ export default function Reviews() {
   }, [reviewCount, reviewSort]);
 
   return (
-    <>
+    <div onClick={(e) => { props.interactionHandler(e, 'Ratings and Reviews'); }}>
       <h1 id="reviewTitle">Ratings and Reviews</h1>
 
-      <div id="reviews">
+      <div id="reviews" title="Ratings and Reviews">
         <div id="reviewsLeft">
           <div id="reviewProductStars">
             <div id="reviewsStarAverage">
@@ -133,9 +133,9 @@ export default function Reviews() {
             <div id="reviewsFilter">
               {`${totalReviews} reviews, sorted by:`}
               <select id="reviewSortingSelect" onClick={sortClickHandler}>
-                <option value="newest">Newest</option>
                 <option value="relevant">Relevant</option>
                 <option value="helpful">Helpful</option>
+                <option value="newest">Newest</option>
               </select>
             </div>
             <hr />
@@ -166,6 +166,6 @@ export default function Reviews() {
         </div>
 
       </div>
-    </>
+    </div>
   );
 }

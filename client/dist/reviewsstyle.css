@@ -131,7 +131,7 @@ display:inline-block;
 }
 
 .review {
-
+  height: 200px;
 }
 
 .reviewStars {
@@ -186,11 +186,18 @@ display:inline-block;
 
 }
 
+.reviewTop {
+  float: inline;
+}
+
 .reviewFooter {
+  margin-top: 90px;
+}
+
+.reviewFooterInformation {
   text-align: left;
   font-size: smaller;
   display: flex;
-  margin-top: 2%;
   margin-bottom: 2%;
 }
 

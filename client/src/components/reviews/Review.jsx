@@ -10,22 +10,25 @@ import { ReviewsContext } from './Reviews.jsx';
 export const ReviewContext = React.createContext();
 
 export default function Review(props) {
-  const review = props;
-  const reviewBodyTrunc = props.review.body;
+  const [review, setReview] = useState({});
+  const [reviewBodyTrunc, setReviewBodyTrunc] = useState(review.body);
   const [reviewBodyLength, setReviewBodyLength] = useState(50);
   const [reviewBodyShowMore, setReviewBodyShowMore] = useState(true);
 
-  const { reviewSort } = useContext(ReviewsContext);
+  const { reviewSort, allReviews } = useContext(ReviewsContext);
 
   useEffect(() => {
+    setReviewBodyShowMore(true);
+    setReview(props.review);
     if (props.review.body) {
       if (props.review.body.length < reviewBodyLength) {
         setReviewBodyShowMore(false);
+        setReviewBodyTrunc(props.review.body);
       } else {
-        reviewBodyTrunc = `${props.review.body.slice(0, reviewBodyLength)} ...`;
+        setReviewBodyTrunc(`${props.review.body.slice(0, reviewBodyLength)} ...`);
       }
     }
-  }, []);
+  }, [allReviews]);
 
   return (
     <ReviewContext.Provider value={{
@@ -33,26 +36,28 @@ export default function Review(props) {
     }}
     >
       <div className="review">
-        <div className="reviewFirstLine">
-          <div className="Stars">
-            <StarRating rating={props.review.rating} />
+        <div className="reviewTop">
+          <div className="reviewFirstLine">
+            <div className="Stars">
+              <StarRating rating={review.rating} />
+            </div>
+            <div className="reviewerData">
+              {`${review.reviewer_name}, ${dateReformat(review.date)}`}
+            </div>
           </div>
-          <div className="reviewerData">
-            {`${props.review.reviewer_name}, ${dateReformat(props.review.date)}`}
+          <div className="reviewSummary">
+            {review.summary}
           </div>
+          <div className="reviewBody">
+            <ReviewBody />
+          </div>
+          <Recommended />
+          <Response />
         </div>
-        <div className="reviewSummary">
-          {props.review.summary}
-        </div>
-        <div className="reviewBody">
-          <ReviewBody body={review.body} />
-        </div>
-        <Recommended />
-        <Response />
         <div className="reviewFooter">
-          <ReviewFooter review={props.review} />
+          <ReviewFooter review={review} />
+          <hr />
         </div>
-        <hr />
       </div>
     </ReviewContext.Provider>
   );
