@@ -11,6 +11,7 @@ export default function EachAnswer(props) {
   const [answerID, setAnswerID] = useState(0);
   const [clickedOnce, setClickedOnce] = useState(false);
   const [postedHelpful, setPostedHelpful] = useState(false);
+  const [reportClickedOnce, setReportClickedOnce] = useState(false);
 
   function fetchAllAnswers() {
     axios.get(`/qa/questions/${questionID}/answers`, { params: { count: 10 } })
@@ -30,12 +31,22 @@ export default function EachAnswer(props) {
   }, []);
 
   function handleAnswerOnClick(e) {
+    const currentId = e.target.parentNode.id;
     setAnswerID(e.currentTarget.id);
     setHelpfulAnswerYes(helpfulAnswerYes += 1);
-    axios.put(`/qa/answers/${e.currentTarget.id}/helpful`, { helpfulAnswerYes })
+    axios.put(`/qa/answers/${e.currentTarget.id}/helpful`, { answer_id: currentId })
       .then((response) => {
-        setPostedHelpful('Thanks');
+        console.log(response);
         setClickedOnce(true);
+      });
+  }
+  function reportAnswer(e) {
+    const currentId = e.target.parentNode.id;
+    console.log('current', currentId);
+    axios.put(`/qa/answers/${currentId}/report`, { answer_id: currentId })
+      .then((response) => {
+        console.log(response);
+        setReportClickedOnce(true);
       });
   }
   function renderMoreAnswers() {
@@ -53,7 +64,7 @@ export default function EachAnswer(props) {
               A:
               {' '}
               {qanswer.body}
-              <div className="helpful">
+              <div id={qanswer.answer_id} className="helpful">
                 by
                 {' '}
                 {qanswer.answerer_name}
@@ -63,13 +74,13 @@ export default function EachAnswer(props) {
                 {' '}
                 <span> Helpful? </span>
                 <span> Yes </span>
-                <span id={qanswer.answer_id} onClick={clickedOnce ? null : (e) => { handleAnswerOnClick(e); }}>
+                <span onClick={clickedOnce ? null : (e) => { handleAnswerOnClick(e); }}>
                   (
                   {qanswer.helpfulness}
                   )
                 </span>
                 <span> | </span>
-                <span>Report</span>
+                <span onClick={reportClickedOnce ? null : (e) => { reportAnswer(e); }}>Report</span>
               </div>
             </div>
           ))
@@ -78,7 +89,7 @@ export default function EachAnswer(props) {
                 A:
                 {' '}
                 {qanswer.body}
-                <div className="helpful">
+                <div id={qanswer.answer_id} className="helpful">
                   by
                   {' '}
                   {qanswer.answerer_name}
@@ -88,13 +99,13 @@ export default function EachAnswer(props) {
                   {' '}
                   <span> Helpful? </span>
                   <span> Yes </span>
-                  <span id={qanswer.answer_id} onClick={clickedOnce ? null : (e) => { handleAnswerOnClick(e); }}>
+                  <span onClick={clickedOnce ? null : (e) => { handleAnswerOnClick(e); }}>
                     (
                     {qanswer.helpfulness}
                     )
                   </span>
                   <span> | </span>
-                  <span>Report</span>
+                  <span onClick={reportClickedOnce ? null : (e) => { reportAnswer(e); }}>Report</span>
                   {/* thinking here could make a toggle that after click, changes
                 to a span that says 'thanks for reporting!' */}
                 </div>
