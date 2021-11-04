@@ -1,18 +1,16 @@
 import React, { useContext } from 'react';
-import { ReviewsContext } from './Reviews.jsx';
+import { ReviewContext } from './Review.jsx';
 
-export default function ReviewFooter(props) {
-  const { markAsHelpful } = useContext(ReviewsContext);
+export default function ReviewFooter() {
+  const { markAsHelpful, reviewHelpful, review } = useContext(ReviewContext);
   return (
     <div className="reviewFooterInformation">
       <div className="reviewHelpful">
         Helpful?
       </div>
-      <div className="reviewFooterSeparator" onClick={() => { markAsHelpful(props.review.review_id); }}>
-        Yes
-      </div>
+      <button type="button" className="reviewFooterYes" onClick={() => { markAsHelpful(review.review_id); }}>Yes</button>
       <div className="reviewFooterSeparator">
-        {`(${props.review.helpfulness})`}
+        {`(${reviewHelpful})`}
       </div>
       <div className="reviewFooterSeparator">
         |

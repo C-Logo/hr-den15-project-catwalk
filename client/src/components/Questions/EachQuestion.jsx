@@ -4,8 +4,9 @@ import EachAnswer from './EachAnswer.jsx';
 
 export default function EachQuestion(props) {
   const [question, setQuestion] = useState('');
-  // const [answerArray, setAnswerArray] = useState([]);
   const [question_id, setQuestionID] = useState(0);
+  const [showMoreQuestions, setShowMoreQuestions] = useState(false);
+  const [helpfulQuestionYes, setHelpfulQuestionYes] = useState(0);
 
   useEffect(() => {
     if (props.question) {
@@ -16,8 +17,6 @@ export default function EachQuestion(props) {
       setQuestion('no questions');
     }
   }, []);
-
-  const [helpfulQuestionYes, setHelpfulQuestionYes] = useState(0);
 
   function handleQuestionOnClick() {
     setHelpfulQuestionYes(helpfulQuestionYes += 1);

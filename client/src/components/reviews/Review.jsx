@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
 import dateReformat from '../../helper-functions/dateReformat.js';
 import Response from './Response.jsx';
 import Recommended from './Recommended.jsx';
@@ -12,10 +13,27 @@ export const ReviewContext = React.createContext();
 export default function Review(props) {
   const [review, setReview] = useState({});
   const [reviewBodyTrunc, setReviewBodyTrunc] = useState(review.body);
-  const [reviewBodyLength, setReviewBodyLength] = useState(50);
+  const [reviewBodyLength, setReviewBodyLength] = useState(250);
   const [reviewBodyShowMore, setReviewBodyShowMore] = useState(true);
+  const [reviewHelpful, setReviewHelpful] = useState(props.review.helpfulness);
 
   const { reviewSort, allReviews } = useContext(ReviewsContext);
+
+  function markAsHelpful(reviewId) {
+    axios
+      .put(`/reviews/${reviewId}/helpful`)
+      .then(() => {
+        setReviewHelpful(reviewHelpful + 1);
+        props.review.helpfulness = props.review.helpfulness + 1;
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
+
+  useEffect(() => {
+    setReviewHelpful(props.review.helpfulness);
+  }, [reviewHelpful]);
 
   useEffect(() => {
     setReviewBodyShowMore(true);
@@ -28,11 +46,12 @@ export default function Review(props) {
         setReviewBodyTrunc(`${props.review.body.slice(0, reviewBodyLength)} ...`);
       }
     }
+    setReviewHelpful(props.review.helpfulness);
   }, [allReviews]);
 
   return (
     <ReviewContext.Provider value={{
-      review, reviewBodyShowMore, reviewBodyTrunc, setReviewBodyShowMore,
+      review, reviewBodyShowMore, reviewBodyTrunc, setReviewBodyShowMore, markAsHelpful, reviewHelpful,
     }}
     >
       <div className="review">
@@ -55,7 +74,7 @@ export default function Review(props) {
           <Response />
         </div>
         <div className="reviewFooter">
-          <ReviewFooter review={review} />
+          <ReviewFooter />
           <hr />
         </div>
       </div>
