@@ -5,9 +5,21 @@ import { ExtendUpdateContext } from './Main.jsx';
 export default function Image() {
   // declare state variables here
   const {
-    extend, changeExtend, styles, mainPhoto, currentStyle, styleThumbnails,
+    extend, changeExtend, mainPhoto, currentStyle, styleThumbnails,
   } = useContext(ExtendUpdateContext);
-  // console.log('photo change', mainPhoto);
+
+  let index;
+  const handleImageChange = (amount) => {
+    if ((currentStyle.photoIndex + amount) === currentStyle.photos.length) {
+      index = 0;
+    } else if ((currentStyle.photoIndex + amount) === -1) {
+      index = currentStyle.photos.length - 1;
+    } else {
+      index = currentStyle.photoIndex + amount;
+    }
+    document.getElementById(`overview-thumbnail-${index}`).click();
+  };
+
   return (
     <div
       className="overview-image"
@@ -21,8 +33,30 @@ export default function Image() {
       tabIndex={0}
     >
       {styleThumbnails ? <ImageThumbnails /> : ''}
-      <div className="overview-image-prev">&#10094;</div>
-      <div className="overview-image-next">&#10095;</div>
+      <div
+        className="overview-image-prev"
+        role="button"
+        tabIndex={0}
+        onClick={(event) => {
+          event.stopPropagation();
+          handleImageChange(-1);
+        }}
+        onKeyDown={() => { handleImageChange(-1); }}
+      >
+        &#10094;
+      </div>
+      <div
+        className="overview-image-next"
+        role="button"
+        tabIndex={0}
+        onClick={(event) => {
+          event.stopPropagation();
+          handleImageChange(1);
+        }}
+        onKeyDown={() => { handleImageChange(1); }}
+      >
+        &#10095;
+      </div>
       <svg
         className="overview-resizing-button"
         height="100%"

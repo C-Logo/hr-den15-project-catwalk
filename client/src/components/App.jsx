@@ -5,6 +5,7 @@ export default class App extends React.Component {
   state={}
 
   clickAnywhere = (e, widget) => {
+    // console.log(widget);
     const data = {};
     data.widget = widget;
     data.time = Date();
@@ -36,9 +37,9 @@ export default class App extends React.Component {
     data.element = getMyPathByIndex(e.target);
     axios
       .post('/interactions', data)
-      .then((response) => {
-        response.end()
-      })
+      // .then((response) => {
+      //   response.end()
+      // })
       .catch((err) => {
         console.log(err);
         throw err;

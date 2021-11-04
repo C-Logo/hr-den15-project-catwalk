@@ -9,8 +9,8 @@ ReactDOM.render(
   <App>
     {(interactionHandler) => (
       <div id="mainContainer">
-        <Overview />
-        <Questions />
+        <Overview interactionHandler={interactionHandler} />
+        <Questions interactionHandler={interactionHandler} />
         <Reviews interactionHandler={interactionHandler} />
       </div>
     )}

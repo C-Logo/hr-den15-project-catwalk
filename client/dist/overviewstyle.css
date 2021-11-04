@@ -88,12 +88,6 @@ body {
   color:rgb(255, 255, 255);
 }
 
-.overview-information {
-  background-color: rgb(255, 255, 255);
-  border: 2px solid black;
-  border-radius: 4px;
-}
-
 .small {
   display: flex;
   height: 4%;
@@ -156,11 +150,11 @@ body {
 }
 
 .overview-image-prev {
-  left: 10%;
+  left: 22%;
 }
 
 .overview-image-next {
-  left: 90%;
+  left: 86%;
 }
 
 .overview-image-prev:hover,
@@ -234,4 +228,38 @@ body {
   height: 60%;
   width: 15%;
   margin: 5% 2.5%;
+}
+
+.overview-information {
+  background-color: rgb(255, 255, 255);
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 5%;
+}
+
+.overview-description {
+  text-align: left;
+  margin-right: 5%;
+}
+
+.overview-description-text{
+  text-align: left;
+}
+
+.overview-features {
+  width: 49%;
+  padding-left: 2%;
+  align-items: flex-start;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  border-left: 2px solid rgb(34, 34, 34);
+  /* border-radius: 50%; */
+}
+
+.overview-slogan {
+  font-weight: 900;
+  font-size: large;
+  text-align: left;
 }
