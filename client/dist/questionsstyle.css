@@ -43,7 +43,7 @@
 .Helpfulq {
   color: red;
   float: right;
-  width: 22%;
+  /* width: 22%; */
   text-align: right;
   display: flex;
   justify-content: space-between;

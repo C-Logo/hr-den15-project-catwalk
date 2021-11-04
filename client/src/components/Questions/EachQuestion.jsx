@@ -6,7 +6,8 @@ export default function EachQuestion(props) {
   const [question, setQuestion] = useState('');
   const [question_id, setQuestionID] = useState(0);
   const [showMoreQuestions, setShowMoreQuestions] = useState(false);
-  const [helpfulQuestionYes, setHelpfulQuestionYes] = useState(0);
+  let [helpfulQuestionYes, setHelpfulQuestionYes] = useState(props.question.question_helpfulness);
+  const [clickedOnce, setClickedOnce] = useState(false);
 
   useEffect(() => {
     if (props.question) {
@@ -20,6 +21,11 @@ export default function EachQuestion(props) {
 
   function handleQuestionOnClick() {
     setHelpfulQuestionYes(helpfulQuestionYes += 1);
+    axios.put(`/qa/questions/${question_id}/helpful`, { question_id })
+      .then((response) => {
+        setHelpfulQuestionYes('Thanks');
+        setClickedOnce(true);
+      });
   }
 
   return (
@@ -34,7 +40,7 @@ export default function EachQuestion(props) {
       </div>
       <div className="Helpfulq">
         <div> Helpful? </div>
-        <div onClick={handleQuestionOnClick}>
+        <div onClick={clickedOnce ? null : handleQuestionOnClick}>
           Yes
           (
           {helpfulQuestionYes}

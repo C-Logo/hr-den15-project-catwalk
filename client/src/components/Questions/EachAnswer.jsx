@@ -8,6 +8,7 @@ export default function EachAnswer(props) {
   const [moreAnswers, setMoreAnswers] = useState(true);
   const [questionID, setQuestionID] = useState(props.id);
   const [defaultAnswers, setDefaultAnswers] = useState([]);
+  const [answerID, setAnswerID] = useState(0);
 
   function fetchAllAnswers() {
     axios.get(`/qa/questions/${questionID}/answers`, { params: { count: 10 } })
@@ -20,17 +21,21 @@ export default function EachAnswer(props) {
   useEffect(() => {
     if (props.answer) {
       setQuestionID(props.id);
+      setAnswerID(props.answer.id);
       fetchAllAnswers();
     } else {
       setAnswersArray(['no questions']);
     }
-  }, []);
+  }, [helpfulAnswerYes]);
 
   function handleAnswerOnClick() {
     setHelpfulAnswerYes(helpfulAnswerYes += 1);
+    axios.put(`/qa/answers/:${answerID}/helpful`, { helpfulAnswerYes })
+      .then((response) => {
+        setHelpfulAnswerYes('Thanks');
+      });
   }
   function renderMoreAnswers() {
-    console.log('clicking', moreAnswers, !moreAnswers);
     setMoreAnswers(!moreAnswers);
   }
 
