@@ -51,21 +51,27 @@ body {
 
 .overview-image {
   position: relative;
+  top: 0;
+  bottom: 0;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   width: 100%;
   height: 100%;
-  /* background-image: url('./img/image.png'); */
-  /* background-size: contain; */
   background-repeat: no-repeat;
   background-position: center;
   background-color: rgb(255, 255, 255);
   border: 2px solid black;
   border-radius: 4px;
-  /* overflow-y: scroll;
-  overflow-x: scroll; */
+  overflow-x: auto;
+  overflow-y: auto;
 }
+
+#overview-image-container{
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+}
+
 
 .overview-resizing-button {
   /* background-image: url('./img/square.png'); */
@@ -263,3 +269,4 @@ body {
   font-size: large;
   text-align: left;
 }
+

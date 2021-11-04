@@ -35,7 +35,7 @@ export default function Main() {
   };
 
   const handleChangeStyle = (styleId, photo = 0) => {
-    console.log('styleId', styleId, typeof styleId);
+    // console.log('styleId', styleId, typeof styleId);
     // setCurrentStyle(styleId);
     // I should be able to take out this for loop for most of the times I am calling this function
     for (let i = 0; i < styles.length; i++) {
@@ -43,11 +43,6 @@ export default function Main() {
         setMainPhoto(styles[i].photos[photo].url);
         setStyleThumbnails(styles[i].photos);
         setCurrentStyle({ ...styles[i], photoIndex: photo });
-        // I should be able to combine the next line with the last
-        // setCurrentStyle({
-        //   ...currentStyle,
-        //   photoIndex: photo,
-        // });
         setPurchaseOptions({}); // empty puchaseOptions
         const result = Object.values(currentStyle.skus);
         // console.log('result', result);

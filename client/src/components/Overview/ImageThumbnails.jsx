@@ -4,7 +4,7 @@ import { ExtendUpdateContext } from './Main.jsx';
 export default function ImageThumbnails() {
   // declare state variables here
   const {
-    styles, product, currentStyle, handleChangeStyle, styleThumbnails,
+    currentStyle, handleChangeStyle, styleThumbnails,
   } = useContext(ExtendUpdateContext);
 
   const [thumbImage, setThumbImage] = useState(0);
@@ -22,9 +22,7 @@ export default function ImageThumbnails() {
           onClick={(event) => {
             event.stopPropagation();
             handleChangeStyle(currentStyle.style_id, index);
-            // console.log(thumbImage);
             setThumbImage(index);
-            // console.log(thumbImage);
           }}
           onKeyDown={() => {}}
           role="button"
