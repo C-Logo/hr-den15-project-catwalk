@@ -80,7 +80,6 @@ export default function Main() {
   useEffect(() => {
     getReq();
     // handleChangeStyle(266902);
-    // document.getElementById('overview-style-0').click();
   }, []);
 
   return (
