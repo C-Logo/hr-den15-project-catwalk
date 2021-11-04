@@ -13,7 +13,7 @@ export const ReviewContext = React.createContext();
 export default function Review(props) {
   const [review, setReview] = useState({});
   const [reviewBodyTrunc, setReviewBodyTrunc] = useState(review.body);
-  const [reviewBodyLength, setReviewBodyLength] = useState(50);
+  const [reviewBodyLength, setReviewBodyLength] = useState(250);
   const [reviewBodyShowMore, setReviewBodyShowMore] = useState(true);
   const [reviewHelpful, setReviewHelpful] = useState(props.review.helpfulness);
 
@@ -48,8 +48,6 @@ export default function Review(props) {
     }
     setReviewHelpful(props.review.helpfulness);
   }, [allReviews]);
-
-  console.log(props.review.response);
 
   return (
     <ReviewContext.Provider value={{
