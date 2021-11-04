@@ -11,6 +11,8 @@ export default function ImageThumbnails() {
 
   return (
     <div>
+      {currentStyle.name}
+      {/* <div className="small"></div> */}
       {styleThumbnails.map((item, index) => (
         <div
           className="overview-image-thumbnail"
@@ -19,9 +21,9 @@ export default function ImageThumbnails() {
           onClick={(event) => {
             event.stopPropagation();
             handleChangeStyle(currentStyle.style_id, index);
-            console.log(thumbImage);
+            // console.log(thumbImage);
             setThumbImage(index);
-            console.log(thumbImage);
+            // console.log(thumbImage);
           }}
           onKeyDown={() => {}}
           role="button"

@@ -174,6 +174,7 @@ body {
     flex-direction: row;
     justify-content: flex-start;
     align-items: stretch;
+    overflow-y:scroll
 }
 
 .overview-style-label{
@@ -185,13 +186,52 @@ body {
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
-  width: 18%;
-  height: 50px;
-  margin: 2.5%;
+  width: 20%;
+  padding-bottom: 20%;
+  margin: 1%;
   background-color: grey;
   border-radius: 50%
 }
 
 .overview-flex {
   display:flex;
+}
+
+.overview-selector {
+  height: 60%;
+}
+
+.overview-size {
+  width: 60%;
+  margin: 5% 2.5%;
+}
+
+.overview-qty {
+  width: 30%;
+  margin: 5% 2.5%;
+}
+
+.overview-addtocart-button {
+  display: flex;
+  background: white;
+  border: 1px solid black;
+  height: 60%;
+  width: 70%;
+  margin: 5% 2.5%;
+  text-align: left;
+  align-content: stretch;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.overview-social {
+  display: flex;
+  align-content: stretch;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  border: 1px solid black;
+  height: 60%;
+  width: 15%;
+  margin: 5% 2.5%;
 }

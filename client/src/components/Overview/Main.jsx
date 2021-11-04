@@ -12,21 +12,40 @@ export default function Main() {
   const [currentStyle, setCurrentStyle] = useState(0);
   const [styleThumbnails, setStyleThumbnails] = useState();
   const [product, setProduct] = useState({});
+  const [sizesAndQuantities, setSizesAndQuantities] = useState();
+  const [purchaseOptions, setPurchaseOptions] = useState({});
 
   const changeExtend = () => {
     setExtend(!extend);
   };
 
+  const handleChangePurchaseOptions = (sizeSelected, qtySelected, index) => {
+    if (sizeSelected) {
+      setPurchaseOptions({ ...purchaseOptions, size: sizeSelected });
+      setCurrentStyle({
+        ...currentStyle,
+        sizeSelected: [...Array(Math.min(sizesAndQuantities[index].quantity + 1, 16)).keys()],
+      });
+    }
+    if (qtySelected) {
+      setPurchaseOptions({ ...purchaseOptions, quantity: qtySelected });
+    }
+    // console.log(purchaseOptions);
+  };
+
   const handleChangeStyle = (styleId, photo = 0) => {
-    // console.log('new Style:', styleId, styles);
-    setCurrentStyle(styleId);
+    // console.log('styleId', styleId, typeof styleId);
+    // setCurrentStyle(styleId);
     for (let i = 0; i < styles.length; i++) {
       if (styleId === styles[i].style_id) {
-        // console.log('yes', i);
         setMainPhoto(styles[i].photos[photo].url);
         setStyleThumbnails(styles[i].photos);
         setCurrentStyle(styles[i]);
-        const style = styles;
+        setPurchaseOptions({}); // empty puchaseOptions
+        const result = Object.values(currentStyle.skus);
+        // console.log('result', result);
+        setSizesAndQuantities(result);
+        // console.log('currentStyle', currentStyle);
       }
     }
   };
@@ -40,8 +59,10 @@ export default function Main() {
       })
       .then((response) => {
         setStyles(response.data.results);
+        setCurrentStyle(response.data.results[0]);
+        handleChangeStyle(266902);
         setMainPhoto(response.data.results[0].photos[0].url);
-        handleChangeStyle(response.data.results[0]);
+        // handleChangeStyle(response.data.results[0]);
       })
       .catch((err) => {
         console.log('error on product get request:', err);
@@ -50,7 +71,7 @@ export default function Main() {
 
   useEffect(() => {
     getReq();
-    // setMainPhoto();
+    handleChangeStyle(266902);
   }, []);
 
   return (
@@ -64,6 +85,9 @@ export default function Main() {
         currentStyle,
         handleChangeStyle,
         styleThumbnails,
+        sizesAndQuantities,
+        handleChangePurchaseOptions,
+        purchaseOptions,
       }}
     >
       <div>

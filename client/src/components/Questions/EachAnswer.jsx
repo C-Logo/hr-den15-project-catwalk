@@ -1,50 +1,101 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { QuestionContext } from './Questions.jsx';
+import dateReformat from '../../helper-functions/dateReformat.js';
 
 export default function EachAnswer(props) {
-  let [helpfulAnswerYes, setHelpfulAnswerYes] = useState(0);
-  const [answers, setAnswers] = useState([]);
-  const [report, setReport] = useState(0);
-  const [userName, setUserName] = useState('');
-  const [date, setData] = useState(0);
+  let [helpfulAnswerYes, setHelpfulAnswerYes] = useState(props.answer.helpfulness);
+  const [answersArray, setAnswersArray] = useState([]);
+  const [moreAnswers, setMoreAnswers] = useState(true);
+  const [questionID, setQuestionID] = useState(props.id);
+  const [defaultAnswers, setDefaultAnswers] = useState([]);
 
-  // useEffect(() => {
-  //   console.log('props', props.question);
-  //   if (props.question) {
-  //     setAnswers(props.question);
-  //   } else {
-  //     setAnswers('no questions');
-  //   }
-  // }, []);
+  function fetchAllAnswers() {
+    axios.get(`/qa/questions/${questionID}/answers`, { params: { count: 10 } })
+      .then((response) => {
+        setAnswersArray(response.data.results);
+        setDefaultAnswers(response.data.results.slice(0, 2));
+      });
+  }
+
+  useEffect(() => {
+    if (props.answer) {
+      setQuestionID(props.id);
+      fetchAllAnswers();
+    } else {
+      setAnswersArray(['no questions']);
+    }
+  }, []);
 
   function handleAnswerOnClick() {
     setHelpfulAnswerYes(helpfulAnswerYes += 1);
+  }
+  function renderMoreAnswers() {
+    console.log('clicking', moreAnswers, !moreAnswers);
+    setMoreAnswers(!moreAnswers);
   }
 
   return (
     <div className="indivanswer">
       <div className="answerline">
-        <div>A:</div>
         <div>
-          {answers}
           {' '}
-          placeholder
+          {moreAnswers ? defaultAnswers.map((qanswer) => (
+            <div>
+              A:
+              {' '}
+              {qanswer.body}
+              <div className="helpful">
+                by
+                {' '}
+                {qanswer.answerer_name}
+                ,
+                {' '}
+                {dateReformat(qanswer.date)}
+                {' '}
+                |
+                <span> Helpful? </span>
+                <span onClick={handleAnswerOnClick}>
+                  Yes
+                  (
+                  {qanswer.helpfulness}
+                  )
+                </span>
+                <span> | </span>
+                <span>Report</span>
+              </div>
+            </div>
+          ))
+            : answersArray.map((qanswer) => (
+              <div>
+                A:
+                {' '}
+                {qanswer.body}
+                <div className="helpful">
+                  by
+                  {' '}
+                  {qanswer.answerer_name}
+                  ,
+                  {' '}
+                  {dateReformat(qanswer.date)}
+                  {' '}
+                  |
+                  <span> Helpful? </span>
+                  <span onClick={handleAnswerOnClick}>
+                    Yes
+                    (
+                    {qanswer.helpfulness}
+                    )
+                  </span>
+                  <span> | </span>
+                  <span>Report</span>
+                  {/* thinking here could make a toggle that after click, changes
+                to a span that says 'thanks for reporting!' */}
+                </div>
+              </div>
+            ))}
         </div>
       </div>
-      <div className="helpfula">
-        <span>by User1234, Octotober 30th, 2021 |</span>
-        <span> | </span>
-        <span> Helpful? </span>
-        <span onClick={handleAnswerOnClick}>
-          Yes
-          (
-          {helpfulAnswerYes}
-          )
-        </span>
-        <span> | </span>
-        <span>Report</span>
-      </div>
-      <button>Load More Answers</button>
+      <button onClick={renderMoreAnswers}>Load More Answers</button>
     </div>
   );
 }

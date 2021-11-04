@@ -62,18 +62,14 @@
   float: left;
   justify-content: space-between;
   margin: 1%, 1%, 0, 1%;
-  padding: 2px
+  padding: 4px
 }
-.helpfula {
-  color: blue;
-  /* float: right; */
-  width: 45%;
-  text-align: left;
+.helpful {
   display: flex;
-  justify-content: space-between;
-  /* margin: 1%; */
-  font-size: 12px;
-
+  justify-content: space-around;
+  color: blue;
+  text-align: left;
+  padding: 2px
 }
 .indivanswer {
   display: flex;
