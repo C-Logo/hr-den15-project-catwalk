@@ -6,7 +6,7 @@ export default function RightColumn() {
   // const { product } = useContext(ExtendUpdateContext);
 
   return (
-    <div className="overview-style-row" />
-    <div>Hello</div>
+    <div>empty
+    </div>
   );
 }

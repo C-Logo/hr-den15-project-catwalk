@@ -26,6 +26,7 @@ export default function RightColumn() {
         {styles.map((item,index) => {
           return <div
             className="overview-styles-circle"
+            id={`overview-style-${index}`}
             style={{
               backgroundImage: `url(${item.photos[0].thumbnail_url})`,
               border: (currentStyle.style_id === item.style_id) ? '2px solid orange' : '1px solid black',
@@ -33,7 +34,9 @@ export default function RightColumn() {
             key={index}
             onClick={() => handleChangeStyle(item.style_id)}>
           </div>;
-        })}
+        })
+        // document.getElementById('overview-style-0').click();
+        }
       </div>
       <div className="medium">
         <select name="size" id="size-selector" className="overview-selector overview-size" onChange={event=>{handleChangePurchaseOptions(event.target.value, null, event.target[event.target.selectedIndex].id)}}>

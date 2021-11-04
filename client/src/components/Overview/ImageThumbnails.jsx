@@ -16,6 +16,7 @@ export default function ImageThumbnails() {
       {styleThumbnails.map((item, index) => (
         <div
           className="overview-image-thumbnail"
+          id={`overview-thumbnail-${index}`}
           style={{ backgroundImage: `url(${item.thumbnail_url})`, border: (thumbImage === index) ? '2px solid orange' : '1px solid black' }}
           key={index}
           onClick={(event) => {
