@@ -6,7 +6,7 @@ import Main from './Main.jsx';
 
 export default function Overview(props) {
   // declare state variables here
-  console.log(props);
+  // console.log(props);
 
   return (
     <div onClick={(e) => { props.interactionHandler(e, 'Overview'); }}>
