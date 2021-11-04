@@ -7,7 +7,7 @@ export default function Header() {
       <span className="flex-item">
         C-Logo
       </span>
-      <span className="flex-item">_____________ Search</span>
+      <span className="flex-item" />
     </div>
   );
 }

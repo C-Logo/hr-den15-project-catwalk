@@ -45,8 +45,8 @@ export default function Main() {
     // I should be able to take out this for loop for most of the times I am calling this function
     for (let i = 0; i < styles.length; i++) {
       if (styleId === styles[i].style_id) {
-        setMainPhoto(styles[i].photos[photo].url);
         setStyleThumbnails(styles[i].photos);
+        setMainPhoto(styles[i].photos[photo].url);
         setCurrentStyle({ ...styles[i], photoIndex: photo });
         setPurchaseOptions({}); // empty puchaseOptions
         const result = Object.values(currentStyle.skus);
@@ -68,9 +68,9 @@ export default function Main() {
       .then((response) => {
         setStyles(response.data.results);
         setCurrentStyle(response.data.results[0]);
-        handleChangeStyle(266902);
         setMainPhoto(response.data.results[0].photos[0].url);
-        // handleChangeStyle(response.data.results[0]);
+        setStyleThumbnails(response.data.results[0].photos);
+        handleChangeStyle(266902);
       })
       .catch((err) => {
         console.log('error on product get request:', err);

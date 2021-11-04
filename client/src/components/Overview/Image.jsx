@@ -1,5 +1,5 @@
-import { removeData } from 'jquery';
-import React, { useContext } from 'react';
+// import { removeData } from 'jquery';
+import React, { useState, useContext } from 'react';
 import ImageThumbnails from './ImageThumbnails.jsx';
 import { ExtendUpdateContext } from './Main.jsx';
 
@@ -9,7 +9,9 @@ export default function Image() {
     extend, changeExtend, mainPhoto, currentStyle, styleThumbnails, changeZoomed, imageZoomed,
   } = useContext(ExtendUpdateContext);
   let index;
-  let zoomIn = false;
+  const zoomIn = false;
+
+  const [zoomedIn, setZoomedIn] = useState(false);
 
   const handleImageChange = (amount) => {
     if ((currentStyle.photoIndex + amount) === currentStyle.photos.length) {
@@ -22,18 +24,25 @@ export default function Image() {
     document.getElementById(`overview-thumbnail-${index}`).click();
   };
 
+  const minimizeImage = () => {
+    changeExtend();
+    document.getElementById('overview-image-container').style.transform = 'scale(1)';
+    document.getElementById('overview-image-container').style.cursor = 'auto';
+    document.getElementById('overview-image-container').style.paddingTop = '0px';
+    document.getElementById('overview-image-container').style.paddingLeft = '0px';
+    setZoomedIn(false);
+  };
+
   const handleZoomedImage = () => {
     document.getElementById('overview-image-container').style.transform = 'scale(2.5)';
     document.getElementById('overview-image-container').style.backgroundSize = 'contain';
+    document.getElementById('overview-image-container').style.paddingTop = '60px';
+    document.getElementById('overview-image-container').style.paddingLeft = '70px';
     document.getElementById('overview-image-container').style.cursor = 'url("./img/LineHorizontalResize.cur"), auto';
-    if (zoomIn) {
-      document.getElementById('overview-image-container').style.transform = 'scale(1)';
-      document.getElementById('overview-image-container').style.cursor = 'auto';
-      changeExtend();
-      // changeZoomed();
+    if (zoomedIn) {
+      minimizeImage();
     } else {
-      zoomIn = true;
-      // changeZoomed();
+      setZoomedIn(true);
     }
   };
 
@@ -44,17 +53,17 @@ export default function Image() {
     const height = document.getElementById('overview-image').clientHeight;
     if (event.clientX > width / 2) {
       // console.log('right');
-      document.getElementById('overview-image').scrollLeft += 10;
+      document.getElementById('overview-image').scrollLeft += 2;
     } else {
       // console.log('left');
-      document.getElementById('overview-image').scrollLeft -= 10;
+      document.getElementById('overview-image').scrollLeft -= 2;
     }
     if (event.clientY > (height / 2)) {
       // console.log('up');
-      document.getElementById('overview-image').scrollTop += 10;
+      document.getElementById('overview-image').scrollTop += 2;
     } else {
       // console.log('down');
-      document.getElementById('overview-image').scrollTop -= 10;
+      document.getElementById('overview-image').scrollTop -= 2;
     }
   };
 
@@ -83,6 +92,10 @@ export default function Image() {
           className="overview-image-prev"
           role="button"
           tabIndex={0}
+          style={{
+            left: extend ? '10%' : '22%',
+            display: zoomedIn ? 'none' : 'inherit',
+          }}
           onClick={(event) => {
             event.stopPropagation();
             handleImageChange(-1);
@@ -95,6 +108,10 @@ export default function Image() {
           className="overview-image-next"
           role="button"
           tabIndex={0}
+          style={{
+            left: extend ? '90%' : '86%',
+            display: zoomedIn ? 'none' : 'inherit',
+          }}
           onClick={(event) => {
             event.stopPropagation();
             handleImageChange(1);
@@ -109,7 +126,13 @@ export default function Image() {
           version="1.1"
           viewBox="0 0 36 36"
           width="100%"
-          onClick={() => { changeExtend(); }}
+          style={{
+            display: zoomedIn ? 'none' : 'inherit',
+          }}
+          onClick={(event) => {
+            event.stopPropagation();
+            extend ? minimizeImage() : changeExtend();
+          }}
         >
           <path d="m 10,16 2,0 0,-4 4,0 0,-2 L 10,10 l 0,6 0,0 z" />
           <path d="m 20,10 0,2 4,0 0,4 2,0 L 26,10 l -6,0 0,0 z" />
