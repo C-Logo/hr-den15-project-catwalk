@@ -12,12 +12,12 @@ export default function ReviewBody() {
 
   if (reviewBodyShowMore) {
     return (
-      <div>
+      <>
         {reviewBodyTrunc}
         <div className="reviewBodyShowMore">
           <button type="button" className="reviewBodyShowMoreButton" onClick={clickHandler}>Show more?</button>
         </div>
-      </div>
+      </>
     );
   }
   return (
