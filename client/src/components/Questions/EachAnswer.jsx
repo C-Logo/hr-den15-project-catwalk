@@ -39,8 +39,8 @@ export default function EachAnswer(props) {
       <div className="answerline">
         <div>
           {' '}
-          {moreAnswers ? defaultAnswers.map((qanswer) => (
-            <div>
+          {moreAnswers ? defaultAnswers.map((qanswer, index) => (
+            <div key={index}>
               A:
               {' '}
               {qanswer.body}
@@ -65,8 +65,8 @@ export default function EachAnswer(props) {
               </div>
             </div>
           ))
-            : answersArray.map((qanswer) => (
-              <div>
+            : answersArray.map((qanswer, index) => (
+              <div key={index}>
                 A:
                 {' '}
                 {qanswer.body}
