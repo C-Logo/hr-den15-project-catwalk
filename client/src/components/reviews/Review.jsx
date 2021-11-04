@@ -49,7 +49,7 @@ export default function Review(props) {
     setReviewHelpful(props.review.helpfulness);
   }, [allReviews]);
 
-  console.log(props.review.response);
+  // console.log(props.review.response);
 
   return (
     <ReviewContext.Provider value={{
