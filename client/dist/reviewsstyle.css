@@ -9,7 +9,7 @@
 }
 
 #reviewsRight {
-  margin-left: 200px;
+  margin-left: 250px;
 }
 
 #reviewInfoContainer {
@@ -18,7 +18,7 @@
 
 #reviewsLeft {
   float: left;
-  max-width: 200px;
+  max-width: 250px;
 }
 
 #reviewProductStars {
@@ -41,10 +41,6 @@
 
 #recommendationPercentage {
 display:inline-block;
-}
-
-#starBarChart {
-
 }
 
 #reviewsBreakdown {
@@ -104,19 +100,56 @@ display:inline-block;
   background: #000;
 }
 
+/*-----------------------STAR RATING GRAPHS--------------------------*/
+
+.starBarChart {
+  float: left;
+  width: 65%;
+}
+
 .starBarChartContainer {
-  display: flex;
-  justify-content: flex-start;
+
+}
+
+#starBarChart {
+  height: 18px;
+  margin: auto;
+}
+
+.individualBarCharts {
+  margin-top: 10px;
+  height: 100%;
+}
+
+.bar-container {
+  width: 100%;
+  background-color: #f1f1f1;
+  text-align: center;
+  color: white;
+}
+
+.starRatingCount {
+  height: 100%;
+  float: right;
+  text-align: right;
+  margin-top: 1%;
+  margin-left: 4%;
 }
 
 .starCount {
-  margin: 1%;
+  height: 100%;
+  float: left;
+  text-align: left;
+  margin-top: 1%;
+  margin-right: 4%;
   text-decoration: underline;
 }
 
-.starBarChart {
-  margin: 1%;
+.bar-5 {
+  width: 70%; height: 18px; background-color: #04aa6d;
 }
+
+/*---------------------------------------------------------*/
 
 .breakdownTitle {
  text-align: left;
@@ -176,6 +209,8 @@ display:inline-block;
 
 }
 
+
+/* -------------INDIVIDUAL REVIEW--------------*/
 .review {
 
 }
@@ -186,7 +221,7 @@ display:inline-block;
 
 .reviewBody {
   text-align: left;
-  height: 200px;
+  height: 100px;
   min-height:fit-content;
 }
 
