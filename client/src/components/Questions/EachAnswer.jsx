@@ -3,12 +3,14 @@ import React, { useState, useEffect } from 'react';
 import dateReformat from '../../helper-functions/dateReformat.js';
 
 export default function EachAnswer(props) {
-  let [helpfulAnswerYes, setHelpfulAnswerYes] = useState(props.answer.helpfulness);
+  let [helpfulAnswerYes, setHelpfulAnswerYes] = useState(0);
   const [answersArray, setAnswersArray] = useState([]);
   const [moreAnswers, setMoreAnswers] = useState(true);
   const [questionID, setQuestionID] = useState(props.id);
   const [defaultAnswers, setDefaultAnswers] = useState([]);
   const [answerID, setAnswerID] = useState(0);
+  const [clickedOnce, setClickedOnce] = useState(false);
+  const [postedHelpful, setPostedHelpful] = useState(false);
 
   function fetchAllAnswers() {
     axios.get(`/qa/questions/${questionID}/answers`, { params: { count: 10 } })
@@ -21,18 +23,19 @@ export default function EachAnswer(props) {
   useEffect(() => {
     if (props.answer) {
       setQuestionID(props.id);
-      setAnswerID(props.answer.id);
       fetchAllAnswers();
     } else {
       setAnswersArray(['no questions']);
     }
-  }, [helpfulAnswerYes]);
+  }, []);
 
-  function handleAnswerOnClick() {
+  function handleAnswerOnClick(e) {
+    setAnswerID(e.currentTarget.id);
     setHelpfulAnswerYes(helpfulAnswerYes += 1);
-    axios.put(`/qa/answers/:${answerID}/helpful`, { helpfulAnswerYes })
+    axios.put(`/qa/answers/${e.currentTarget.id}/helpful`, { helpfulAnswerYes })
       .then((response) => {
-        setHelpfulAnswerYes('Thanks');
+        setPostedHelpful('Thanks');
+        setClickedOnce(true);
       });
   }
   function renderMoreAnswers() {
@@ -46,6 +49,7 @@ export default function EachAnswer(props) {
           {' '}
           {moreAnswers ? defaultAnswers.map((qanswer, index) => (
             <div key={index}>
+              {/* {setHelpfulAnswerYes(qanswer.helpfulness)} */}
               A:
               {' '}
               {qanswer.body}
@@ -57,10 +61,9 @@ export default function EachAnswer(props) {
                 {' '}
                 {dateReformat(qanswer.date)}
                 {' '}
-                |
                 <span> Helpful? </span>
-                <span onClick={handleAnswerOnClick}>
-                  Yes
+                <span> Yes </span>
+                <span id={qanswer.answer_id} onClick={clickedOnce ? null : (e) => { handleAnswerOnClick(e); }}>
                   (
                   {qanswer.helpfulness}
                   )
@@ -83,10 +86,9 @@ export default function EachAnswer(props) {
                   {' '}
                   {dateReformat(qanswer.date)}
                   {' '}
-                  |
                   <span> Helpful? </span>
-                  <span onClick={handleAnswerOnClick}>
-                    Yes
+                  <span> Yes </span>
+                  <span id={qanswer.answer_id} onClick={clickedOnce ? null : (e) => { handleAnswerOnClick(e); }}>
                     (
                     {qanswer.helpfulness}
                     )

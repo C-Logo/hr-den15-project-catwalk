@@ -26,7 +26,6 @@ export default function Questions(props) {
   }, []);
 
   function getMoreQuestions() {
-    console.log('getting qs');
     setShowMoreQuestions(!showMoreQuestions);
   }
   function showModalWindow() {
