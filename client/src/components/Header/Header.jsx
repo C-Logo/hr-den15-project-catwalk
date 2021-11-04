@@ -7,7 +7,6 @@ export default function Header() {
   const checkCart = () => {
     axios.get('/cart')
       .then((results) => {
-        console.log(results);
         setCart(results.data.length);
       });
   };

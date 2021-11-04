@@ -82,10 +82,6 @@ export default function Main() {
       });
   };
 
-  const getCartUpdate = () => {
-    setCart();
-  };
-
   useEffect(() => {
     getReq();
   }, []);
