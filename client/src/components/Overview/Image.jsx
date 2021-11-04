@@ -1,3 +1,4 @@
+import { removeData } from 'jquery';
 import React, { useContext } from 'react';
 import ImageThumbnails from './ImageThumbnails.jsx';
 import { ExtendUpdateContext } from './Main.jsx';
@@ -5,10 +6,11 @@ import { ExtendUpdateContext } from './Main.jsx';
 export default function Image() {
   // declare state variables here
   const {
-    extend, changeExtend, mainPhoto, currentStyle, styleThumbnails,
+    extend, changeExtend, mainPhoto, currentStyle, styleThumbnails, changeZoomed, imageZoomed,
   } = useContext(ExtendUpdateContext);
-
   let index;
+  let zoomIn = false;
+
   const handleImageChange = (amount) => {
     if ((currentStyle.photoIndex + amount) === currentStyle.photos.length) {
       index = 0;
@@ -20,56 +22,101 @@ export default function Image() {
     document.getElementById(`overview-thumbnail-${index}`).click();
   };
 
+  const handleZoomedImage = () => {
+    document.getElementById('overview-image-container').style.transform = 'scale(2.5)';
+    document.getElementById('overview-image-container').style.backgroundSize = 'contain';
+    document.getElementById('overview-image-container').style.cursor = 'url("./img/LineHorizontalResize.cur"), auto';
+    if (zoomIn) {
+      document.getElementById('overview-image-container').style.transform = 'scale(1)';
+      document.getElementById('overview-image-container').style.cursor = 'auto';
+      changeExtend();
+      // changeZoomed();
+    } else {
+      zoomIn = true;
+      // changeZoomed();
+    }
+  };
+
+  const mousePanImage = (event) => {
+    // console.log(event.clientX, event.clientY);
+    document.getElementById('overview-image').style.transition = 'transform 0.15s ease';
+    const width = document.getElementById('overview-image').clientWidth;
+    const height = document.getElementById('overview-image').clientHeight;
+    if (event.clientX > width / 2) {
+      // console.log('right');
+      document.getElementById('overview-image').scrollLeft += 10;
+    } else {
+      // console.log('left');
+      document.getElementById('overview-image').scrollLeft -= 10;
+    }
+    if (event.clientY > (height / 2)) {
+      // console.log('up');
+      document.getElementById('overview-image').scrollTop += 10;
+    } else {
+      // console.log('down');
+      document.getElementById('overview-image').scrollTop -= 10;
+    }
+  };
+
   return (
     <div
       className="overview-image"
-      style={{
-        backgroundSize: extend ? 'cover' : 'contain',
-        backgroundImage: `url(${mainPhoto})`,
+      id="overview-image"
+      onClick={() => {
+        extend ? handleZoomedImage() : changeExtend();
       }}
-      onClick={() => { changeExtend(); }}
+      onMouseMove={(e) => { extend ? mousePanImage(e) : ''; }}
       onKeyDown={() => { changeExtend(); }}
       role="button"
       tabIndex={0}
     >
-      {styleThumbnails ? <ImageThumbnails /> : ''}
       <div
-        className="overview-image-prev"
-        role="button"
-        tabIndex={0}
-        onClick={(event) => {
-          event.stopPropagation();
-          handleImageChange(-1);
+        id="overview-image-container"
+        style={{
+          backgroundSize: extend ? 'cover' : 'contain',
+          backgroundImage: `url(${mainPhoto})`,
+          cursor: extend ? 'cell' : 'auto',
         }}
-        onKeyDown={() => { handleImageChange(-1); }}
       >
-        &#10094;
+        {styleThumbnails ? <ImageThumbnails /> : ''}
+        <div
+          className="overview-image-prev"
+          role="button"
+          tabIndex={0}
+          onClick={(event) => {
+            event.stopPropagation();
+            handleImageChange(-1);
+          }}
+          onKeyDown={() => { handleImageChange(-1); }}
+        >
+          &#10094;
+        </div>
+        <div
+          className="overview-image-next"
+          role="button"
+          tabIndex={0}
+          onClick={(event) => {
+            event.stopPropagation();
+            handleImageChange(1);
+          }}
+          onKeyDown={() => { handleImageChange(1); }}
+        >
+          &#10095;
+        </div>
+        <svg
+          className="overview-resizing-button"
+          height="100%"
+          version="1.1"
+          viewBox="0 0 36 36"
+          width="100%"
+          onClick={() => { changeExtend(); }}
+        >
+          <path d="m 10,16 2,0 0,-4 4,0 0,-2 L 10,10 l 0,6 0,0 z" />
+          <path d="m 20,10 0,2 4,0 0,4 2,0 L 26,10 l -6,0 0,0 z" />
+          <path d="m 24,24 -4,0 0,2 L 26,26 l 0,-6 -2,0 0,4 0,0 z" />
+          <path d="M 12,20 10,20 10,26 l 6,0 0,-2 -4,0 0,-4 0,0 z" />
+        </svg>
       </div>
-      <div
-        className="overview-image-next"
-        role="button"
-        tabIndex={0}
-        onClick={(event) => {
-          event.stopPropagation();
-          handleImageChange(1);
-        }}
-        onKeyDown={() => { handleImageChange(1); }}
-      >
-        &#10095;
-      </div>
-      <svg
-        className="overview-resizing-button"
-        height="100%"
-        version="1.1"
-        viewBox="0 0 36 36"
-        width="100%"
-        onClick={() => { changeExtend(); }}
-      >
-        <path d="m 10,16 2,0 0,-4 4,0 0,-2 L 10,10 l 0,6 0,0 z" />
-        <path d="m 20,10 0,2 4,0 0,4 2,0 L 26,10 l -6,0 0,0 z" />
-        <path d="m 24,24 -4,0 0,2 L 26,26 l 0,-6 -2,0 0,4 0,0 z" />
-        <path d="M 12,20 10,20 10,26 l 6,0 0,-2 -4,0 0,-4 0,0 z" />
-      </svg>
     </div>
   );
 }
