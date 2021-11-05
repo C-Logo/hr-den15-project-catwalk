@@ -4,6 +4,7 @@ import { ExtendUpdateContext } from './Main.jsx';
 import Price from './Price.jsx';
 import Styles from './Styles.jsx';
 import SizeAndQty from './SizeAndQty.jsx';
+import StarRating from '../StarRating.jsx';
 
 export default function RightColumn() {
   // declare state variables here
@@ -22,8 +23,9 @@ export default function RightColumn() {
   return (
     <div className="overview-right">
       <div className="small"> </div>
-      <div className="small">(Insert Star Rating)</div>
-      <div className="small">{product.category}</div>
+      <div className="small" />
+      {/* <div className="small">{product.category}</div> */}
+      <StarRating />
       <div className="medium"><h2>{product.name}</h2></div>
       <Price />
       <Styles />
