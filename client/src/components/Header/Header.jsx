@@ -13,11 +13,12 @@ export default function Header() {
 
   return (
     <div className="header">
-      <img className="overview-header-image" src="./img/image.png" alt="company logo" />
+      <img className="overview-header-image" src="./img/image.webp" alt="company logo" />
       <span className="flex-item">
-        C-Logo
+        <div className="overview-header-title">Project Catwalk</div>
+        <div className="overview-header-cart">by: C-Logo</div>
       </span>
-      <span id="header-check-cart" className="flex-item" onClick={() => { checkCart(); }}>{(cart > 0) ? `Items in Cart: ${cart}` : 'Cart is empty'}</span>
+      <span id="header-check-cart" className="overview-header-cart flex-item" onClick={() => { checkCart(); }}>{(cart > 0) ? `Items in Cart: ${cart}` : 'Cart is empty'}</span>
     </div>
   );
 }

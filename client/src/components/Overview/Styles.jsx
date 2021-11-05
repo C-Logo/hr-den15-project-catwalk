@@ -10,7 +10,7 @@ export default function Styles() {
         <div className="overview-style-label" id="overview-stylebox">Style > Selected Style</div>
         {styles.map((item,index) => {
           return <div
-            className="overview-styles-circle"
+            className="overview-styles-circle overview-flex"
             id={`overview-style-${index}`}
             style={{
               backgroundImage: `url(${item.photos[0].thumbnail_url})`,
@@ -18,6 +18,7 @@ export default function Styles() {
             }}
             key={index}
             onClick={() => handleChangeStyle(item.style_id)}>
+            {currentStyle.style_id === item.style_id ? <div className="overview-style-selected">&#x2713;</div> : ''}
           </div>;
         })
         // document.getElementById('overview-style-0').click();

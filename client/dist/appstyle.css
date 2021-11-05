@@ -1,5 +1,5 @@
 #mainContainer {
-  width: 70%; 
+  max-width: 1200px; 
   text-align: center;
   /* IF YOU CHANGE THE BACKGROUND COLOR CHANGE IT IN STARS TOO */
     background-color: gainsboro;
@@ -21,6 +21,7 @@ body {
   font-family: "adobe-clean", sans-serif;
   height: 100%;
   font-size:small;
+  text-align: center;
 }
 
 ::-webkit-scrollbar {
