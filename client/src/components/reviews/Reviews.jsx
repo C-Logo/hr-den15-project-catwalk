@@ -22,14 +22,32 @@ export default function Reviews(props) {
   const [totalRecs, setTotalRecs] = useState(0);
   const [reviewReported, setReviewReported] = useState(false);
   const [shownReviews, setShownReviews] = useState(allReviews.slice(0, reviewCount));
+  const [ratingFilteredReviews, setRatingFilteredReviews] = useState([]);
+  const [ratingSort, setRatingSort] = useState(0);
 
   function fetchAllReviews() {
     axios
       .get(`/reviews?sort=${reviewSort}&count=10000&product_id=44388`)
       .then((data) => {
         setAllReviews(data.data.results);
-        setTotalReviews(data.data.results.length);
-        setShownReviews(data.data.results.slice(0, reviewCount));
+        // console.log(data.data.results);
+        // debugger;
+        if (ratingSort === 0) {
+          setRatingFilteredReviews(data.data.results);
+          setShownReviews(data.data.results.slice(0, reviewCount));
+          setTotalReviews(data.data.results.length);
+        } else {
+          const filteredReviews = [];
+          for (let i = 0; i < data.data.results.length; i++) {
+            if (Number(data.data.results[i].rating) === Number(ratingSort)) {
+              filteredReviews.push(data.data.results[i]);
+            }
+          }
+          setRatingFilteredReviews(filteredReviews);
+          console.log(filteredReviews.slice(0, reviewCount));
+          setShownReviews(filteredReviews.slice(0, reviewCount));
+          setTotalReviews(filteredReviews.length);
+        }
       })
       .catch((err) => {
         throw err;
@@ -84,16 +102,21 @@ export default function Reviews(props) {
   }
 
   function ratingSortClickHandler(e) {
-    console.log(e.target.id);
+    setRatingSort(e.target.id);
   }
 
   useEffect(() => {
     fetchAllReviews();
     // fetchTestData();
+    console.log('reviewCount: ', reviewCount);
+    console.log('totalReviews: ', totalReviews);
+    // debugger;
     if (reviewCount >= totalReviews) {
       setMoreReviews({ display: 'none' });
+    } else if (reviewCount < totalReviews) {
+      setMoreReviews({ pointerEvents: 'auto' });
     }
-  }, [reviewCount, reviewSort, reviewReported]);
+  }, [reviewCount, reviewSort, reviewReported, ratingSort, totalReviews]);
 
   return (
     <div onClick={(e) => { props.interactionHandler(e, 'Ratings and Reviews'); }}>
@@ -106,6 +129,9 @@ export default function Reviews(props) {
         reviewReported,
         reportReviewHandler,
         ratingSortClickHandler,
+        ratingSort,
+        ratingFilteredReviews,
+        shownReviews,
       }}
       >
         <h1 id="reviewTitle">Ratings and Reviews</h1>

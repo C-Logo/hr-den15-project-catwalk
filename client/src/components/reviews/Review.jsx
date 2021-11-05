@@ -17,7 +17,9 @@ export default function Review(props) {
   const [reviewBodyShowMore, setReviewBodyShowMore] = useState(true);
   const [reviewHelpful, setReviewHelpful] = useState(props.review.helpfulness);
 
-  const { reviewSort, allReviews } = useContext(ReviewsContext);
+  const {
+    reviewSort, allReviews, ratingSort, ratingFilteredReviews, shownReviews,
+  } = useContext(ReviewsContext);
 
   function markAsHelpful(reviewId) {
     axios
@@ -47,7 +49,7 @@ export default function Review(props) {
       }
     }
     setReviewHelpful(props.review.helpfulness);
-  }, [allReviews]);
+  }, [allReviews, ratingSort, ratingFilteredReviews, shownReviews]);
 
   return (
     <ReviewContext.Provider value={{
