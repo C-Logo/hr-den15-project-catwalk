@@ -5,6 +5,7 @@ import RatingBars from './RatingBars.jsx';
 import Review from './Review.jsx';
 import { AppContext } from '../App.jsx';
 import CharacteristicBars from './CharacteristicBars.jsx';
+import StarFilterButton from './StarFilterButton.jsx';
 
 export const ReviewsContext = React.createContext();
 
@@ -135,11 +136,12 @@ export default function Reviews(props) {
         ratingFilteredReviews,
         shownReviews,
         ratingCharacteristics,
+        setRatingSort,
       }}
       >
         <h1 id="reviewTitle">Ratings and Reviews</h1>
 
-        <div id="reviews" title="Ratings and Reviews">
+        <div id="reviews">
           <div id="reviewsLeft">
             <div id="reviewProductStars">
               <div id="reviewsStarAverage">
@@ -169,6 +171,7 @@ export default function Reviews(props) {
                   <option value="helpful">Helpful</option>
                   <option value="newest">Newest</option>
                 </select>
+                <StarFilterButton />
               </div>
               <hr />
               <div id="reviewList">
