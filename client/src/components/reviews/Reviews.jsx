@@ -4,6 +4,7 @@ import StarRating from '../StarRating.jsx';
 import RatingBars from './RatingBars.jsx';
 import Review from './Review.jsx';
 import { AppContext } from '../App.jsx';
+import CharacteristicBars from './CharacteristicBars.jsx';
 
 export const ReviewsContext = React.createContext();
 
@@ -24,6 +25,7 @@ export default function Reviews(props) {
   const [shownReviews, setShownReviews] = useState(allReviews.slice(0, reviewCount));
   const [ratingFilteredReviews, setRatingFilteredReviews] = useState([]);
   const [ratingSort, setRatingSort] = useState(0);
+  const [ratingCharacteristics, setRatingCharacteristics] = useState({});
 
   function fetchAllReviews() {
     axios
@@ -55,6 +57,7 @@ export default function Reviews(props) {
       .get('/reviews/meta?product_id=44388')
       .then((data) => {
         // console.log(data.data);
+        setRatingCharacteristics(data.data.characteristics);
         setReviewRatings(data.data.ratings);
         const falseRecs = Number(data.data.recommended.false);
         const trueRecs = Number(data.data.recommended.true);
@@ -73,12 +76,14 @@ export default function Reviews(props) {
   }
 
   function fetchTestData() {
-    axios
-      .get('/reviews/meta?product_id=44388')
-      .then((data) => {
-        console.log('test data: ');
-        console.log(data.data);
-      });
+    console.log('test data: ');
+    for (let i = 44388; i < 44393; i++) {
+      axios
+        .get(`/reviews/meta?product_id=${i}`)
+        .then((data) => {
+          console.log(data.data.characteristics);
+        });
+    }
   }
 
   function reportReviewHandler(reviewId) {
@@ -129,6 +134,7 @@ export default function Reviews(props) {
         ratingSort,
         ratingFilteredReviews,
         shownReviews,
+        ratingCharacteristics,
       }}
       >
         <h1 id="reviewTitle">Ratings and Reviews</h1>
@@ -150,17 +156,7 @@ export default function Reviews(props) {
               <RatingBars />
             </div>
             <div id="reviewsBreakdown">
-              <div className="breakdownTitle">
-                Size
-              </div>
-              <div className="breakdownGraph">
-                graph thing
-              </div>
-              <div className="breakdownAxis">
-                Too Small
-                Perfect
-                Too Large
-              </div>
+              <CharacteristicBars />
             </div>
           </div>
 
