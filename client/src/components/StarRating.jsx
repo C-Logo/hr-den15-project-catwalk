@@ -3,7 +3,7 @@ import { ReviewsContext } from './reviews/Reviews.jsx';
 
 export default function StarRating(props) {
   const { averageStars } = useContext(ReviewsContext);
-
+  console.log(averageStars);
   // props should have a single property named rating that is a value between 1 and 5
   function makeStyle() {
     if (props.rating) {
