@@ -3,12 +3,14 @@ import axios from 'axios';
 import StarRating from '../StarRating.jsx';
 import RatingBars from './RatingBars.jsx';
 import Review from './Review.jsx';
+import { AppContext } from '../App.jsx';
 
 export const ReviewsContext = React.createContext();
 
 export default function Reviews(props) {
   // declare state variables here
   // example: const [count, setCount] = useState(0);
+  const { averageStars, setAverageStars } = useContext(AppContext);
 
   const [allReviews, setAllReviews] = useState([]);
   const [totalReviews, setTotalReviews] = useState(3);
@@ -18,8 +20,8 @@ export default function Reviews(props) {
   const [reviewRatings, setReviewRatings] = useState({});
   const [reviewRecommendation, setReviewRecommendation] = useState(0);
   const [totalRecs, setTotalRecs] = useState(0);
-  const [averageStars, setAverageStars] = useState(0);
-  let shownReviews = allReviews.slice(0, reviewCount);
+  const [reviewReported, setReviewReported] = useState(false);
+  const [shownReviews, setShownReviews] = useState(allReviews.slice(0, reviewCount));
 
   function fetchAllReviews() {
     axios
@@ -27,7 +29,7 @@ export default function Reviews(props) {
       .then((data) => {
         setAllReviews(data.data.results);
         setTotalReviews(data.data.results.length);
-        shownReviews = allReviews.slice(0, reviewCount - 1);
+        setShownReviews(data.data.results.slice(0, reviewCount));
       })
       .catch((err) => {
         throw err;
@@ -35,7 +37,7 @@ export default function Reviews(props) {
     axios
       .get('/reviews/meta?product_id=44388')
       .then((data) => {
-        console.log(data.data);
+        // console.log(data.data);
         setReviewRatings(data.data.ratings);
         const falseRecs = Number(data.data.recommended.false);
         const trueRecs = Number(data.data.recommended.true);
@@ -62,23 +64,48 @@ export default function Reviews(props) {
       });
   }
 
+  function reportReviewHandler(reviewId) {
+    // put request
+    axios
+      .put(`/reviews/${reviewId}/report`)
+      .then(() => {
+        // set reviewReported to true
+        setReviewReported(true);
+        setReviewReported(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        throw err;
+      });
+  }
+
   function sortClickHandler(e) {
     setReviewSort(e.target.value);
+  }
+
+  function ratingSortClickHandler(e) {
+    console.log(e.target.id);
   }
 
   useEffect(() => {
     fetchAllReviews();
     // fetchTestData();
     if (reviewCount >= totalReviews) {
-      console.log(totalReviews);
       setMoreReviews({ display: 'none' });
     }
-  }, [reviewCount, reviewSort]);
+  }, [reviewCount, reviewSort, reviewReported]);
 
   return (
     <div onClick={(e) => { props.interactionHandler(e, 'Ratings and Reviews'); }}>
       <ReviewsContext.Provider value={{
-        allReviews, reviewSort, reviewRatings, totalRecs, averageStars,
+        allReviews,
+        reviewSort,
+        reviewRatings,
+        totalRecs,
+        averageStars,
+        reviewReported,
+        reportReviewHandler,
+        ratingSortClickHandler,
       }}
       >
         <h1 id="reviewTitle">Ratings and Reviews</h1>
@@ -136,7 +163,7 @@ export default function Reviews(props) {
                   style={moreReviews}
                   onClick={() => {
                     setReviewCount(reviewCount + 2);
-                    shownReviews = allReviews.slice(0, reviewCount);
+                    setShownReviews(allReviews.slice(0, reviewCount));
                   }}
                 >
                   Show More!

@@ -3,11 +3,15 @@ import React, { useState, useEffect } from 'react';
 import dateReformat from '../../helper-functions/dateReformat.js';
 
 export default function EachAnswer(props) {
-  let [helpfulAnswerYes, setHelpfulAnswerYes] = useState(props.answer.helpfulness);
+  let [helpfulAnswerYes, setHelpfulAnswerYes] = useState(0);
   const [answersArray, setAnswersArray] = useState([]);
   const [moreAnswers, setMoreAnswers] = useState(true);
   const [questionID, setQuestionID] = useState(props.id);
   const [defaultAnswers, setDefaultAnswers] = useState([]);
+  const [answerID, setAnswerID] = useState(0);
+  const [clickedOnce, setClickedOnce] = useState(false);
+  const [postedHelpful, setPostedHelpful] = useState(false);
+  const [reportClickedOnce, setReportClickedOnce] = useState(false);
 
   function fetchAllAnswers() {
     axios.get(`/qa/questions/${questionID}/answers`, { params: { count: 10 } })
@@ -26,11 +30,26 @@ export default function EachAnswer(props) {
     }
   }, []);
 
-  function handleAnswerOnClick() {
+  function handleAnswerOnClick(e) {
+    const currentId = e.target.parentNode.id;
+    setAnswerID(e.currentTarget.id);
     setHelpfulAnswerYes(helpfulAnswerYes += 1);
+    axios.put(`/qa/answers/${e.currentTarget.id}/helpful`, { answer_id: currentId })
+      .then((response) => {
+        console.log(response);
+        setClickedOnce(true);
+      });
+  }
+  function reportAnswer(e) {
+    const currentId = e.target.parentNode.id;
+    console.log('current', currentId);
+    axios.put(`/qa/answers/${currentId}/report`, { answer_id: currentId })
+      .then((response) => {
+        console.log(response);
+        setReportClickedOnce(true);
+      });
   }
   function renderMoreAnswers() {
-    console.log('clicking', moreAnswers, !moreAnswers);
     setMoreAnswers(!moreAnswers);
   }
 
@@ -41,10 +60,11 @@ export default function EachAnswer(props) {
           {' '}
           {moreAnswers ? defaultAnswers.map((qanswer, index) => (
             <div key={index}>
+              {/* {setHelpfulAnswerYes(qanswer.helpfulness)} */}
               A:
               {' '}
               {qanswer.body}
-              <div className="helpful">
+              <div id={qanswer.answer_id} className="helpful">
                 by
                 {' '}
                 {qanswer.answerer_name}
@@ -52,16 +72,15 @@ export default function EachAnswer(props) {
                 {' '}
                 {dateReformat(qanswer.date)}
                 {' '}
-                |
                 <span> Helpful? </span>
-                <span onClick={handleAnswerOnClick}>
-                  Yes
+                <span> Yes </span>
+                <span onClick={clickedOnce ? null : (e) => { handleAnswerOnClick(e); }}>
                   (
                   {qanswer.helpfulness}
                   )
                 </span>
                 <span> | </span>
-                <span>Report</span>
+                <span onClick={reportClickedOnce ? null : (e) => { reportAnswer(e); }}>Report</span>
               </div>
             </div>
           ))
@@ -70,7 +89,7 @@ export default function EachAnswer(props) {
                 A:
                 {' '}
                 {qanswer.body}
-                <div className="helpful">
+                <div id={qanswer.answer_id} className="helpful">
                   by
                   {' '}
                   {qanswer.answerer_name}
@@ -78,16 +97,15 @@ export default function EachAnswer(props) {
                   {' '}
                   {dateReformat(qanswer.date)}
                   {' '}
-                  |
                   <span> Helpful? </span>
-                  <span onClick={handleAnswerOnClick}>
-                    Yes
+                  <span> Yes </span>
+                  <span onClick={clickedOnce ? null : (e) => { handleAnswerOnClick(e); }}>
                     (
                     {qanswer.helpfulness}
                     )
                   </span>
                   <span> | </span>
-                  <span>Report</span>
+                  <span onClick={reportClickedOnce ? null : (e) => { reportAnswer(e); }}>Report</span>
                   {/* thinking here could make a toggle that after click, changes
                 to a span that says 'thanks for reporting!' */}
                 </div>
