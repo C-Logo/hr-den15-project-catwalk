@@ -10,6 +10,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.use('*', (req, res) => {
+  console.log(req.body);
   // format URL's on frontend
   axios({
     method: req.method.toLowerCase(),
@@ -22,6 +23,7 @@ app.use('*', (req, res) => {
     res.send(response.data);
   })
     .catch((err) => {
+      res.status(500);
       res.send(err);
     });
 });

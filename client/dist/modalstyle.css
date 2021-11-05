@@ -73,7 +73,9 @@
 
 }
 .answermodal {
-  display: flex;
+  /* display: flex;
+  flex-direction: column; */
+  align-content: center;
   position: relative;
   background-color: #F0FFFF;
   margin: auto;

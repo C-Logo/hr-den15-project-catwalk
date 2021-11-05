@@ -20,7 +20,7 @@ export default function Questions(props) {
   const [searchQuery, setSearchQuery] = useState('');
 
   function getQuestions() {
-    axios.get('/qa/questions', { params: { product_id: 44389 } })
+    axios.get('/qa/questions', { params: { product_id: 44389, count: 100 } })
       .then((response) => {
         const { data } = response;
         setquestionArray(data.results);
@@ -37,7 +37,6 @@ export default function Questions(props) {
   function showModalWindow() {
     setShowModal(!showModal);
   }
-
   return (
     <QuestionContext.Provider value={{
       questionArray, showMoreQuestions, showModal, setShowModal, searchQuery, setSearchQuery,
