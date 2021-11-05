@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ReviewsContext } from './Reviews.jsx';
 
 export default function RatingBar(props) {
+  const { ratingSortClickHandler } = useContext(ReviewsContext);
   const barStyle = {
     width: `${props.star.width * 100}%`,
     height: '18px',
@@ -9,7 +11,7 @@ export default function RatingBar(props) {
   return (
     <div className="individualBarCharts">
       <div className="starCount">
-        <div>{`${props.star.stars} stars`}</div>
+        <div id={`${props.star.stars}`} onClick={ratingSortClickHandler}>{`${props.star.stars} stars`}</div>
       </div>
       <div className="starBarChart">
         <div className="bar-container">
