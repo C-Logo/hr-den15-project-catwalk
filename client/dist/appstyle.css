@@ -1,5 +1,5 @@
 #mainContainer {
-  width: 70%; 
+  max-width: 1200px; 
   text-align: center;
   background-color: gainsboro;
   margin: auto;
@@ -19,6 +19,7 @@ body {
   font-family: "adobe-clean", sans-serif;
   height: 100%;
   font-size:small;
+  text-align: center;
 }
 
 ::-webkit-scrollbar {
