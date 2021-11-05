@@ -13,6 +13,10 @@ export default function Questions(props) {
   const [questionArray, setquestionArray] = useState([]);
   const [showMoreQuestions, setShowMoreQuestions] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [name, setName] = useState('');
+  const [text, setText] = useState('');
+  const [email, setEmail] = useState('');
+  const [productID, setProductID] = useState(0);
 
   function getQuestions() {
     axios.get('/qa/questions', { params: { product_id: 44388 } })
