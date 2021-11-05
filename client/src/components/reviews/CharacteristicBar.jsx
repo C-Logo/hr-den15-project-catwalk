@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function CharacteristicBar(props) {
-  console.log((Number(props.characteristicInfo.rating) / 5) * 100 - 2.5);
   const arrowStyle = {
     marginLeft: `${(Number(props.characteristicInfo.rating) / 5) * 100 - 2.5}%`,
   };
