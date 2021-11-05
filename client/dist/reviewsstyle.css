@@ -12,6 +12,21 @@
   margin-left: 250px;
 }
 
+.starFilterButton {
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  font-size: small;
+  margin-right: none;
+  color: red;
+}
+
+.starFilterButton:hover {
+  border: solid 1px black;
+  text-decoration: underline;
+}
+
+
 #reviewInfoContainer {
   margin-left: 5%;
 }
@@ -183,7 +198,6 @@ display:inline-block;
   width: 5%;
   clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
   background-color: black;
-
 }
 
 /* ---------------------------------------------------- */
