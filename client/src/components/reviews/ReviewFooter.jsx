@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
 import { ReviewContext } from './Review.jsx';
+import { ReviewsContext } from './Reviews.jsx';
 
 export default function ReviewFooter() {
   const { markAsHelpful, reviewHelpful, review } = useContext(ReviewContext);
+  const { reportReviewHandler } = useContext(ReviewsContext);
   return (
     <div className="reviewFooterInformation">
       <div className="reviewHelpful">
@@ -15,9 +17,7 @@ export default function ReviewFooter() {
       <div className="reviewFooterSeparator">
         |
       </div>
-      <div className="reviewReport">
-        Report
-      </div>
+      <button type="button" className="reviewFooterYes" onClick={() => { reportReviewHandler(review.review_id); }}>Report</button>
     </div>
   );
 }
