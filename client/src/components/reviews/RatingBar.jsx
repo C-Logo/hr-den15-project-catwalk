@@ -4,7 +4,7 @@ import { ReviewsContext } from './Reviews.jsx';
 export default function RatingBar(props) {
   const { ratingSortClickHandler } = useContext(ReviewsContext);
   const barStyle = {
-    width: `${props.star.width * 100}%`,
+    width: `${props.star.count / props.max * 100}%`,
     height: '18px',
     backgroundColor: props.star.barColor,
   };

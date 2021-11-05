@@ -14,16 +14,18 @@ export default function RatingBars() {
     '#04AA6D',
   ];
   // iterate through reviewObject
+  let max = 0;
   for (let i = 5; i > 0; i--) {
     const ratingInformation = {
       stars: i,
       count: 0,
-      width: 0,
       barColor: barColor[i - 1],
     };
     if (reviewRatings[i]) {
       ratingInformation.count = reviewRatings[i];
-      ratingInformation.width = reviewRatings[i] / totalRecs;
+      if (ratingInformation.count > max) {
+        max = ratingInformation.count;
+      }
     }
     ratingArray.push(ratingInformation);
   }
@@ -31,7 +33,7 @@ export default function RatingBars() {
   return (
     <>
       {ratingArray.map((starRatingInfo, index) => (
-        <RatingBar star={starRatingInfo} key={index} />
+        <RatingBar star={starRatingInfo} key={index} max={max} />
       ))}
     </>
   );

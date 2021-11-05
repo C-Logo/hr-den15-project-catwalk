@@ -43,10 +43,6 @@
 display:inline-block;
 }
 
-#reviewsBreakdown {
-  margin-top: 20px;
-}
-
 #reviewsFilter {
   text-align: left;
   font-size: larger;
@@ -149,19 +145,48 @@ display:inline-block;
   width: 70%; height: 18px; background-color: #04aa6d;
 }
 
-/*---------------------------------------------------------*/
+/*------------------------REVIEWS BREAKDOWN---------------------------------*/
+
+#reviewsBreakdown {
+  margin-top: 130px;
+}
 
 .breakdownTitle {
  text-align: left;
+ font-size: initial;
 }
 
-.breakdownGraph {
+.breakdownGraphContainer {
+  height: 18px;
+  margin: auto;
+  position: relative;
+}
 
+.breakdownGraphBackground {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 10px;
+  background-color: #999999;
+  text-align: center;
+  color: white;
 }
 
 .breakdownAxis {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.breakdownGraphArrow {
+  height: 50%;
+  width: 5%;
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+  background-color: black;
 
 }
+
+/* ---------------------------------------------------- */
 
 .reviewStars {
   float: left;
