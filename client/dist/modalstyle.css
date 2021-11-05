@@ -3,6 +3,7 @@
   background-color: #F0FFFF;
   margin: auto;
   padding: 0;
+  text-align: center;
   border: 1px solid #888;
   width: 90%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
@@ -38,6 +39,7 @@
   margin: 3px;
 }
 #modalinput {
+  text-align: center;
   padding: 3px;
   margin: 3px;
 }
@@ -68,14 +70,16 @@
 #answermodalemail {
   padding: 3px;
   margin: 3px;
+
 }
 .answermodal {
+  display: flex;
   position: relative;
   background-color: #F0FFFF;
   margin: auto;
   padding: 0;
   border: 1px solid #888;
-  width: 400px;
+  width: 300px%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   animation-name: animatetop;
   animation-duration: 0.8s

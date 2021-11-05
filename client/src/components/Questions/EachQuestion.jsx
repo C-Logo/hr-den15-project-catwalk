@@ -36,13 +36,13 @@ export default function EachQuestion(props) {
 
   return (
     <div className="mainquestion">
-      <AnswerModal showModal={showAnswerModal} setModal={setShowAnswerModal} />
       <div className="questionline">
         <div className="indivquestion">Q:</div>
         <div className="indivquestion">
           {question}
           {}
           <EachAnswer answer={props.question.answers} id={props.question.question_id} />
+          <AnswerModal showModal={showAnswerModal} setModal={setShowAnswerModal} />
         </div>
       </div>
       <div className="Helpfulq">
