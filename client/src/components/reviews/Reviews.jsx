@@ -44,7 +44,6 @@ export default function Reviews(props) {
             }
           }
           setRatingFilteredReviews(filteredReviews);
-          console.log(filteredReviews.slice(0, reviewCount));
           setShownReviews(filteredReviews.slice(0, reviewCount));
           setTotalReviews(filteredReviews.length);
         }
@@ -108,8 +107,6 @@ export default function Reviews(props) {
   useEffect(() => {
     fetchAllReviews();
     // fetchTestData();
-    console.log('reviewCount: ', reviewCount);
-    console.log('totalReviews: ', totalReviews);
     // debugger;
     if (reviewCount >= totalReviews) {
       setMoreReviews({ display: 'none' });
