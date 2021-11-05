@@ -22,6 +22,7 @@ app.use('*', (req, res) => {
     res.send(response.data);
   })
     .catch((err) => {
+      res.status(500);
       res.send(err);
     });
 });

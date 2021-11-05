@@ -16,7 +16,6 @@ export default function EachQuestion(props) {
     if (props.question) {
       setQuestion(props.question.question_body);
       setQuestionID(props.question.question_id);
-      // const arrayOfAnswers = Object.values(props.question.answers);
     } else {
       setQuestion('no questions');
     }
