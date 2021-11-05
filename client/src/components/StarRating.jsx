@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ReviewsContext } from './reviews/Reviews.jsx';
 
 export default function StarRating(props) {
+  const { averageStars } = useContext(ReviewsContext);
+
   // props should have a single property named rating that is a value between 1 and 5
-  const starStyle = {
-    width: `${props.rating / 5 * 100 * (99 / 100)}%`,
-  };
+  function makeStyle() {
+    if (props.rating) {
+      return {
+        width: `${props.rating / 5 * 100 * (99 / 100)}%`,
+      };
+    }
+    return {
+      width: `${averageStars / 5 * 100 * (99 / 100)}%`,
+    };
+  }
+
+  const starStyle = makeStyle();
 
   return (
 

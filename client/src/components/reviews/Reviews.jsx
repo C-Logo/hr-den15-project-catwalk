@@ -78,7 +78,7 @@ export default function Reviews(props) {
   return (
     <div onClick={(e) => { props.interactionHandler(e, 'Ratings and Reviews'); }}>
       <ReviewsContext.Provider value={{
-        allReviews, reviewSort, reviewRatings, totalRecs,
+        allReviews, reviewSort, reviewRatings, totalRecs, averageStars,
       }}
       >
         <h1 id="reviewTitle">Ratings and Reviews</h1>
@@ -90,7 +90,7 @@ export default function Reviews(props) {
                 {averageStars}
               </div>
               <div id="starGraph">
-                <StarRating rating={averageStars} />
+                <StarRating />
               </div>
             </div>
             <div id="recommendationPercentage">
