@@ -25,7 +25,7 @@ export default function RightColumn() {
       <div className="small"> </div>
       <div className="small" />
       {/* <div className="small">{product.category}</div> */}
-      {/* <StarRating /> */}
+      <StarRating />
       <div className="medium"><h2>{product.name}</h2></div>
       <Price />
       <Styles />

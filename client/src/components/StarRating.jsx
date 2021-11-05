@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
-import { ReviewsContext } from './reviews/Reviews.jsx';
+import { AppContext } from './App.jsx';
 
 export default function StarRating(props) {
-  const { averageStars } = useContext(ReviewsContext);
-  console.log(averageStars);
+  const { averageStars } = useContext(AppContext);
   // props should have a single property named rating that is a value between 1 and 5
   function makeStyle() {
     if (props.rating) {
