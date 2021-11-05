@@ -11,13 +11,14 @@ export default function Reviews(props) {
   // example: const [count, setCount] = useState(0);
 
   const [allReviews, setAllReviews] = useState([]);
+  const [totalReviews, setTotalReviews] = useState(3);
   const [reviewCount, setReviewCount] = useState(2);
   const [reviewSort, setReviewSort] = useState('relevant');
   const [moreReviews, setMoreReviews] = useState({ pointerEvents: 'auto' });
-  const [totalReviews, setTotalReviews] = useState(0);
   const [reviewRatings, setReviewRatings] = useState({});
   const [reviewRecommendation, setReviewRecommendation] = useState(0);
   const [totalRecs, setTotalRecs] = useState(0);
+  const [averageStars, setAverageStars] = useState(0);
   let shownReviews = allReviews.slice(0, reviewCount);
 
   function fetchAllReviews() {
@@ -34,12 +35,21 @@ export default function Reviews(props) {
     axios
       .get('/reviews/meta?product_id=44388')
       .then((data) => {
+        console.log(data.data);
         setReviewRatings(data.data.ratings);
         const falseRecs = Number(data.data.recommended.false);
         const trueRecs = Number(data.data.recommended.true);
         const percentRec = trueRecs / (trueRecs + falseRecs);
         setReviewRecommendation(Math.floor(percentRec * 100));
         setTotalRecs(falseRecs + trueRecs);
+        const results = data.data.ratings;
+        const resultsKeys = Object.keys(results);
+        let weightedAvg = 0;
+        // iterate over results.keys
+        for (let i = 0; i < resultsKeys.length; i++) {
+          weightedAvg += resultsKeys[i] * Number(results[resultsKeys[i]]);
+        }
+        setAverageStars(Math.round(weightedAvg / (trueRecs + falseRecs) * 10) / 10);
       });
   }
 
@@ -59,12 +69,16 @@ export default function Reviews(props) {
   useEffect(() => {
     fetchAllReviews();
     // fetchTestData();
+    if (reviewCount >= totalReviews) {
+      console.log(totalReviews);
+      setMoreReviews({ display: 'none' });
+    }
   }, [reviewCount, reviewSort]);
 
   return (
     <div onClick={(e) => { props.interactionHandler(e, 'Ratings and Reviews'); }}>
       <ReviewsContext.Provider value={{
-        allReviews, reviewSort, reviewRatings, totalRecs,
+        allReviews, reviewSort, reviewRatings, totalRecs, averageStars,
       }}
       >
         <h1 id="reviewTitle">Ratings and Reviews</h1>
@@ -73,10 +87,10 @@ export default function Reviews(props) {
           <div id="reviewsLeft">
             <div id="reviewProductStars">
               <div id="reviewsStarAverage">
-                3.5
+                {averageStars}
               </div>
               <div id="starGraph">
-                5 stars graph
+                <StarRating />
               </div>
             </div>
             <div id="recommendationPercentage">
@@ -126,7 +140,6 @@ export default function Reviews(props) {
                   }}
                 >
                   Show More!
-
                 </button>
                 <button type="button">Add a Review +</button>
               </form>
