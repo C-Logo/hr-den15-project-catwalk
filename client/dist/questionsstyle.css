@@ -4,10 +4,15 @@
   box-sizing: border-box;
   padding: 5px;
   margin: 2px;
-  border: 2px solid black
+  border: 2px solid black;
 }
 #qandaheader {
   float: left
+}
+.questionslist {
+  overflow-y:visible;
+  overflow: scroll;
+  max-height: 450px;
 }
 
 .askedquestion {
