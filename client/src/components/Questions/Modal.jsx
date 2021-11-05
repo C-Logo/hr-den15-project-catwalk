@@ -14,10 +14,10 @@ export default function Modal() {
   }
   function postData() {
     axios.post('/qa/questions', {
-      body: text, name, email, product_id: 44388,
+      body: text, name, email, product_id: 44389,
     })
       .then((response) => {
-        axios.get('/qa/questions', { params: { product_id: 44388 } });
+        console.log(response);
         setShowModal(false);
       });
   }

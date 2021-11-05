@@ -12,6 +12,8 @@ export default function EachAnswer(props) {
   const [clickedOnce, setClickedOnce] = useState(false);
   const [postedHelpful, setPostedHelpful] = useState(false);
   const [reportClickedOnce, setReportClickedOnce] = useState(false);
+  const [addAnswerButton, setAddAnswerButton] = useState(true);
+  const [displayAnswerButton, setDisplayAnswerButton] = useState('See more answers');
 
   function fetchAllAnswers() {
     axios.get(`/qa/questions/${questionID}/answers`, { params: { count: 10 } })
@@ -49,8 +51,20 @@ export default function EachAnswer(props) {
         setReportClickedOnce(true);
       });
   }
+  function checkAnswerButton() {
+    if (!addAnswerButton) {
+      setDisplayAnswerButton('Collapse');
+    } else {
+      setDisplayAnswerButton('See more answers');
+    }
+  }
   function renderMoreAnswers() {
     setMoreAnswers(!moreAnswers);
+    if (displayAnswerButton === 'See more answers') {
+      setDisplayAnswerButton('Collapse');
+    } else {
+      setDisplayAnswerButton('See more answers');
+    }
   }
 
   return (
@@ -113,7 +127,7 @@ export default function EachAnswer(props) {
             ))}
         </div>
       </div>
-      <button onClick={renderMoreAnswers}>Load More Answers</button>
+      <button onClick={renderMoreAnswers}>{displayAnswerButton}</button>
     </div>
   );
 }
