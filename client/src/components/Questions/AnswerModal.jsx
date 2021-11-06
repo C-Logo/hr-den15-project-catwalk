@@ -80,7 +80,7 @@ export default function AnswerModal(props) {
           <div />
           <div>For authentication reasons, you will not be emailed</div>
           <label id="answermodalinput">Input</label>
-          <input
+          <textarea
             id="modalinputfield"
             type="text"
             placeholder="text goes here"

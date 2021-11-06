@@ -14,6 +14,7 @@ export default function EachAnswer(props) {
   const [reportClickedOnce, setReportClickedOnce] = useState(false);
   const [addAnswerButton, setAddAnswerButton] = useState(true);
   const [displayAnswerButton, setDisplayAnswerButton] = useState('See more answers');
+  const [reported, setReported] = useState('Report');
 
   function fetchAllAnswers() {
     axios.get(`/qa/questions/${questionID}/answers`, { params: { count: 10 } })
@@ -43,20 +44,13 @@ export default function EachAnswer(props) {
       });
   }
   function reportAnswer(e) {
+    setReported('Reported');
     const currentId = e.target.parentNode.id;
-    console.log('current', currentId);
     axios.put(`/qa/answers/${currentId}/report`, { answer_id: currentId })
       .then((response) => {
         console.log(response);
         setReportClickedOnce(true);
       });
-  }
-  function checkAnswerButton() {
-    if (!addAnswerButton) {
-      setDisplayAnswerButton('Collapse');
-    } else {
-      setDisplayAnswerButton('See more answers');
-    }
   }
   function renderMoreAnswers() {
     setMoreAnswers(!moreAnswers);
@@ -86,16 +80,21 @@ export default function EachAnswer(props) {
                 {' '}
                 {dateReformat(qanswer.date)}
                 {' '}
+                &nbsp;
+                <span> | </span>
+                &nbsp;
                 <span> Helpful? </span>
-                <br />
-                <span> Yes </span>
+                &nbsp;
+                <u> Yes </u>
                 <span onClick={clickedOnce ? null : (e) => { handleAnswerOnClick(e); }}>
                   (
                   {qanswer.helpfulness}
                   )
                 </span>
+                &nbsp;
                 <span> | </span>
-                <span onClick={reportClickedOnce ? null : (e) => { reportAnswer(e); }}>Report</span>
+                &nbsp;
+                <span onClick={reportClickedOnce ? null : (e) => { reportAnswer(e); }}>{reported}</span>
               </div>
             </div>
           ))
@@ -112,18 +111,20 @@ export default function EachAnswer(props) {
                   {' '}
                   {dateReformat(qanswer.date)}
                   {' '}
+                  &nbsp;
+                  <div> | </div>
+                  &nbsp;
                   <span> Helpful? </span>
-                  <span> Yes </span>
+                  &nbsp;
+                  <u> Yes </u>
                   <span onClick={clickedOnce ? null : (e) => { handleAnswerOnClick(e); }}>
                     (
                     {qanswer.helpfulness}
                     )
                   </span>
                   <span> | </span>
-                  <br />
+                  &nbsp;
                   <span onClick={reportClickedOnce ? null : (e) => { reportAnswer(e); }}>Report</span>
-                  {/* thinking here could make a toggle that after click, changes
-                to a span that says 'thanks for reporting!' */}
                 </div>
               </div>
             ))}

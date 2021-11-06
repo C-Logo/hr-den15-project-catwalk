@@ -40,21 +40,22 @@ export default function EachQuestion(props) {
         <div className="indivquestionheader">Q:</div>
         <div className="indivquestion">
           {question}
-          {}
           <EachAnswer answer={props.question.answers} id={props.question.question_id} />
         </div>
       </div>
       <div className="Helpfulq">
         <div> Helpful? </div>
-        <br />
+        &nbsp;
         <div onClick={clickedOnce ? null : handleQuestionOnClick}>
           Yes
           (
           {helpfulQuestionYes}
           )
         </div>
+        &nbsp;
         <div> | </div>
-        <div onClick={showModalWindow}> Add answer </div>
+        &nbsp;
+        <u onClick={showModalWindow}> Add answer </u>
       </div>
     </div>
   );

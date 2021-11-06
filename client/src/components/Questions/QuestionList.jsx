@@ -3,9 +3,8 @@ import { QuestionContext } from './Questions.jsx';
 import EachQuestion from './EachQuestion.jsx';
 
 export default function QuestionList(props) {
-  const { questionArray } = useContext(QuestionContext);
+  const { questionArray, arrayIndex } = useContext(QuestionContext);
   const { showMoreQuestions } = useContext(QuestionContext);
-  // const defaultQuestions = questionArray.slice(0, 4);
   const [searchTerm, setSearchTerm] = useState('');
   const [searching, setSearching] = useState(false);
   const [foundQuestions, setFoundQuestions] = useState([]);
@@ -33,8 +32,9 @@ export default function QuestionList(props) {
   }
 
   const defaultQuestions = questionArray.map((question, index) => {
-    if (index < 4 || !showMoreQuestions) {
-      return (<div key={question.question_id}><EachQuestion question={question} /></div>);
+    if (index <= arrayIndex) {
+      return (
+        <div key={question.question_id}><EachQuestion question={question} /></div>);
     }
   });
 

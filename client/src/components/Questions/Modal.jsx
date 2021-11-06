@@ -8,7 +8,7 @@ export default function Modal() {
   const [text, setText] = useState('');
   const [email, setEmail] = useState('');
   const [productID, setProductID] = useState(0);
-  const [productName, setProductName] = useState('Camo');
+  const [productName, setProductName] = useState('Camo Onesie');
 
   function closeWindow() {
     setShowModal(!showModal);
@@ -77,8 +77,9 @@ export default function Modal() {
           <div />
           <div>For authentication reasons, you will not be emailed</div>
           <div />
-          <label id="modalinput">Input</label>
-          <input
+          <label id="modalinput">Input*</label>
+          <br />
+          <textarea
             id="modalinputfield"
             type="text"
             value={text}
