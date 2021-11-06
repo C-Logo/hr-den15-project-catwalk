@@ -34,7 +34,6 @@ export default function Questions(props) {
       setMoreQuestionsButton(false);
     }
     setArrayIndex(arrayIndex += 2);
-    // setShowMoreQuestions(!showMoreQuestions);
   }
   function showModalWindow() {
     setShowModal(!showModal);
@@ -55,8 +54,8 @@ export default function Questions(props) {
         <div />
         <div className="questionslist"><QuestionList /></div>
         <div><Modal /></div>
-        <button onClick={getMoreQuestions}>MORE ANSWERED QUESTIONS</button>
-        {moreQuestionsButton ? <button onClick={showModalWindow}>ADD A QUESTION +</button> : <span />}
+        {moreQuestionsButton ? <button onClick={getMoreQuestions}>MORE ANSWERED QUESTIONS</button> : <span />}
+        <button onClick={showModalWindow}>ADD A QUESTION +</button>
       </div>
     </QuestionContext.Provider>
   );
