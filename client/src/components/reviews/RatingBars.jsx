@@ -23,8 +23,9 @@ export default function RatingBars() {
     };
     if (reviewRatings[i]) {
       ratingInformation.count = reviewRatings[i];
-      if (ratingInformation.count > max) {
-        max = ratingInformation.count;
+      // debugger;
+      if (Number(ratingInformation.count) > max) {
+        max = Number(ratingInformation.count);
       }
     }
     ratingArray.push(ratingInformation);

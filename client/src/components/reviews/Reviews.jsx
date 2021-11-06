@@ -6,6 +6,7 @@ import Review from './Review.jsx';
 import { AppContext } from '../App.jsx';
 import CharacteristicBars from './CharacteristicBars.jsx';
 import StarFilterButton from './StarFilterButton.jsx';
+import ModalSetUp from './ModelSetUp.jsx';
 
 export const ReviewsContext = React.createContext();
 
@@ -27,6 +28,7 @@ export default function Reviews(props) {
   const [ratingFilteredReviews, setRatingFilteredReviews] = useState([]);
   const [ratingSort, setRatingSort] = useState(0);
   const [ratingCharacteristics, setRatingCharacteristics] = useState({});
+  const [showModal, setShowModal] = useState(false);
 
   function fetchAllReviews() {
     axios
@@ -119,10 +121,10 @@ export default function Reviews(props) {
     } else if (reviewCount < totalReviews) {
       setMoreReviews({ pointerEvents: 'auto' });
     }
-  }, [reviewCount, reviewSort, reviewReported, ratingSort, totalReviews]);
+  }, [reviewCount, reviewSort, reviewReported, ratingSort, totalReviews, showModal]);
 
   return (
-    <div onClick={(e) => { props.interactionHandler(e, 'Ratings and Reviews'); }}>
+    <div onClick={(e) => { props.interactionHandler(e, 'Ratings and Reviews'); }} id="ratingsAndReviews">
       <ReviewsContext.Provider value={{
         allReviews,
         reviewSort,
@@ -137,6 +139,8 @@ export default function Reviews(props) {
         shownReviews,
         ratingCharacteristics,
         setRatingSort,
+        showModal,
+        setShowModal,
       }}
       >
         <h1 id="reviewTitle">Ratings and Reviews</h1>
@@ -180,6 +184,7 @@ export default function Reviews(props) {
                 ))}
               </div>
               <form>
+                <ModalSetUp />
                 <button
                   type="button"
                   style={moreReviews}
@@ -190,7 +195,7 @@ export default function Reviews(props) {
                 >
                   Show More!
                 </button>
-                <button type="button">Add a Review +</button>
+                <button type="button" onClick={() => { setShowModal(!showModal); }}>Add a Review +</button>
               </form>
             </div>
           </div>
