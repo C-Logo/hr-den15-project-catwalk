@@ -5,7 +5,6 @@ import EachAnswer from './EachAnswer.jsx';
 import QuestionList from './QuestionList.jsx';
 import Modal from './Modal.jsx';
 import AnswerModal from './AnswerModal.jsx';
-import SearchQuestion from './QuestionSearch.jsx';
 
 export const QuestionContext = React.createContext();
 
@@ -43,9 +42,9 @@ export default function Questions(props) {
     }}
     >
       <div onClick={(e) => { props.interactionHandler(e, 'Questions and Answers'); }} id="questioncontainer">
-        <div id="qandaheader">QUESTIONS & ANSWERS</div>
+        <h2>QUESTIONS & ANSWERS</h2>
         <div />
-        <div><SearchQuestion /></div>
+        {/* <div><SearchQuestion /></div> */}
         {/* <div><EachQuestion /></div> */}
         {/* <div><EachAnswer /></div> */}
         <div className="questionslist"><QuestionList /></div>

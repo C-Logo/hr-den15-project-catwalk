@@ -87,6 +87,7 @@ export default function EachAnswer(props) {
                 {dateReformat(qanswer.date)}
                 {' '}
                 <span> Helpful? </span>
+                <br />
                 <span> Yes </span>
                 <span onClick={clickedOnce ? null : (e) => { handleAnswerOnClick(e); }}>
                   (
@@ -119,6 +120,7 @@ export default function EachAnswer(props) {
                     )
                   </span>
                   <span> | </span>
+                  <br />
                   <span onClick={reportClickedOnce ? null : (e) => { reportAnswer(e); }}>Report</span>
                   {/* thinking here could make a toggle that after click, changes
                 to a span that says 'thanks for reporting!' */}

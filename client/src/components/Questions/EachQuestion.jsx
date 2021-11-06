@@ -35,7 +35,7 @@ export default function EachQuestion(props) {
 
   return (
     <div className="mainquestion">
-      <AnswerModal showModal={showAnswerModal} setModal={setShowAnswerModal} />
+      <AnswerModal showModal={showAnswerModal} setModal={setShowAnswerModal} questionBody={question} />
       <div className="questionline">
         <div className="indivquestionheader">Q:</div>
         <div className="indivquestion">
@@ -46,6 +46,7 @@ export default function EachQuestion(props) {
       </div>
       <div className="Helpfulq">
         <div> Helpful? </div>
+        <br />
         <div onClick={clickedOnce ? null : handleQuestionOnClick}>
           Yes
           (

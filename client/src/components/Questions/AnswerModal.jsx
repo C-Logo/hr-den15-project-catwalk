@@ -9,14 +9,15 @@ export default function AnswerModal(props) {
   const [text, setText] = useState('');
   const [email, setEmail] = useState('');
   const [productID, setProductID] = useState(44389);
+  const [productName, setProductName] = useState('Camo');
   const [question_id, setQuestion_Id] = useState(367407);
+  const question_body = props.questionBody;
 
   function postData() {
     axios.post(`/qa/questions/${question_id}/answers`, {
       body: text, name, email, photos: [],
     })
       .then((response) => {
-        console.log(response);
         setShow(!show);
       });
   }
@@ -27,17 +28,36 @@ export default function AnswerModal(props) {
     setEmail(e.target.value);
   }
   function onTextChange(e) {
-    console.log('text', text);
     setText(e.target.value);
   }
 
   function closeWindow() {
     setShow(!show);
   }
+
+  function checkForValidFields() {
+    if (email.includes('@' && '.') && (name.length > 0 && email.length > 0 && text.length > 0)) {
+      postData();
+    } else if (name.length < 1) {
+      alert('You must enter the following: Nickname');
+    } else if (text.length < 1) {
+      alert('You must enter the following: Input');
+    } else if (email.length < 1) {
+      alert('You must enter the following: Email');
+    } else {
+      alert('Email is not valid');
+    }
+  }
   return (show
     ? (
       <div className="answermodal">
-        <div className="modalheader">Add An Answer</div>
+        <div className="modalheader">Submit an Answer</div>
+        <div>
+          {productName}
+          :
+          {' '}
+          {question_body}
+        </div>
         <form>
           <label id="answermodalnickname">Nickname *</label>
           <input
@@ -48,6 +68,7 @@ export default function AnswerModal(props) {
             onChange={onNameChange}
           />
           <div />
+          <div>For privacy reasons, do not use your full name or email address</div>
           <label id="answermodalemail">Email *</label>
           <input
             id="email"
@@ -57,6 +78,7 @@ export default function AnswerModal(props) {
             onChange={onEmailChange}
           />
           <div />
+          <div>For authentication reasons, you will not be emailed</div>
           <label id="answermodalinput">Input</label>
           <input
             id="modalinputfield"
@@ -72,7 +94,7 @@ export default function AnswerModal(props) {
         <div />
         <span> * Mandatory field </span>
         <div />
-        <button className="modalsubmitbutton" onClick={postData}>Submit</button>
+        <button className="modalsubmitbutton" onClick={checkForValidFields}>Submit</button>
         <div />
         <button className="modalclosebutton" onClick={closeWindow}>Close</button>
       </div>

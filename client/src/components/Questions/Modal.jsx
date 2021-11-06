@@ -8,6 +8,7 @@ export default function Modal() {
   const [text, setText] = useState('');
   const [email, setEmail] = useState('');
   const [productID, setProductID] = useState(0);
+  const [productName, setProductName] = useState('Camo');
 
   function closeWindow() {
     setShowModal(!showModal);
@@ -31,10 +32,29 @@ export default function Modal() {
     console.log('text', text);
     setText(e.target.value);
   }
+
+  function checkForValidFields() {
+    if (email.includes('@' && '.') && (name.length > 0 || email.length > 0 || text.length > 0)) {
+      postData();
+    } else if (name.length < 1) {
+      alert('You must enter the following: Nickname');
+    } else if (text.length < 1) {
+      alert('You must enter the following: Input');
+    } else if (email.length < 1) {
+      alert('You must enter the following: Email');
+    } else {
+      alert('Email is not valid');
+    }
+  }
   return (showModal
     ? (
       <div className="modal">
-        <div className="modalheader">Add A Question</div>
+        <div className="modalheader">Ask Your Question</div>
+        <div>
+          About the
+          {' '}
+          {productName}
+        </div>
         <form>
           <label id="modalnickname">Nickname *</label>
           <input
@@ -45,6 +65,7 @@ export default function Modal() {
             onChange={onNameChange}
           />
           <div />
+          <div>For privacy reasons, do not use your full name or email address</div>
           <label id="modalemail">Email *</label>
           <input
             id="email"
@@ -54,14 +75,14 @@ export default function Modal() {
             onChange={onEmailChange}
           />
           <div />
-          <div>For privacy reasons, do not use your full name or email address</div>
+          <div>For authentication reasons, you will not be emailed</div>
           <div />
           <label id="modalinput">Input</label>
           <input
             id="modalinputfield"
             type="text"
             value={text}
-            placeholder="text goes here"
+            placeholder="Why did you like the product or not?"
             maxLength="1000"
             onChange={onTextChange}
           />
@@ -71,7 +92,7 @@ export default function Modal() {
         <div />
         <span> * Mandatory field </span>
         <div />
-        <button className="modalsubmitbutton" onClick={postData}>Submit</button>
+        <button className="modalsubmitbutton" onClick={checkForValidFields}>Submit</button>
         <div />
         <button className="modalclosebutton" onClick={closeWindow}>Close</button>
       </div>
