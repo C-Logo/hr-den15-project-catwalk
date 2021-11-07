@@ -12,10 +12,12 @@ export default function AnswerModal(props) {
   const [productName, setProductName] = useState('Camo');
   const [question_id, setQuestion_Id] = useState(367407);
   const question_body = props.questionBody;
+  const [photos, setPhotos] = useState([]);
+  const [selectedPhoto, setSelectedPhoto] = useState(false);
 
   function postData() {
     axios.post(`/qa/questions/${question_id}/answers`, {
-      body: text, name, email, photos: [],
+      body: text, name, email, photos,
     })
       .then((response) => {
         setShow(!show);
@@ -34,6 +36,13 @@ export default function AnswerModal(props) {
   function closeWindow() {
     setShow(!show);
   }
+  function fileSelected(e) {
+    setPhotos(e.target.files[0]);
+  }
+
+  function handleUpload() {
+    setSelectedPhoto(true);
+  }
 
   function checkForValidFields() {
     if (email.includes('@' && '.') && (name.length > 0 && email.length > 0 && text.length > 0)) {
@@ -47,6 +56,7 @@ export default function AnswerModal(props) {
     } else {
       alert('Email is not valid');
     }
+    closeWindow();
   }
   return (show
     ? (
@@ -90,10 +100,22 @@ export default function AnswerModal(props) {
           />
         </form>
         <div />
-        <button className="modalphotobutton">Upload a photo</button>
+        <button className="modalphotobutton" onClick={handleUpload}>Upload a photo</button>
         <div />
         <span> * Mandatory field </span>
         <div />
+        <div>
+          { selectedPhoto
+            ? (
+              <div>
+                <input
+                  type="file"
+                  onChange={fileSelected}
+                />
+              </div>
+            )
+            : <div />}
+        </div>
         <button className="modalsubmitbutton" onClick={checkForValidFields}>Submit</button>
         <div />
         <button className="modalclosebutton" onClick={closeWindow}>Close</button>

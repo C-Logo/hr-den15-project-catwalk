@@ -34,7 +34,7 @@ export default function Modal() {
   }
 
   function checkForValidFields() {
-    if (email.includes('@' && '.') && (name.length > 0 || email.length > 0 || text.length > 0)) {
+    if (email.includes('@' && '.') && (name.length > 0 && email.length > 0 && text.length > 0)) {
       postData();
     } else if (name.length < 1) {
       alert('You must enter the following: Nickname');
