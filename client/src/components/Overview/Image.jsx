@@ -84,7 +84,7 @@ export default function Image() {
         style={{
           backgroundSize: extend ? 'cover' : 'contain',
           backgroundImage: `url(${mainPhoto})`,
-          cursor: extend ? 'cell' : 'auto',
+          cursor: extend ? 'cell' : '',
         }}
       >
         {styleThumbnails ? <ImageThumbnails /> : ''}
@@ -93,7 +93,7 @@ export default function Image() {
           role="button"
           tabIndex={0}
           style={{
-            left: extend ? '10%' : '22%',
+            left: extend ? '10%' : '18%',
             display: zoomedIn ? 'none' : 'inherit',
           }}
           onClick={(event) => {
