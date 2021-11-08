@@ -305,3 +305,15 @@ display:inline-block;
   color: blue;
   text-decoration: underline;
 }
+
+
+/* ---------------REVIEW MODAL--------------*/
+
+.addReviewModal {
+  border: solid 5px black;
+  border-radius: 50px;
+  height: 75%;
+  width: 50%;
+  min-width: 225px;
+  background: #f1f1f1;
+}
