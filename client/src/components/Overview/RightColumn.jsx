@@ -24,8 +24,11 @@ export default function RightColumn() {
     <div className="overview-right">
       <div className="small"> </div>
       <div className="small" />
-      {/* <div className="small">{product.category}</div> */}
-      <StarRating />
+      <div className="small">{product.category}</div>
+      <span className="overview-flex">
+        <StarRating />
+        <a className="overview-link" href="#reviewTitle">See all reviews</a>
+      </span>
       <div className="medium"><h2>{product.name}</h2></div>
       <Price />
       <Styles />
