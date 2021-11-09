@@ -25,9 +25,10 @@ test('Loads the Questions and Answer header', async () => {
         <div id="mainContainer">
           <Overview interactionHandler={interactionHandler} />
           <Questions interactionHandler={interactionHandler} />
+          <Reviews interactionHandler={interactionHandler} />
         </div>
       )}
-    </App>);
+                       </App>);
     expect(component.getByText('QUESTIONS & ANSWERS')).toBeInTheDocument();
   });
 });
