@@ -9,7 +9,7 @@
 }
 
 #reviewsRight {
-  margin-left: 250px;
+  margin-left: 300px;
 }
 
 .starFilterButton {
@@ -33,7 +33,7 @@
 
 #reviewsLeft {
   float: left;
-  max-width: 250px;
+  max-width: 300px;
 }
 
 #reviewProductStars {
@@ -191,6 +191,10 @@ display:inline-block;
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
+  font-size:xx-small;
+}
+.breakdownAxisDesc {
+  width: 20%;
 }
 
 .breakdownGraphArrow {
@@ -310,10 +314,116 @@ display:inline-block;
 /* ---------------REVIEW MODAL--------------*/
 
 .addReviewModal {
+  position: relative;
   border: solid 5px black;
   border-radius: 50px;
-  height: 75%;
+  height: 95%;
   width: 50%;
   min-width: 225px;
-  background: #f1f1f1;
+  background: #ffffff;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: left;
+  margin: auto;
+}
+
+#rmTop {
+  max-height: 90%;
+}
+
+.rmElement {
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+#rmTitle {
+  text-align: left;
+}
+
+#rmStarSelection {
+  margin-left: 0;
+  width: 125px;
+}
+
+#rmStarSelectionText {
+  width: 125px;
+}
+
+#rmDescTable {
+  width: 91%;
+  text-align: center;
+}
+
+#rmBody, a, #rmSummary, a, #rmPhotos, a, #rmEmail {
+  text-align:start;
+  resize: none;
+  width: 90%;
+  font-family: "adobe-clean", sans-serif;
+}
+
+#rmSummary, a, #rmBody {
+  margin-bottom: 0px;
+}
+
+#rmBody, a, #rmSummary {
+  margin-top: 0px;
+}
+
+#rmPhotoSection {
+  display: flex;
+  width: 91%;
+}
+
+#rmPhotos{
+  margin-top: 0px;
+}
+
+#rmPhotoButton {
+  margin-top: 0px;
+  width: 100px;
+  height: 21px;
+}
+
+#rmPhotoUrls {
+  color:green;
+}
+
+.addedPhotosContainer {
+  display: flex;
+}
+
+.addedPhotoButton {
+  background-color: transparent;
+  border: solid 1px transparent;
+  text-align: center;
+  font-size: small;
+  margin-right: none;
+  color: red;
+}
+
+.addedPhotoButton:hover {
+  border: solid 1px black;
+}
+
+.addedPhotosUrl {
+  margin: auto;
+}
+
+#rmFooter {
+  position: absolute;
+  bottom: 0px;
+  width: calc(100% - 100px);
+  height: 90px;
+}
+
+#rmButtons {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.rmButton {
+  font-size: x-large;
 }

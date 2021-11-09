@@ -28,7 +28,8 @@ export default function Reviews(props) {
   const [ratingFilteredReviews, setRatingFilteredReviews] = useState([]);
   const [ratingSort, setRatingSort] = useState(0);
   const [ratingCharacteristics, setRatingCharacteristics] = useState({});
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(true);
+  const [productId, setProductId] = useState('44388');
 
   function fetchAllReviews() {
     axios
@@ -59,7 +60,6 @@ export default function Reviews(props) {
     axios
       .get('/reviews/meta?product_id=44388')
       .then((data) => {
-        // console.log(data.data);
         setRatingCharacteristics(data.data.characteristics);
         setReviewRatings(data.data.ratings);
         const falseRecs = Number(data.data.recommended.false);
@@ -141,6 +141,7 @@ export default function Reviews(props) {
         setRatingSort,
         showModal,
         setShowModal,
+        productId,
       }}
       >
         <h1 id="reviewTitle">Ratings and Reviews</h1>
