@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "react-dev": "webpack -d --watch",
     "start": "nodemon server/index.js"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   },
   "repository": {
     "type": "git",
@@ -20,9 +23,13 @@
   },
   "homepage": "https://github.com/C-Logo/hr-den15-project-catwalk#readme",
   "dependencies": {
-    "axios": "^0.21.4",
+    "@babel/plugin-transform-runtime": "^7.16.0",
+    "@testing-library/jest-dom": "^5.15.0",
+    "@testing-library/react": "^12.1.2",
+    "axios": "^0.24.0",
     "express": "^4.17.1",
     "http-proxy-middleware": "^2.0.1",
+    "jest": "^27.3.1",
     "jquery": "^3.5.1",
     "mysql": "^2.18.1",
     "needle": "^2.6.0",
