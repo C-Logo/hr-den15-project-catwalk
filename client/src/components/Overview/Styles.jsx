@@ -12,6 +12,7 @@ export default function Styles() {
           return <div
             className="overview-styles-circle overview-flex"
             id={`overview-style-${index}`}
+            data-testid="overview-style-1"
             style={{
               backgroundImage: `url(${item.photos[0].thumbnail_url})`,
               border: (currentStyle.style_id === item.style_id) ? '2px solid orange' : '1px solid black',
