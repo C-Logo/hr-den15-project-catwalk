@@ -7,33 +7,63 @@ export default function CharacteristicBars() {
   // make an array of descriptors to go with characteristics
   const descriptors = {
     Fit: {
-      title: 'Size',
+      title: 'Fit',
       breakdown: [
-        'Too Small',
+        'Runs tight',
+        'Runs slightly tight',
         'Perfect',
-        'Too Large',
+        'Runs slightly long',
+        'Runs long',
       ],
     },
     Length: {
       title: 'Length',
       breakdown: [
-        'Too Short',
+        'Runs short',
+        'Runs slightly short',
         'Perfect',
-        'Too Long',
+        'Runs slightly long',
+        'Runs long',
       ],
     },
     Comfort: {
       title: 'Comfort',
       breakdown: [
-        'Poor',
-        'Great',
+        'Uncomfortable',
+        'Slightly uncomfortable',
+        'Ok',
+        'Comfortable',
+        'Perfect',
       ],
     },
     Quality: {
       title: 'Quality',
       breakdown: [
         'Poor',
-        'Great',
+        'Below average',
+        'What I expect',
+        'Pretty great',
+        'Perfect',
+      ],
+    },
+    Size: {
+      title: 'Size',
+      breakdown: [
+        'A size too small',
+        '1/2 a size too small',
+        'Perfect',
+        '1/2 a size too big',
+        'A size too big',
+      ],
+    },
+    Width: {
+      title: 'Width',
+      breakdown: [
+        'Too narrow',
+        'Slightly narrow',
+        'Perfect',
+        'Slightly wide',
+        'Too wide',
       ],
     },
   };

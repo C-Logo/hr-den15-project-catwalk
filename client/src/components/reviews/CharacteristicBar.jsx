@@ -15,7 +15,7 @@ export default function CharacteristicBar(props) {
       </div>
       <div className="breakdownAxis">
         {props.characteristicInfo.breakdown.map((desc, index) => (
-          <div key={index}>{desc}</div>
+          <div key={index} className="breakdownAxisDesc">{desc}</div>
         ))}
       </div>
     </>
