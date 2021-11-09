@@ -1,11 +1,12 @@
 import '@testing-library/jest-dom/extend-expect';
-import { render, fireEvent } from '@testing-library/react';
+import {
+  render, fireEvent, queryByAttribute, screen,
+} from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import React from 'react';
 import App from '../App.jsx';
-import Overview from '../Overview/Overview.jsx';
-import Questions from './Questions.jsx';
-import Reviews from '../reviews/Reviews.jsx';
+import Overview from './Overview.jsx';
+import Questions from '../Questions/Questions.jsx';
 
 jest.mock('react', () => {
   const react = jest.requireActual('react');
@@ -27,7 +28,10 @@ test('Loads the Questions and Answer header', async () => {
           <Questions interactionHandler={interactionHandler} />
         </div>
       )}
-    </App>);
-    expect(component.getByText('QUESTIONS & ANSWERS')).toBeInTheDocument();
+                       </App>);
+
+    const handleClick = jest.fn();
+    fireEvent.click(screen.getByText('Add to Cart'));
+    expect(component.getByText('Add to Cart')).toBeInTheDocument();
   });
 });
