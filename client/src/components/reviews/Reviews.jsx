@@ -28,7 +28,7 @@ export default function Reviews(props) {
   const [ratingFilteredReviews, setRatingFilteredReviews] = useState([]);
   const [ratingSort, setRatingSort] = useState(0);
   const [ratingCharacteristics, setRatingCharacteristics] = useState({});
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const [productId, setProductId] = useState('44388');
 
   function fetchAllReviews() {
