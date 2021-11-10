@@ -19,7 +19,7 @@ export default function Image() {
     } else if ((currentStyle.photoIndex + amount) === -1) {
       index = currentStyle.photos.length - 1;
     } else {
-      index = currentStyle.photoIndex + amount;
+      index = currentStyle.photoIndex || 1 + amount;
     }
     document.getElementById(`overview-thumbnail-${index}`).click();
   };

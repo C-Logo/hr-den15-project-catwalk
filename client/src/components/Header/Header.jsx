@@ -13,7 +13,7 @@ export default function Header() {
 
   return (
     <div className="header">
-      <img className="overview-header-image" src="./img/image.webp" alt="company logo" />
+      {/* <img className="overview-header-image" src="./img/image.webp" alt="company logo" /> */}
       <span className="flex-item">
         <div className="overview-header-title">Project Catwalk</div>
         <div className="overview-header-cart">by: C-Logo</div>
