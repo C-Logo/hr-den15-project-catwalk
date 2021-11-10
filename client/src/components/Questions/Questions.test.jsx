@@ -32,3 +32,21 @@ test('Loads the Questions and Answer header', async () => {
     expect(component.getByText('QUESTIONS & ANSWERS')).toBeInTheDocument();
   });
 });
+
+test('Loads a new question modal', async () => {
+  let component;
+
+  await act(async () => {
+    component = render(<App>
+      {(interactionHandler) => (
+        <div id="mainContainer">
+          <Overview interactionHandler={interactionHandler} />
+          <Questions interactionHandler={interactionHandler} />
+        </div>
+      )}
+    </App>);
+    const addAQuestionButton = component.getByTestId('questionbutton')
+    fireEvent.click(addAQuestionButton)
+    expect(component.getByText('Nickname')).toBeInTheDocument();
+  });
+});
