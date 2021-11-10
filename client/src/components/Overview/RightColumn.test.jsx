@@ -10,34 +10,39 @@ import Questions from '../Questions/Questions.jsx';
 
 jest.mock('react', () => {
   const react = jest.requireActual('react');
-
   return {
     ...react,
     useRef: () => null,
   };
 });
 
-test('Make sure Add To Cart Loads', async () => {
-  let component;
-  await act(async () => {
-    component = render(
-      <App>
-        {(interactionHandler) => (
-          <div id="mainContainer">
-            <Overview interactionHandler={interactionHandler} />
-            <Questions interactionHandler={interactionHandler} />
-          </div>
-        )}
-      </App>,
-    );
+describe('Right Column Tests', () => {
+  // it('theFunctionFail', () => {
+  //   expect.assertions(1);
+  //   return expect();
+  // });
+
+  test('Make sure Add To Cart Loads', async () => {
+    let component;
+    await act(async () => {
+      component = render(
+        <App>
+          {(interactionHandler) => (
+            <div id="mainContainer">
+              <Overview interactionHandler={interactionHandler} />
+              <Questions interactionHandler={interactionHandler} />
+            </div>
+          )}
+        </App>,
+      );
+    });
+
+    expect(component.getByText('Add to Cart')).toBeInTheDocument();
+    // expect(component.getByText('Add to Cart')).toBeDisabled;
+    // expect(component.getByText('Add to Cart')).toBeEnabled;
+    // const handleClick = jest.fn();
+    // component.getByText('Add to Cart').focus();
+
+    // fireEvent.click(document.activeElement);
   });
-
-  expect().toBeFalsy;
-  // expect(component.getByText('Add to Cart')).toBeInTheDocument();
-  // expect(component.getByText('Add to Cart')).toBeDisabled;
-  // expect(component.getByText('Add to Cart')).toBeEnabled;
-  // const handleClick = jest.fn();
-  // component.getByText('Add to Cart').focus();
-
-  // fireEvent.click(document.activeElement);
 });
