@@ -63,8 +63,9 @@ export default function AnswerModal(props) {
           <input
             id="nickname"
             type="text"
-            placeholder="Example: jackson11!"
+            placeholder="Example: jack543!!"
             value={name}
+            maxLength="60"
             onChange={onNameChange}
           />
           <div />
@@ -75,6 +76,7 @@ export default function AnswerModal(props) {
             type="text"
             placeholder="Example: jackson11@email.com"
             value={email}
+            maxLength="60"
             onChange={onEmailChange}
           />
           <div />
@@ -85,6 +87,7 @@ export default function AnswerModal(props) {
             type="text"
             placeholder="text goes here"
             maxLength="1000"
+            maxLength="60"
             value={text}
             onChange={onTextChange}
           />

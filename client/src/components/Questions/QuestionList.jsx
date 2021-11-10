@@ -10,20 +10,20 @@ export default function QuestionList(props) {
 
   function runSearch() {
     const currentMatches = questionArray.map((question) => {
-      setSearching(true);
       if (question.question_body.toLowerCase().includes(searchTerm)) {
         return (
           <div key={question.question_id}><EachQuestion question={question} /></div>
-        );
-      }
-    });
+          );
+        }
+      });
     setFoundQuestions(currentMatches);
   }
 
   function startSearch(e) {
     setSearchTerm(e.target.value.toLowerCase());
-    if (searchTerm.length > 1) {
+    if (searchTerm.length >= 2) {
       runSearch();
+      setSearching(true);
     }
     if (searchTerm.length < 3) {
       setSearching(false);
