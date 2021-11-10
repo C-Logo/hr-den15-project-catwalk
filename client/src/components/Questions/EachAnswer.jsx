@@ -42,15 +42,13 @@ export default function EachAnswer(props) {
     <div className="indivanswer">
       <div className="answerline">
         <div>
-          A:
-          {' '}
           {answerBody}
 
           <div className="helpful">
             by
             {' '}
             {author}
-            ,
+            ,                &nbsp;
             {dateReformat(answerDate)}
                 &nbsp;
             <span> | </span>

@@ -3,7 +3,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { QuestionContext } from './Questions.jsx';
 
 export default function Modal() {
-  const { showModal, setShowModal } = useContext(QuestionContext);
+  const { showModal, setShowModal, getQuestions } = useContext(QuestionContext);
   const [name, setName] = useState('');
   const [text, setText] = useState('');
   const [email, setEmail] = useState('');
@@ -18,8 +18,8 @@ export default function Modal() {
       body: text, name, email, product_id: 44389,
     })
       .then((response) => {
-        console.log(response);
         setShowModal(false);
+        getQuestions();
       });
   }
   function onNameChange(e) {
@@ -29,7 +29,6 @@ export default function Modal() {
     setEmail(e.target.value);
   }
   function onTextChange(e) {
-    console.log('text', text);
     setText(e.target.value);
   }
 
@@ -62,6 +61,7 @@ export default function Modal() {
             type="text"
             value={name}
             placeholder="Example: jackson11!"
+            maxLength="60"
             onChange={onNameChange}
           />
           <div />
@@ -72,6 +72,7 @@ export default function Modal() {
             type="text"
             value={email}
             placeholder="Example: jackson11@email.com"
+            maxLength="60"
             onChange={onEmailChange}
           />
           <div />

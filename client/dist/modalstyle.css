@@ -1,5 +1,6 @@
 .modal {
   position: relative;
+  background: rgba(0, 0, 0, 0.8);
   background-color: #F0FFFF;
   margin: auto;
   padding: 0;
@@ -8,7 +9,8 @@
   width: 90%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   animation-name: animatetop;
-  animation-duration: 0.8s
+  animation-duration: 0.8s;
+  z-index: 10;
 }
 @keyframes animatetop {
   from {top: -500px; opacity: 0}
