@@ -10,6 +10,7 @@
 
 #reviewsRight {
   margin-left: 300px;
+  width: calc(100% - 300px);
 }
 
 .starFilterButton {
@@ -255,17 +256,18 @@ display:inline-block;
 
 /* -------------INDIVIDUAL REVIEW--------------*/
 .review {
-
+  width: 100%;
 }
 
 .reviewTop {
-
+  width: 100%;
 }
 
 .reviewBody {
   text-align: left;
   height: 100px;
   min-height:fit-content;
+  width: 100%;
 }
 
 .reviewFooter {
