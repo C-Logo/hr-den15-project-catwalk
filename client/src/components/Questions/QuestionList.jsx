@@ -24,8 +24,7 @@ export default function QuestionList(props) {
     if (searchTerm.length >= 2) {
       runSearch();
       setSearching(true);
-    }
-    if (searchTerm.length < 3) {
+    } else {
       setSearching(false);
     }
   }

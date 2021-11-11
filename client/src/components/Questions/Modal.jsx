@@ -54,6 +54,8 @@ export default function Modal() {
           {' '}
           {productName}
         </div>
+        &nbsp;
+          <div />
         <form>
           <label id="modalnickname">Nickname *</label>
           <input
@@ -66,6 +68,8 @@ export default function Modal() {
           />
           <div />
           <div>For privacy reasons, do not use your full name or email address</div>
+          &nbsp;
+          <div />
           <label id="modalemail">Email *</label>
           <input
             id="email"
@@ -77,6 +81,7 @@ export default function Modal() {
           />
           <div />
           <div>For authentication reasons, you will not be emailed</div>
+          &nbsp;
           <div />
           <label id="modalinput">Input*</label>
           <br />
