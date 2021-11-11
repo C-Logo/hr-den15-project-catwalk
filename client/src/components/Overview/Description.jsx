@@ -33,8 +33,19 @@ export default function Description() {
             </span>
           </a>
         </div> */}
-          <a href="https://twitter.com/intent/tweet?button_hashtag=ProjectCatwalkfortheWin&ref_src=twsrc%5Etfw" className="twitter-hashtag-button" data-show-count="false">Tweet</a>
-          <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8" />
+          {/* <div id="widget"> */}
+          {/* <div className="btn-o" data-scribe="component:button" style="width: 73px;"> */}
+          {/* <a href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fdeveloper.twitter.com%2F&amp;ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Eshare%7Ctwgr%5E&amp;text=Guides%20%7C%20Docs%20%7C%20Twitter%20Developer%20Platform&amp;url=https%3A%2F%2Fdeveloper.twitter.com%2Fen%2Fdocs%2Ftwitter-for-websites%2Ftweet-button%2Foverview" className="btn" id="b"> */}
+          {/* <i className="twitter" /> */}
+          {/* <span className="label" id="l">Tweet</span> */}
+          {/* </a> */}
+          {/* </div> */}
+          {/* </div> */}
+          <a href="https://twitter.com/intent/tweet?button_hashtag=ProjectCatwalkfortheWin&ref_src=twsrc%5Etfw" className="twitter-hashtag-button" data-show-count="false">
+            <div className="twitter" />
+            {/* <div>#projCatwalk</div> */}
+          </a>
+          {/* <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8" /> */}
           <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore" rel="noreferrer">Facebook</a></div>
           {/* <a data-pin-do="buttonPin" data-pin-tall="true" data-pin-round="true" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fwww.flickr.com%2Fphotos%2Fkentbrew%2F6851755809%2F&media=https%3A%2F%2Ffarm8.staticflickr.com%2F7027%2F6851755809_df5b2051c9_z.jpg&description=Next%20stop%3A%20Pinterest"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_round_red_32.png" /></a> */}
         </div>

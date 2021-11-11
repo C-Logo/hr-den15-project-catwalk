@@ -6,7 +6,11 @@
   "scripts": {
     "test": "jest",
     "react-dev": "webpack -d --watch",
-    "start": "nodemon server/index.js"
+    "start": "nodemon server/index.js",
+    "errorFix:server": "rm client/dist/bundle.js && rm package-lock.json && rm -rf node_modules && mv babel.config.js c.config.js & wait",
+    "errorFix:local": "rm client/dist/bundle.js && rm package-lock.json && rm -rf node_modules && mv babel.config.js c.config.js && npm install && npm run react-dev & wait",
+    "renameBundle": "mv c.config.js babel.config.js",
+    "renameBabel": "mv babel.config.js c.config.js"
   },
   "jest": {
     "testEnvironment": "jsdom"
