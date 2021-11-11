@@ -9,7 +9,7 @@ import App from '../App.jsx';
 import Overview from './Overview.jsx';
 import Questions from '../Questions/Questions.jsx';
 
-jest.mock('axios');
+// jest.mock('axios');
 
 jest.mock('react', () => {
   const react = jest.requireActual('react');
@@ -18,6 +18,18 @@ jest.mock('react', () => {
     useRef: () => null,
   };
 });
+
+// jest.mock('../utils', () => {
+//   const product = require('../mocks/product.json');
+//   const utils = jest.requireActual('../utils');
+
+//   return (
+//     __esModule: true,
+//     ...utils,
+//     getFavorites: () => { 44388 },
+//     getFull
+//   )
+// });
 
 test('Displays Description', async () => {
   const mockData = {
