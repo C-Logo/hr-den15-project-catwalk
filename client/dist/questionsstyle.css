@@ -43,6 +43,7 @@
   float: left;
   /* width: 74%; */
   text-align: left;
+  max-width: 570px;
   /* margin: 1%; */
 }
 .Helpfulq {
