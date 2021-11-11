@@ -13,7 +13,7 @@ export default function StarFilterButton() {
     return (
       <>
         {ratingSort.map((rating, index) => (
-          <div key={index}>
+          <div className="starFilterButtonText" key={index}>
             <button type="button" name={rating} className="starFilterButton" onClick={cancelStarFilter}>X</button>
             {` ${rating} stars`}
           </div>

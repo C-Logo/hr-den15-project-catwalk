@@ -165,6 +165,9 @@ export default function Reviews(props) {
             <div id="starBarChart">
               <RatingBars />
             </div>
+            <div id="starFilters">
+              <StarFilterButton />
+            </div>
             <div id="reviewsBreakdown">
               <CharacteristicBars />
             </div>
@@ -179,7 +182,6 @@ export default function Reviews(props) {
                   <option value="helpful">Helpful</option>
                   <option value="newest">Newest</option>
                 </select>
-                <StarFilterButton />
               </div>
               <hr />
               <div id="reviewList">

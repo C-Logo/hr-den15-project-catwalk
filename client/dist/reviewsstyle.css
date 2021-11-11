@@ -10,14 +10,18 @@
 
 #reviewsRight {
   margin-left: 300px;
-  width: calc(100% - 300px);
+  width: 500px;
+}
+
+.starFilterButtonText {
+  font-size: x-small;
 }
 
 .starFilterButton {
   background-color: transparent;
   border: none;
   text-align: center;
-  font-size: small;
+  font-size: xx-small;
   margin-right: none;
   color: red;
 }
@@ -33,6 +37,7 @@
 }
 
 #reviewsLeft {
+  position: absolute;
   float: left;
   max-width: 300px;
 }
@@ -119,10 +124,6 @@ display:inline-block;
   width: 65%;
 }
 
-.starBarChartContainer {
-
-}
-
 #starBarChart {
   height: 18px;
   margin: auto;
@@ -161,10 +162,14 @@ display:inline-block;
   width: 70%; height: 18px; background-color: #04aa6d;
 }
 
+#starFilters {
+  display: flex;
+  margin-top: 130px;
+}
+
 /*------------------------REVIEWS BREAKDOWN---------------------------------*/
 
 #reviewsBreakdown {
-  margin-top: 130px;
 }
 
 .breakdownTitle {
@@ -266,7 +271,7 @@ display:inline-block;
 .reviewBody {
   text-align: left;
   height: 100px;
-  width: 700px;
+  /* width: 700px; */
   min-height:fit-content;
 }
 
@@ -412,6 +417,7 @@ display:inline-block;
 }
 
 #rmFooter {
+
   height: 90px;
 }
 
