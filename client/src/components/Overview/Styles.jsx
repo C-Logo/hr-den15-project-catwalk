@@ -15,7 +15,7 @@ export default function Styles() {
             data-testid="overview-style-1"
             style={{
               backgroundImage: `url(${item.photos[0].thumbnail_url})`,
-              border: (currentStyle.style_id === item.style_id) ? '2px solid orange' : '1px solid black',
+              border: (currentStyle.style_id === item.style_id) ? '2px solid #68b0ab' : '1px solid black',
             }}
             key={index}
             onClick={() => handleChangeStyle(item.style_id)}>

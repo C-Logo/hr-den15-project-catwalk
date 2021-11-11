@@ -19,7 +19,7 @@ export default function ImageThumbnails() {
           id={`overview-thumbnail-${index}`}
           style={{
             backgroundImage: extend ? '' : `url(${item.thumbnail_url})`,
-            border: (thumbImage === index) ? '2px solid orange' : '1px solid black',
+            border: (thumbImage === index) ? '2px solid #68b0ab' : '1px solid black',
             borderRadius: extend ? '50%' : '4px',
             transform: extend ? 'scale(.5)' : '',
           }}

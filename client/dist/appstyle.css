@@ -1,9 +1,20 @@
+/* 
+Color pallete
+
+light to dark:
+faf3dd
+c8d5b9
+8fc0a9
+68b0ab
+696d7d
+
+*/
+
 #mainContainer {
   max-width: 1200px; 
   height:fit-content;
   text-align: center;
   /* IF YOU CHANGE THE BACKGROUND COLOR CHANGE IT IN STARS TOO */
-    background-color: rgb(255, 255, 255);
   /* IF YOU CHANGE THE BACKGROUND COLOR CHANGE IT IN STARS TOO */
   margin: auto;
   
@@ -16,13 +27,18 @@
   /* overflow: hidden; */
   display: inline-block;
   position: relative;
+  background-color: #faf3dd;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 body {
+  background-color: #8fc0a9;
   font-family: "adobe-clean", sans-serif;
   height: 100%;
   font-size:small;
   text-align: center;
+  color: black;
 }
 
 table {
@@ -116,7 +132,7 @@ table {
   position: absolute;
   top: 0;
   left: 0;
-  background: rgb(255, 255, 255);
+  background: #faf3dd;
   clip-path: polygon(0% 0%,
    10% 0%, 10% 1%, 7.8% 36%, 0.4% 36%, 6.4% 58%, 4.2% 92%, 10% 71%,15.8% 92%, 13.6% 58%, 19.6% 36%, 12.2% 36%, 10% 1%, 10% 0%,
    30% 0%, 30% 2%, 27.8% 35%, 20.4% 35%, 26.4% 57%, 24.2% 91%, 30% 70%, 35.8% 91%, 33.6% 57%, 39.6% 35%, 32.2% 35%, 30% 2%, 30% 0%,
@@ -147,7 +163,7 @@ table {
   margin: 1%;
   height: 93%;
   width: 97%;
-  background-color: darkgray;
+  background-color: #696d7d;
 }
 
 .starContainer {
