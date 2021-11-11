@@ -14,7 +14,10 @@
 }
 
 .starFilterButtonText {
-  font-size: x-small;
+  font-size: xx-small;
+  border: solid 1px black;
+  border-radius: 2px;
+  margin-right: 3%;
 }
 
 .starFilterButton {
@@ -22,8 +25,11 @@
   border: none;
   text-align: center;
   font-size: xx-small;
-  margin-right: none;
   color: red;
+  border: solid 1px transparent;
+  text-align:left;
+  margin: auto;
+  width: 5px;
 }
 
 .starFilterButton:hover {
@@ -324,14 +330,14 @@ display:inline-block;
   position: relative;
   border: solid 5px black;
   border-radius: 50px;
-  height: fit-content;
+  max-height: 95vh;
   width: 50%;
   min-width: 225px;
   background: #ffffff;
   padding-left: 50px;
   padding-right: 50px;
   text-align: left;
-  margin: auto;
+  overflow-y:auto;
 }
 
 #rmTop {
