@@ -16,21 +16,25 @@ export default function Review(props) {
   const [reviewBodyLength, setReviewBodyLength] = useState(250);
   const [reviewBodyShowMore, setReviewBodyShowMore] = useState(true);
   const [reviewHelpful, setReviewHelpful] = useState(props.review.helpfulness);
+  const [reviewMarkedAsHelpful, setReviewMarkedAsHelpful] = useState(false);
 
   const {
     reviewSort, allReviews, ratingSort, ratingFilteredReviews, shownReviews,
   } = useContext(ReviewsContext);
 
   function markAsHelpful(reviewId) {
-    axios
-      .put(`/reviews/${reviewId}/helpful`)
-      .then(() => {
-        setReviewHelpful(reviewHelpful + 1);
-        props.review.helpfulness = props.review.helpfulness + 1;
-      })
-      .catch((err) => {
-        throw err;
-      });
+    if (!reviewMarkedAsHelpful) {
+      axios
+        .put(`/reviews/${reviewId}/helpful`)
+        .then(() => {
+          setReviewHelpful(reviewHelpful + 1);
+          props.review.helpfulness = props.review.helpfulness + 1;
+          setReviewMarkedAsHelpful(true);
+        })
+        .catch((err) => {
+          throw err;
+        });
+    }
   }
 
   useEffect(() => {
