@@ -42,7 +42,7 @@ export default function Description() {
           {/* </div> */}
           {/* </div> */}
           <a href="https://twitter.com/intent/tweet?button_hashtag=ProjectCatwalkfortheWin&ref_src=twsrc%5Etfw" className="twitter-hashtag-button" data-show-count="false">
-            <div className="twitter" />
+            <div className="twitter" title="Twitter" />
             {/* <div>#projCatwalk</div> */}
           </a>
           {/* <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8" /> */}

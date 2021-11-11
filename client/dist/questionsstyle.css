@@ -47,7 +47,7 @@
   /* margin: 1%; */
 }
 .Helpfulq {
-  color: red;
+  color: #bb3e03;
   float: right;
   /* width: 22%; */
   text-align: right;
@@ -73,7 +73,7 @@
 .helpful {
   display: flex;
   justify-content: space-between;
-  color: blue;
+  color: #696d7d;
   text-align: left;
   padding: 2px
 }
