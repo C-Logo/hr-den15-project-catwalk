@@ -38,6 +38,9 @@ export default function EachQuestion(props) {
         <div className="indivquestionheader">Q:</div>
         <div className="indivquestion">
           {question}
+        <div>
+          A:
+        </div>
           <AnswerList answer={props.question.answers} id={props.question.question_id} />
         </div>
       </div>

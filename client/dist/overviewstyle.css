@@ -313,4 +313,5 @@
 .overview-link{
   color: black;
   font-size: small;
+  width: auto;
 }

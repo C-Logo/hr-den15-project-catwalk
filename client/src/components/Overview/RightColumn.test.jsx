@@ -10,28 +10,39 @@ import Questions from '../Questions/Questions.jsx';
 
 jest.mock('react', () => {
   const react = jest.requireActual('react');
-
   return {
     ...react,
     useRef: () => null,
   };
 });
 
-test('Loads the Questions and Answer header', async () => {
-  let component;
+describe('Right Column Tests', () => {
+  // it('theFunctionFail', () => {
+  //   expect.assertions(1);
+  //   return expect();
+  // });
 
-  await act(async () => {
-    component = render(<App>
-      {(interactionHandler) => (
-        <div id="mainContainer">
-          <Overview interactionHandler={interactionHandler} />
-          <Questions interactionHandler={interactionHandler} />
-        </div>
-      )}
-                       </App>);
+  test('Make sure Add To Cart Loads', async () => {
+    let component;
+    await act(async () => {
+      component = render(
+        <App>
+          {(interactionHandler) => (
+            <div id="mainContainer">
+              <Overview interactionHandler={interactionHandler} />
+              <Questions interactionHandler={interactionHandler} />
+            </div>
+          )}
+        </App>,
+      );
+    });
 
-    const handleClick = jest.fn();
-    fireEvent.click(screen.getByText('Add to Cart'));
     expect(component.getByText('Add to Cart')).toBeInTheDocument();
+    // expect(component.getByText('Add to Cart')).toBeDisabled;
+    // expect(component.getByText('Add to Cart')).toBeEnabled;
+    // const handleClick = jest.fn();
+    // component.getByText('Add to Cart').focus();
+
+    // fireEvent.click(document.activeElement);
   });
 });
