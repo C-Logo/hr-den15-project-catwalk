@@ -10,13 +10,18 @@
 
 #reviewsRight {
   margin-left: 300px;
+  width: 500px;
+}
+
+.starFilterButtonText {
+  font-size: x-small;
 }
 
 .starFilterButton {
   background-color: transparent;
   border: none;
   text-align: center;
-  font-size: small;
+  font-size: xx-small;
   margin-right: none;
   color: red;
 }
@@ -32,6 +37,7 @@
 }
 
 #reviewsLeft {
+  position: absolute;
   float: left;
   max-width: 300px;
 }
@@ -118,10 +124,6 @@ display:inline-block;
   width: 65%;
 }
 
-.starBarChartContainer {
-
-}
-
 #starBarChart {
   height: 18px;
   margin: auto;
@@ -160,10 +162,14 @@ display:inline-block;
   width: 70%; height: 18px; background-color: #04aa6d;
 }
 
+#starFilters {
+  display: flex;
+  margin-top: 130px;
+}
+
 /*------------------------REVIEWS BREAKDOWN---------------------------------*/
 
 #reviewsBreakdown {
-  margin-top: 130px;
 }
 
 .breakdownTitle {
@@ -255,16 +261,17 @@ display:inline-block;
 
 /* -------------INDIVIDUAL REVIEW--------------*/
 .review {
-
+  width: 100%;
 }
 
 .reviewTop {
-
+  width: 100%;
 }
 
 .reviewBody {
   text-align: left;
   height: 100px;
+  /* width: 700px; */
   min-height:fit-content;
 }
 
@@ -317,7 +324,7 @@ display:inline-block;
   position: relative;
   border: solid 5px black;
   border-radius: 50px;
-  height: 95%;
+  height: fit-content;
   width: 50%;
   min-width: 225px;
   background: #ffffff;
@@ -328,7 +335,7 @@ display:inline-block;
 }
 
 #rmTop {
-  max-height: 90%;
+  max-height: 80%;
 }
 
 .rmElement {
@@ -410,9 +417,7 @@ display:inline-block;
 }
 
 #rmFooter {
-  position: absolute;
-  bottom: 0px;
-  width: calc(100% - 100px);
+
   height: 90px;
 }
 

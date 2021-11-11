@@ -26,7 +26,7 @@ export default function Reviews(props) {
   const [reviewReported, setReviewReported] = useState(false);
   const [shownReviews, setShownReviews] = useState(allReviews.slice(0, reviewCount));
   const [ratingFilteredReviews, setRatingFilteredReviews] = useState([]);
-  const [ratingSort, setRatingSort] = useState(0);
+  const [ratingSort, setRatingSort] = useState([]);
   const [ratingCharacteristics, setRatingCharacteristics] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [productId, setProductId] = useState('44388');
@@ -38,14 +38,15 @@ export default function Reviews(props) {
         setAllReviews(data.data.results);
         // console.log(data.data.results);
         // debugger;
-        if (ratingSort === 0) {
+        if (ratingSort.length === 0) {
           setRatingFilteredReviews(data.data.results);
           setShownReviews(data.data.results.slice(0, reviewCount));
           setTotalReviews(data.data.results.length);
         } else {
           const filteredReviews = [];
           for (let i = 0; i < data.data.results.length; i++) {
-            if (Number(data.data.results[i].rating) === Number(ratingSort)) {
+            // console.log(Number(data.data.results[i].rating));
+            if (ratingSort.includes(Number(data.data.results[i].rating))) {
               filteredReviews.push(data.data.results[i]);
             }
           }
@@ -109,7 +110,9 @@ export default function Reviews(props) {
   }
 
   function ratingSortClickHandler(e) {
-    setRatingSort(e.target.id);
+    if (!ratingSort.includes(Number(e.target.id))) {
+      setRatingSort([...ratingSort, Number(e.target.id)]);
+    }
   }
 
   useEffect(() => {
@@ -162,6 +165,9 @@ export default function Reviews(props) {
             <div id="starBarChart">
               <RatingBars />
             </div>
+            <div id="starFilters">
+              <StarFilterButton />
+            </div>
             <div id="reviewsBreakdown">
               <CharacteristicBars />
             </div>
@@ -176,7 +182,6 @@ export default function Reviews(props) {
                   <option value="helpful">Helpful</option>
                   <option value="newest">Newest</option>
                 </select>
-                <StarFilterButton />
               </div>
               <hr />
               <div id="reviewList">
