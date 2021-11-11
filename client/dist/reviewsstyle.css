@@ -266,8 +266,8 @@ display:inline-block;
 .reviewBody {
   text-align: left;
   height: 100px;
+  width: 700px;
   min-height:fit-content;
-  width: 100%;
 }
 
 .reviewFooter {
@@ -319,7 +319,7 @@ display:inline-block;
   position: relative;
   border: solid 5px black;
   border-radius: 50px;
-  height: 95%;
+  height: fit-content;
   width: 50%;
   min-width: 225px;
   background: #ffffff;
@@ -330,7 +330,7 @@ display:inline-block;
 }
 
 #rmTop {
-  max-height: 90%;
+  max-height: 80%;
 }
 
 .rmElement {
@@ -412,9 +412,6 @@ display:inline-block;
 }
 
 #rmFooter {
-  position: absolute;
-  bottom: 0px;
-  width: calc(100% - 100px);
   height: 90px;
 }
 

@@ -4,15 +4,21 @@ import { ReviewsContext } from './Reviews.jsx';
 export default function StarFilterButton() {
   const { ratingSort, setRatingSort } = useContext(ReviewsContext);
   function cancelStarFilter(e) {
-    setRatingSort(0);
+    const tempArray = [...ratingSort];
+    tempArray.splice(ratingSort.indexOf(Number(e.target.name)), 1);
+    setRatingSort(tempArray);
   }
 
-  if (ratingSort !== 0) {
+  if (ratingSort.length !== 0) {
     return (
-      <div id={ratingSort}>
-        <button type="button" className="starFilterButton" onClick={cancelStarFilter}>X</button>
-        {` ${ratingSort} stars`}
-      </div>
+      <>
+        {ratingSort.map((rating, index) => (
+          <div key={index}>
+            <button type="button" name={rating} className="starFilterButton" onClick={cancelStarFilter}>X</button>
+            {` ${rating} stars`}
+          </div>
+        ))}
+      </>
     );
   }
   return (<></>);
