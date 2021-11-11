@@ -13,6 +13,7 @@ app.use('*', (req, res) => {
   // format URL's on frontend
   axios({
     method: req.method.toLowerCase(),
+    // url: `localhost:3000${req.originalUrl}`,
     url: API_URL + req.originalUrl,
     headers: {
       Authorization: API_KEY,

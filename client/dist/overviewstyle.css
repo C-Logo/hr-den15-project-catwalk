@@ -21,6 +21,25 @@
   height: 60px;
   /* line-height: 60px; */
   align-items: center;
+  background-image:
+    repeating-radial-gradient(
+      circle at 0 0,
+      #005f73,
+      #005f73 40px,
+      #94d2bd 40px,
+      #94d2bd 80px,
+      #ee9b00 80px,
+      #ee9b00 120px,
+      #bb3e03 120px,
+      #bb3e03 160px
+    );
+  /* background-image: repeating-linear-gradient(
+    45deg,
+    #ff8a00,
+    #ff8a00 10px,
+    #e52e71 10px,
+    #e52e71 20px determines size
+  ); */
 }
 
 .overview-header-title {
@@ -309,7 +328,17 @@
   height: 20px;
   width: 20px;
 }
-
+.twitter {
+  position: relative;
+  /* border: 2px solid #1da1f2; */
+  /* border-radius: 3px; */
+  /* top: 2px; */
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background: transparent 0 0 no-repeat;
+  background-image: url('./img/twitter.png');
+}
 .overview-link{
   color: black;
   font-size: small;
