@@ -9,8 +9,8 @@ export default function AnswerModal(props) {
   const [text, setText] = useState('');
   const [email, setEmail] = useState('');
   const [productID, setProductID] = useState(44389);
-  const [productName, setProductName] = useState('Camo');
-  const [question_id, setQuestion_Id] = useState(367407);
+  const [productName, setProductName] = useState('Camo Onesie');
+  const question_id = props.questionID;
   const question_body = props.questionBody;
 
   function postData() {
@@ -50,7 +50,7 @@ export default function AnswerModal(props) {
   }
   return (show
     ? (
-      <div className="answermodal">
+      <div className="modal">
         <div className="modalheader">Submit an Answer</div>
         <div>
           {productName}
@@ -58,6 +58,7 @@ export default function AnswerModal(props) {
           {' '}
           {question_body}
         </div>
+        &nbsp;
         <form>
           <label id="answermodalnickname">Nickname *</label>
           <input
@@ -70,6 +71,8 @@ export default function AnswerModal(props) {
           />
           <div />
           <div>For privacy reasons, do not use your full name or email address</div>
+          &nbsp;
+          <div />
           <label id="answermodalemail">Email *</label>
           <input
             id="email"
@@ -81,7 +84,10 @@ export default function AnswerModal(props) {
           />
           <div />
           <div>For authentication reasons, you will not be emailed</div>
+          &nbsp;
+          <div />
           <label id="answermodalinput">Input</label>
+          <br />
           <textarea
             id="modalinputfield"
             type="text"
