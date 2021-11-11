@@ -77,7 +77,7 @@ export default function ModalSetUp() {
     const ratingCharKeys = Object.keys(ratingCharacteristics);
     if (rmStarRating > 0
       && rmSummary.length > 0
-      && rmBody.length > 0
+      && rmBody.length > 50
       && rmRec !== null
       && rmNickName.length > 0
       && rmEmail.length > 0
@@ -147,6 +147,7 @@ export default function ModalSetUp() {
           <div>
             <div>Review Body*:</div>
             <textarea id="rmBody" className="rmElement" type="text" value={rmBody} cols="30" rows="8" onChange={onChangeBody} />
+            {rmBody.length > 50 ? <div>Minimum reached</div> : <div>{`Minimum required characters left: ${50 - rmBody.length}`}</div>}
           </div>
           <div>
             <div id="rmPhotoSection">
