@@ -20,7 +20,10 @@
 
 
 ## Description
-
+  - Posts and retrieves data from a RESTful API
+  - Displays product information dynamically
+  - Optimized for maxiumum user accessibility
+  -
 
 ### Overview -
 
