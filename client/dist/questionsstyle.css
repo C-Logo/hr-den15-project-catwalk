@@ -82,3 +82,10 @@
   flex-direction: column;
   align-items: flex-start;
 }
+.questionyesbutton:hover {
+  color: blue
+}
+.dotted {
+  border-top: 3px dotted;
+  border-color:  #8fc0a9;
+}

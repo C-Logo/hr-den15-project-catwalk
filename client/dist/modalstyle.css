@@ -12,13 +12,14 @@
   /* most likely need to  move this to container div
  /* Hidden by default */
   width: 50%; /* Full width (cover the whole page) */
-  color: yellowgreen;
+  color: black;
+  font-weight: 700;
   height: 80%; /* Full height (cover the whole page) */
   top: 0;
   left: 25%;
   right: 25%;
   bottom: 0;
-  background-color: rgba(0,0,0,0.9); /* Black background with opacity */
+  background-color: rgba(149, 192, 168, 0.96); /* Black background with opacity */
   z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
   cursor: pointer;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
@@ -54,23 +55,23 @@
   background-color: #F0FFFF;
 }
 .modalheader {
-  color: yellowgreen;
+  color: black;
   padding: 3px;
   margin: 3px;
 }
 #modalnickname {
-  color: yellowgreen;
+  color: black;
   padding: 3px;
   margin: 3px;
 }
 #modalinput {
-  color: yellowgreen;
+  color: black;
   text-align: center;
   padding: 3px;
   margin: 3px;
 }
 #modalemail {
-  color: yellowgreen;
+  color: black;
   padding: 3px;
   margin: 3px;
 }
@@ -87,17 +88,17 @@
   margin: 3px;
 }
 #answermodalnickname {
-  color: yellowgreen;
+  color: black;
   padding: 3px;
   margin: 3px;
 }
 #answermodalinput {
-  color: yellowgreen;
+  color: black;
   padding: 3px;
   margin: 3px;
 }
 #answermodalemail {
-  color: yellowgreen;
+  color: black;
 
   padding: 3px;
   margin: 3px;
