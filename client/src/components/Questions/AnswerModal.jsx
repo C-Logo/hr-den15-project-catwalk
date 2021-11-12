@@ -60,6 +60,7 @@ export default function AnswerModal(props) {
     ? (
       <div className="modal">
         <div className="modalheader">Submit an Answer</div>
+        <hr className="dotted" />
         <div>
           {productName}
           :
@@ -94,7 +95,7 @@ export default function AnswerModal(props) {
           <div>For authentication reasons, you will not be emailed</div>
           &nbsp;
           <div />
-          <label id="answermodalinput">Input</label>
+          <label id="answermodalinput">Answer body</label>
           <br />
           <textarea
             id="modalinputfield"

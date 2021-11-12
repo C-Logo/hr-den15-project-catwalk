@@ -54,6 +54,7 @@ export default function Modal() {
           {' '}
           {productName}
         </div>
+        <hr className="dotted" />
         &nbsp;
         <div />
         <form>
@@ -83,7 +84,7 @@ export default function Modal() {
           <div>For authentication reasons, you will not be emailed</div>
           &nbsp;
           <div />
-          <label id="modalinput">Input*</label>
+          <label id="modalinput">Question body*</label>
           <br />
           <textarea
             id="modalinputfield"

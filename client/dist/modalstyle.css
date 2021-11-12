@@ -8,12 +8,14 @@
   border: 1px solid #888;
   width: 90%; */
   position: fixed;
-
+  font-size: large;
+  border: 3px dotted;
+  border-color:  black;
   /* most likely need to  move this to container div
  /* Hidden by default */
   width: 50%; /* Full width (cover the whole page) */
   color: black;
-  font-weight: 700;
+  font-weight: 400;
   height: 80%; /* Full height (cover the whole page) */
   top: 0;
   left: 25%;
@@ -55,6 +57,7 @@
   background-color: #F0FFFF;
 }
 .modalheader {
+  /* border: solid black; */
   color: black;
   padding: 3px;
   margin: 3px;
