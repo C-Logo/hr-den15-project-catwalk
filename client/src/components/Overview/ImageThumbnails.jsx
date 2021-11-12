@@ -26,6 +26,7 @@ export default function ImageThumbnails() {
           key={index}
           onClick={(event) => {
             event.stopPropagation();
+            console.log(currentStyle.style_id, index, event.target.id);
             handleChangeStyle(currentStyle.style_id, index);
             setThumbImage(index);
           }}

@@ -14,12 +14,13 @@ export default function Image() {
   const [zoomedIn, setZoomedIn] = useState(false);
 
   const handleImageChange = (amount) => {
+    console.log(currentStyle.photoIndex);
     if ((currentStyle.photoIndex + amount) === currentStyle.photos.length) {
       index = 0;
     } else if ((currentStyle.photoIndex + amount) === -1) {
       index = currentStyle.photos.length - 1;
     } else {
-      index = currentStyle.photoIndex || 1 + amount;
+      index = currentStyle.photoIndex ? currentStyle.photoIndex + amount : amount;
     }
     document.getElementById(`overview-thumbnail-${index}`).click();
   };
