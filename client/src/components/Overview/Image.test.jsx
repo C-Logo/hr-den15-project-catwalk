@@ -23,7 +23,7 @@ jest.mock('react', () => {
 });
 
 test('\n\n\n\n\n=============Testing Mock=============', async () => {
-  axiosMock.get.mockResolvedValueOnce({ data: { name: 'Camo Onesie' } });
+  axiosMock.get('/products').mockResolvedValueOnce({ data: { name: 'Camo Onesie' } });
 
   let component;
   await act(async () => {
