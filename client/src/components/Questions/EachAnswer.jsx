@@ -11,14 +11,20 @@ export default function EachAnswer(props) {
   const [clickedOnce, setClickedOnce] = useState(false);
   const [reportClickedOnce, setReportClickedOnce] = useState(false);
   const [reported, setReported] = useState('Report');
+  const [seller, setSeller] = useState(false);
+  const [photos, setPhotos] = useState('');
 
   useEffect(() => {
     if (props) {
+      if (props.answer.answerer_name === 'Seller') {
+        setSeller(true);
+      }
       setAnswerBody(props.answer.body);
       setAuthor(props.answer.answerer_name);
       setAnswerDate(props.answer.date);
       setHelpfulAnswerYes(props.answer.helpfulness);
       setAnswerID(props.answer.answer_id);
+      setPhotos(props.answer.photos);
     }
   }, []);
 
@@ -46,8 +52,8 @@ export default function EachAnswer(props) {
 
           <div className="helpful">
             by
-            {' '}
-            {author}
+            &nbsp;
+            {seller ? <strong>{author}</strong> : <span>{ author }</span>}
             ,                &nbsp;
             {dateReformat(answerDate)}
                 &nbsp;
@@ -55,8 +61,11 @@ export default function EachAnswer(props) {
                 &nbsp;
             <span> Helpful? </span>
                 &nbsp;
-            <u onClick={clickedOnce ? null : (e) => { handleHelpfulClick(e); }}> Yes </u>
-            <span>
+            <span
+              className="questionyesbutton"
+              onClick={clickedOnce ? null : (e) => { handleHelpfulClick(e); }}
+            >
+              Yes
               (
               { helpfulAnswerYes }
               )
@@ -65,6 +74,7 @@ export default function EachAnswer(props) {
             <span> | </span>
                 &nbsp;
             <span onClick={reportClickedOnce ? null : (e) => { reportAnswer(e); }}>{reported}</span>
+            <span style={{ backgroundImage: `url(${photos})` }} />
           </div>
         </div>
       </div>

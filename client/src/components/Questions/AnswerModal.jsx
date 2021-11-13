@@ -12,6 +12,8 @@ export default function AnswerModal(props) {
   const [productName, setProductName] = useState('Camo Onesie');
   const question_id = props.questionID;
   const question_body = props.questionBody;
+  const [photos, setPhotos] = useState([]);
+  const [uploadPhotos, setUploadPhotos] = useState(false);
 
   function postData() {
     axios.post(`/qa/questions/${question_id}/answers`, {
@@ -34,6 +36,12 @@ export default function AnswerModal(props) {
   function closeWindow() {
     setShow(!show);
   }
+  function photoUpload() {
+    setUploadPhotos(true);
+  }
+  function fileUpload(e) {
+    setPhotos(e.target.value);
+  }
 
   function checkForValidFields() {
     if (email.includes('@' && '.') && (name.length > 0 && email.length > 0 && text.length > 0)) {
@@ -52,6 +60,7 @@ export default function AnswerModal(props) {
     ? (
       <div className="modal">
         <div className="modalheader">Submit an Answer</div>
+        <hr className="dotted" />
         <div>
           {productName}
           :
@@ -86,7 +95,7 @@ export default function AnswerModal(props) {
           <div>For authentication reasons, you will not be emailed</div>
           &nbsp;
           <div />
-          <label id="answermodalinput">Input</label>
+          <label id="answermodalinput">Answer body</label>
           <br />
           <textarea
             id="modalinputfield"
@@ -99,7 +108,14 @@ export default function AnswerModal(props) {
           />
         </form>
         <div />
-        <button className="modalphotobutton">Upload a photo</button>
+        <button className="modalphotobutton" onClick={photoUpload}>Upload a photo</button>
+        {uploadPhotos
+          ? (
+            <div>
+              <input type="text" placeholder="image url" onChange={fileUpload} />
+            </div>
+          )
+          : null}
         <div />
         <span> * Mandatory field </span>
         <div />

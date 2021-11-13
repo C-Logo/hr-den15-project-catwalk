@@ -47,16 +47,16 @@ export default function Questions(props) {
       searchQuery,
       setSearchQuery,
       arrayIndex,
-      getQuestions
+      getQuestions,
     }}
     >
       <div onClick={(e) => { props.interactionHandler(e, 'Questions and Answers'); }} id="questioncontainer">
-        <h2>QUESTIONS & ANSWERS</h2>
+        <h1>Questions & Answers</h1>
         <div />
         <div className="modalcontainer"><Modal /></div>
         <div className="questionslist"><QuestionList /></div>
         {moreQuestionsButton ? <button onClick={getMoreQuestions}>MORE ANSWERED QUESTIONS</button> : <span />}
-        <button onClick={showModalWindow} data-testid='questionbutton'>ADD A QUESTION +</button>
+        <button onClick={showModalWindow} data-testid="questionbutton">ADD A QUESTION +</button>
       </div>
     </QuestionContext.Provider>
   );

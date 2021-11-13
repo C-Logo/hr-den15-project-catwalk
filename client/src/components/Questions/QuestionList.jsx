@@ -13,9 +13,9 @@ export default function QuestionList(props) {
       if (question.question_body.toLowerCase().includes(searchTerm)) {
         return (
           <div key={question.question_id}><EachQuestion question={question} /></div>
-          );
-        }
-      });
+        );
+      }
+    });
     setFoundQuestions(currentMatches);
   }
 
@@ -32,7 +32,11 @@ export default function QuestionList(props) {
   const defaultQuestions = questionArray.map((question, index) => {
     if (index <= arrayIndex) {
       return (
-        <div key={question.question_id}><EachQuestion question={question} /></div>);
+        <div>
+          <div key={question.question_id}><EachQuestion question={question} /></div>
+          <hr className="dotted" />
+        </div>
+      );
     }
   });
 

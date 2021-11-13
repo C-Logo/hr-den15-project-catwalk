@@ -54,8 +54,9 @@ export default function Modal() {
           {' '}
           {productName}
         </div>
+        <hr className="dotted" />
         &nbsp;
-          <div />
+        <div />
         <form>
           <label id="modalnickname">Nickname *</label>
           <input
@@ -83,7 +84,7 @@ export default function Modal() {
           <div>For authentication reasons, you will not be emailed</div>
           &nbsp;
           <div />
-          <label id="modalinput">Input*</label>
+          <label id="modalinput">Question body*</label>
           <br />
           <textarea
             id="modalinputfield"
@@ -94,9 +95,6 @@ export default function Modal() {
             onChange={onTextChange}
           />
         </form>
-        <div />
-        <button className="modalphotobutton">Upload a photo</button>
-        <div />
         <span> * Mandatory field </span>
         <div />
         <button className="modalsubmitbutton" onClick={checkForValidFields}>Submit</button>

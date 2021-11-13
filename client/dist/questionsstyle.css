@@ -1,5 +1,5 @@
 #questioncontainer {
-
+  font-size: ;
   margin-left: 5px;
   box-sizing: border-box;
   padding: 5px;
@@ -81,4 +81,11 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+.questionyesbutton:hover {
+  color: blue
+}
+.dotted {
+  border-top: 3px dotted;
+  border-color:  #8fc0a9;
 }
