@@ -189,7 +189,7 @@ export default function Reviews(props) {
                   <Review review={review} key={index} />
                 ))}
               </div>
-              <form>
+              <form id="reviewListFooter">
                 <ModalSetUp />
                 <button
                   type="button"
