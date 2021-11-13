@@ -176,7 +176,7 @@ export default function ModalSetUp() {
           <div id="rmFooterMandatoryStatement">* = mandatory field</div>
           <hr />
           <div id="rmButtons" className="rmElement">
-            <button type="button" className="rmButton" onClick={() => { setShowModal(!showModal); }}>Cancel</button>
+            <button type="button" className="rmButton" data-testid="addReviewCancelButton" onClick={() => { setShowModal(!showModal); }}>Cancel</button>
             <button type="button" className="rmButton" onClick={onClickSubmit}>Submit</button>
           </div>
         </div>
