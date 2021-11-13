@@ -76,6 +76,9 @@ export default function Reviews(props) {
           weightedAvg += resultsKeys[i] * Number(results[resultsKeys[i]]);
         }
         setAverageStars(Math.round(weightedAvg / (trueRecs + falseRecs) * 10) / 10);
+      })
+      .catch((err) => {
+        throw err;
       });
   }
 
@@ -86,6 +89,9 @@ export default function Reviews(props) {
         .get(`/reviews/meta?product_id=${i}`)
         .then((data) => {
           console.log(data.data.characteristics);
+        })
+        .catch((err) => {
+          throw err;
         });
     }
   }
@@ -201,7 +207,7 @@ export default function Reviews(props) {
                 >
                   Show More!
                 </button>
-                <button type="button" onClick={() => { setShowModal(!showModal); }}>Add a Review +</button>
+                <button type="button" data-testid="addReviewButton" onClick={() => { setShowModal(!showModal); }}>Add a Review +</button>
               </form>
             </div>
           </div>
