@@ -30,6 +30,7 @@ export default function Reviews(props) {
   const [ratingCharacteristics, setRatingCharacteristics] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [productId, setProductId] = useState('44388');
+  const [searchInput, setSearchInput] = useState('');
 
   function fetchAllReviews() {
     axios
@@ -38,16 +39,35 @@ export default function Reviews(props) {
         setAllReviews(data.data.results);
         // console.log(data.data.results);
         // debugger;
-        if (ratingSort.length === 0) {
+        const filteredReviews = [];
+        if (ratingSort.length === 0 && searchInput.length < 3) {
           setRatingFilteredReviews(data.data.results);
           setShownReviews(data.data.results.slice(0, reviewCount));
           setTotalReviews(data.data.results.length);
         } else {
-          const filteredReviews = [];
-          for (let i = 0; i < data.data.results.length; i++) {
-            // console.log(Number(data.data.results[i].rating));
-            if (ratingSort.includes(Number(data.data.results[i].rating))) {
-              filteredReviews.push(data.data.results[i]);
+          console.log('here');
+          if (ratingSort.length !== 0 && searchInput.length < 3) {
+            for (let i = 0; i < data.data.results.length; i++) {
+              // console.log(Number(data.data.results[i].rating));
+              if (ratingSort.includes(Number(data.data.results[i].rating))) {
+                filteredReviews.push(data.data.results[i]);
+              }
+            }
+          } else if (ratingSort.length === 0 && searchInput.length > 2) {
+            for (let i = 0; i < data.data.results.length; i++) {
+              if (data.data.results[i].body.includes(searchInput)
+               || data.data.results[i].summary.includes(searchInput)) {
+                filteredReviews.push(data.data.results[i]);
+              }
+            }
+          } else {
+            for (let i = 0; i < data.data.results.length; i++) {
+              if (
+                (data.data.results[i].body.includes(searchInput)
+                || data.data.results[i].summary.includes(searchInput))
+                && ratingSort.includes(Number(data.data.results[i].rating))) {
+                filteredReviews.push(data.data.results[i]);
+              }
             }
           }
           setRatingFilteredReviews(filteredReviews);
@@ -130,7 +150,7 @@ export default function Reviews(props) {
     } else if (reviewCount < totalReviews) {
       setMoreReviews({ pointerEvents: 'auto' });
     }
-  }, [reviewCount, reviewSort, reviewReported, ratingSort, totalReviews, showModal]);
+  }, [reviewCount, reviewSort, reviewReported, ratingSort, totalReviews, showModal, searchInput]);
 
   return (
     <div onClick={(e) => { props.interactionHandler(e, 'Ratings and Reviews'); }} id="ratingsAndReviews">
@@ -182,12 +202,20 @@ export default function Reviews(props) {
           <div id="reviewsRight">
             <div id="reviewInfoContainer">
               <div id="reviewsFilter">
-                {`${totalReviews} reviews, sorted by:`}
-                <select id="reviewSortingSelect" onClick={sortClickHandler}>
-                  <option value="relevant">Relevant</option>
-                  <option value="helpful">Helpful</option>
-                  <option value="newest">Newest</option>
-                </select>
+                <div>
+                  {`${totalReviews} reviews, sorted by:`}
+                  <select id="reviewSortingSelect" onClick={sortClickHandler}>
+                    <option value="relevant">Relevant</option>
+                    <option value="helpful">Helpful</option>
+                    <option value="newest">Newest</option>
+                  </select>
+                </div>
+                <div>
+                  <input id="reviewSearch" type="text" placeholder="Search" value={searchInput} onChange={(e) => { setSearchInput(e.target.value); }} />
+                  <button type="button">
+                    <img src="./img/magnifying-glasses-icon.png" alt="magnifying glass" width="12" height="12" />
+                  </button>
+                </div>
               </div>
               <hr />
               <div id="reviewList">
