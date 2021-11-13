@@ -57,7 +57,7 @@ export default function Main() {
         const result = Object.values(currentStyle.skus);
         // console.log('result', result);
         setSizesAndQuantities(result);
-        // console.log('currentStyle', currentStyle);
+        console.log('currentStyle', currentStyle);
         // console.log('currentproduct', product);
       }
     }
@@ -68,9 +68,11 @@ export default function Main() {
       .get(`/products/${productId}`)
       .then((response) => {
         setProduct({ ...product, ...response.data });
+        console.log('response1', response);
         return axios.get(`/products/${productId}/styles`);
       })
       .then((response) => {
+        console.log('response.data.results =', response);
         setStyles(response.data.results);
         setCurrentStyle(response.data.results[0]);
         setMainPhoto(response.data.results[0].photos[0].url);
