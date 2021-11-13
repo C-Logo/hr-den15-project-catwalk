@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom/extend-expect';
 import {
-  render, fireEvent, screen, waitFor,
+  render, fireEvent, screen, waitFor, cleanup,
 } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import React from 'react';
@@ -10,6 +10,9 @@ import Overview from '../Overview/Overview.jsx';
 import Questions from './Questions.jsx';
 import Reviews from '../reviews/Reviews.jsx';
 
+jest.mock('axios');
+
+afterEach(cleanup);
 jest.mock('react', () => {
   const react = jest.requireActual('react');
 
@@ -23,10 +26,14 @@ test('Tests a child component to render', async () => {
   axios.get
     .mockImplementationOnce(() => Promise.resolve({
       data: {
-        question_id: 543166,
-        question_body: 'Is this a center for ants?!',
-        question_date: '2021-11-06T00:00:00.000Z',
-        asker_name: 'Derek Z.',
+        results: [
+          {
+            question_id: 543166,
+            question_body: 'Is this a center for ants?!',
+            question_date: '2021-11-06T00:00:00.000Z',
+            asker_name: 'Derek Z.',
+          },
+        ],
       },
     }));
   let component;
@@ -43,5 +50,5 @@ test('Tests a child component to render', async () => {
       </App>,
     );
   });
-  expect(getByText('Add answer')).toBeInTheDocument();
+  expect(component.getByText('Add answer')).toBeInTheDocument();
 });
