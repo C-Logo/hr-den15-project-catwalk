@@ -20,10 +20,14 @@
 
 
 ## Description
-  - Posts and retrieves data from a RESTful API
-  - Displays product information dynamically
-  - Optimized for maxiumum user accessibility
-  -
+   Project Catwalk is a retail portal designed to modernize an eCommerce website and increase sales numbers. Features implemented will be optimized for the user experience and accessibility. Features include :
+    - browsing styles of a particular product
+    - adding to cart
+    - asking questions and seeing relevant answers
+    - posting reviews
+    - browsing other customer's reviews
+   Item detail page will be comprised of distinct modules.  Each module will display information related to the product being displayed. Information is being retrieved from and persisted to a RESTful API. Each module will be described in further detail below:
+
 
 ### Overview -
 
@@ -31,7 +35,30 @@
 
 ### Reviews -
 
-### Query Filled Form
+## Installation
+ 1) Clone repo from Github via: 'https://github.com/C-Logo/hr-den15-project-catwalk.git'
+ 2) Navigate to project folder within terminal
+ 3) Run command *npm install*
+ 4) Create a Github personal access token with the following scopes:
+    - Read:org
+    - User
+    - Read:user
+    - User:email
+    - User:follow
+ 5) Rename config-example.js to config.js
+ 6) Paste your personal access token into 'API_KEY' variable in config.js
+ 7) Run command *npm run react-dev* to enable webpack and create bundle.js file
+ 8) Open a new terminal window, initialize the server with command *npm start*
+ 9) Open the webapp in the browser at localhost:3000
+
+### Dependencies
+
+- [React]
+- [Axios]
+- [Express]
+- [Jest]
+- [Webpack]
+- [Babel]
 
 
 ### Charts
@@ -39,25 +66,13 @@
 ## Mobile support
 This webapp is compatible with mobile browsers.
 
-### Development
-We are currently in development.  If you have any questions about this project, then react out to us.
-
-### Bug / Feature Request
+## Bug / Feature Request
 
 If you find a bug, then please tell us about it and we would be happy to fix it
 
 For new features we are open to suggestions.  Let us know!
 
-
-## Built with
-
-- [React]
-- [Axios]
-- [Express]
-
-## To-do
-Since this is still in development, there are many things on our to-do list.
-
 ## Team
-
-To be announced soon.
+  Matt Olsen
+  Ian Swensson
+  Michael Light
