@@ -12,8 +12,8 @@ export default function Price() {
         currentStyle.sale_price
           ? (
             <div className="overview-flex">
-              <div style={{ textDecorationLine: 'line-through', textDecorationStyle: 'solid' }}>{currentStyle.original_price}</div>
-              <div>{currentStyle.sale_price}</div>
+              <div data-testid="original-price" style={{ textDecorationLine: 'line-through', textDecorationStyle: 'solid' }}>{currentStyle.original_price}</div>
+              <div data-testid="sale-price">{currentStyle.sale_price}</div>
             </div>
           )
           : <div>{currentStyle.original_price}</div>
