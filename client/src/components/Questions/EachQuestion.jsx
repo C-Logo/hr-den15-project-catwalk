@@ -32,31 +32,35 @@ export default function EachQuestion(props) {
   }
 
   return (
-    <div className="mainquestion">
-      <AnswerModal showModal={showAnswerModal} setModal={setShowAnswerModal} questionBody={question} questionID={question_id} />
-      <div className="questionline">
-        <div className="indivquestionheader">Q:</div>
-        <div className="indivquestion">
-          {question}
-          <div>
-            A:
-          </div>
-          <AnswerList answer={props.question.answers} id={props.question.question_id} />
-        </div>
+    <div>
+      <div className="modalcontainer">
+        <AnswerModal showModal={showAnswerModal} setModal={setShowAnswerModal} questionBody={question} questionID={question_id} />
       </div>
-      <div className="Helpfulq">
-        <div> Helpful? </div>
+      <div className="mainquestion">
+        <div className="questionline">
+          <div className="indivquestionheader">Q:</div>
+          <div className="indivquestion">
+            {question}
+            <div>
+              A:
+            </div>
+            <AnswerList answer={props.question.answers} id={props.question.question_id} />
+          </div>
+        </div>
+        <div className="Helpfulq">
+          <div> Helpful? </div>
         &nbsp;
-        <span className="questionyesbutton" onClick={clickedOnce ? null : handleQuestionOnClick}>
-          Yes
-          (
-          {helpfulQuestionYes}
-          )
-        </span>
+          <span className="questionyesbutton" onClick={clickedOnce ? null : handleQuestionOnClick}>
+            Yes
+            (
+            {helpfulQuestionYes}
+            )
+          </span>
         &nbsp;
-        <div> | </div>
+          <div> | </div>
         &nbsp;
-        <u onClick={showModalWindow}> Add answer </u>
+          <u onClick={showModalWindow}> Add answer </u>
+        </div>
       </div>
     </div>
   );
