@@ -4,6 +4,7 @@ import {
 } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import React from 'react';
+import axios from 'axios';
 import App from '../App.jsx';
 import Overview from '../Overview/Overview.jsx';
 import Questions from './Questions.jsx';
@@ -19,16 +20,28 @@ jest.mock('react', () => {
 });
 
 test('Tests a child component to render', async () => {
-  const { getByText } = render(
-    <App>
-      {(interactionHandler) => (
-        <div id="mainContainer">
-          {/* <Overview interactionHandler={interactionHandler} /> */}
-          <Questions interactionHandler={interactionHandler} />
-        </div>
-      )}
-    </App>,
-  );
-
+  axios.get
+    .mockImplementationOnce(() => Promise.resolve({
+      data: {
+        question_id: 543166,
+        question_body: 'Is this a center for ants?!',
+        question_date: '2021-11-06T00:00:00.000Z',
+        asker_name: 'Derek Z.',
+      },
+    }));
+  let component;
+  await act(async () => {
+    component = render(
+      <App>
+        {(interactionHandler) => (
+          <div id="mainContainer">
+            {/* <Overview interactionHandler={interactionHandler} /> */}
+            <Questions interactionHandler={interactionHandler} />
+            {/* <Reviews interactionHandler={interactionHandler} /> */}
+          </div>
+        )}
+      </App>,
+    );
+  });
   expect(getByText('Add answer')).toBeInTheDocument();
 });

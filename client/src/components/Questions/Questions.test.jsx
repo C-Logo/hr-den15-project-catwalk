@@ -33,7 +33,7 @@ test('Loads the Questions and Answer header', async () => {
         )}
       </App>,
     );
-    expect(component.getByText('QUESTIONS & ANSWERS')).toBeInTheDocument();
+    expect(component.getByText('Questions & Answers')).toBeInTheDocument();
   });
 });
 
