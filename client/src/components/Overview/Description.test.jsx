@@ -24,7 +24,7 @@ jest.mock('react', () => {
 test('Displays Description', async () => {
   axios.get
     .mockImplementationOnce(() => Promise.resolve({
-      data: { name: 'Camo Onesie' },
+      data: { slogan: 'Blend in to your crowd' },
     }));
 
   let component;
@@ -40,8 +40,7 @@ test('Displays Description', async () => {
       </App>,
     );
   });
-  // screen.debug;
   await waitFor(() => {
-    expect(screen.getByText('Camo Onesie')).toBeTruthy();
+    expect(screen.getByText('Blend in to your crowd')).toBeTruthy();
   });
 });

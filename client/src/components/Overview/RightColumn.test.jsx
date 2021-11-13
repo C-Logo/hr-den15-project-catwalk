@@ -26,7 +26,7 @@ jest.mock('react', () => {
 test('Product Name should be displayed', async () => {
   axios.get
     .mockImplementationOnce(() => Promise.resolve({
-      data: { name: 'Camo Onesie' },
+      data: { name: 'Camo Onesie - test' },
     }));
 
   let component;
@@ -44,7 +44,7 @@ test('Product Name should be displayed', async () => {
     );
   });
   await waitFor(() => {
-    expect(component.getByText('Camo Onesie')).toBeInTheDocument();
+    expect(component.getByText('Camo Onesie - test')).toBeInTheDocument();
     // expect(0).toBeTruthy();
     // console.log(component.getByText('Camo Onesie'));
   });
@@ -76,21 +76,7 @@ test('Price should be displayed', async () => {
           }],
       },
     }));
-  // axiosMock.get.mockResolvedValueOnce({ data: { name: 'Camo Onesie' } });
-  // // axios.get = jest.fn().mockReturnValue(
-  // axiosMock.get.mockResolvedValueOnce({
-  //   data: {
-  //     // product_id: 44388,
-  //     results: [
-  //       {
-  //         style_id: 266902,
-  //         name: 'Forest Green & Black',
-  //         original_price: '140.00',
-  //       }],
-  //   },
-  // });
 
-  let component;
   await act(async () => {
     render(
       <App>
