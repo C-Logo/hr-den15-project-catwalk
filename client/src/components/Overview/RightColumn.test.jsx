@@ -1,51 +1,85 @@
-// import '@testing-library/jest-dom/extend-expect';
-// import {
-//   render, fireEvent, queryByAttribute, screen,
-// } from '@testing-library/react';
-// import { act } from 'react-dom/test-utils';
-// import React from 'react';
-// import App from '../App.jsx';
-// import Overview from './Overview.jsx';
-// import Questions from '../Questions/Questions.jsx';
+import '@testing-library/jest-dom/extend-expect';
+import {
+  render, fireEvent, waitFor, cleanup, screen,
+} from '@testing-library/react';
+import { act } from 'react-dom/test-utils';
+import React from 'react';
+import axiosMock from 'axios';
+import App from '../App.jsx';
+import Overview from './Overview.jsx';
+import Questions from '../Questions/Questions.jsx';
+import Reviews from '../reviews/Reviews.jsx';
 
-// jest.mock('react', () => {
-//   const react = jest.requireActual('react');
-//   return {
-//     ...react,
-//     useRef: () => null,
-//   };
-// });
+jest.mock('axios');
 
-// describe('Right Column Tests', () => {
-//   // it('theFunctionFail', () => {
-//   //   expect.assertions(1);
-//   //   return expect();
-//   // });
+afterEach(cleanup);
 
-//   test('Make sure Add To Cart Loads', async () => {
-//     let component;
-//     await act(async () => {
-//       component = render(
-//         <App>
-//           {(interactionHandler) => (
-//             <div id="mainContainer">
-//               <Overview interactionHandler={interactionHandler} />
-//               <Questions interactionHandler={interactionHandler} />
-//             </div>
-//           )}
-//         </App>,
-//       );
-//     });
+jest.mock('react', () => {
+  const react = jest.requireActual('react');
+  return {
+    ...react,
+    useRef: () => null,
+  };
+});
+describe('Overview - Right Column Tests', () => {
+  test('Product Name should be displayed', async () => {
+    axiosMock.get.mockResolvedValueOnce({ data: { name: 'Camo Onesie' } });
 
-//     expect(component.getByText('Add to Cart')).toBeInTheDocument();
-//     // expect(component.getByText('Add to Cart')).toBeDisabled;
-//     // expect(component.getByText('Add to Cart')).toBeEnabled;
-//     // const handleClick = jest.fn();
-//     // component.getByText('Add to Cart').focus();
+    let component;
+    await act(async () => {
+      component = render(
+        <App>
+          {(interactionHandler) => (
+            <div id="mainContainer">
+              <Overview interactionHandler={interactionHandler} />
+              {/* <Questions interactionHandler={interactionHandler} /> */}
+              {/* <Reviews interactionHandler={interactionHandler} /> */}
+            </div>
+          )}
+        </App>,
+      );
+    });
+    await waitFor(() => {
+      expect(component.getByText('Camo Onesie')).toBeInTheDocument();
+      // expect(0).toBeTruthy();
+      // console.log(component.getByText('Camo Onesie'));
+    });
+  });
 
-//     const button = screen.getByRole('button', { name: 'Add to Cart' });
-//     fireEvent.click(button);
-//     await screen.findByText('Items in Cart');
-//     // fireEvent.click(document.activeElement);
-//   });
-// });
+  test('Price should be displayed', async () => {
+    axiosMock.get.mockResolvedValueOnce({ data: { name: 'Camo Onesie' } });
+    // axios.get = jest.fn().mockReturnValue(
+    axiosMock.get.mockResolvedValueOnce({
+      data: {
+        // product_id: 44388,
+        results: [
+          {
+            style_id: 266902,
+            name: 'Forest Green & Black',
+            original_price: '140.00',
+          }],
+      },
+    });
+
+    let component;
+    await act(async () => {
+      render(
+        <App>
+          {(interactionHandler) => (
+            <div id="mainContainer">
+              <Overview interactionHandler={interactionHandler} />
+              {/* <Questions interactionHandler={interactionHandler} /> */}
+              {/* <Reviews interactionHandler={interactionHandler} /> */}
+            </div>
+          )}
+        </App>,
+      );
+    });
+    await waitFor(() => {
+      // console.log('test', screen.findByTestId('original-price'));
+      expect(screen.getByText('140.00')).toBeTruthy();
+      // expect(0).toBeTruthy();
+      // console.log(component.getByText('Camo Onesie'));
+    });
+  });
+});

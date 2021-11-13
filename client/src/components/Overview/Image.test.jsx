@@ -23,7 +23,7 @@ jest.mock('react', () => {
 });
 
 test('\n\n\n\n\n=============Testing Mock=============', async () => {
-  axiosMock.get('/products').mockResolvedValueOnce({ data: { name: 'Camo Onesie' } });
+  axiosMock.get.mockResolvedValueOnce({ data: { name: 'Camo Onesie1' } });
 
   let component;
   await act(async () => {
@@ -39,7 +39,7 @@ test('\n\n\n\n\n=============Testing Mock=============', async () => {
       </App>,
     );
     await waitFor(() => {
-      expect(component.getByText('Camo Onesie')).toBeInTheDocument();
+      expect(component.getByText('Camo Onesie1')).toBeInTheDocument();
       // expect(0).toBeTruthy();
       // console.log(component.getByText('Camo Onesie'));
     });
