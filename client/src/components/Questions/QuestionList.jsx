@@ -9,10 +9,10 @@ export default function QuestionList(props) {
   const [foundQuestions, setFoundQuestions] = useState([]);
 
   function runSearch() {
-    const currentMatches = questionArray.map((question) => {
+    const currentMatches = questionArray.map((question, index) => {
       if (question.question_body.toLowerCase().includes(searchTerm)) {
         return (
-          <div key={question.question_id}><EachQuestion question={question} /></div>
+          <div key={index}><EachQuestion question={question} /></div>
         );
       }
     });
@@ -21,20 +21,20 @@ export default function QuestionList(props) {
 
   function startSearch(e) {
     setSearchTerm(e.target.value.toLowerCase());
-    if (searchTerm.length >= 2) {
-      runSearch();
-      setSearching(true);
-    }
     if (searchTerm.length < 3) {
       setSearching(false);
+    }
+    if (searchTerm.length > 2) {
+      runSearch();
+      setSearching(true);
     }
   }
 
   const defaultQuestions = questionArray.map((question, index) => {
     if (index <= arrayIndex) {
       return (
-        <div>
-          <div key={question.question_id}><EachQuestion question={question} /></div>
+        <div key={index}>
+          <div><EachQuestion question={question} /></div>
           <hr className="dotted" />
         </div>
       );
@@ -57,7 +57,3 @@ export default function QuestionList(props) {
     </>
   );
 }
-
-// {showMoreQuestions
-//   ? defaultQuestions.map((question, index) => <EachQuestion key={index} question={question} />)
-//   : questionArray.map((question, index) => <EachQuestion key={index} question={question} />)}

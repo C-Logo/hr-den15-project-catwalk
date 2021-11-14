@@ -31,7 +31,8 @@
 
 ### Overview -
 
-### Questions and Ansewrs -
+### Questions and Answers -
+  The questions and answers section will dynamically render to show persistant data as it pertains to the product being displayed by the user. Tpage initially displays two questions and two associated answers, if applicable. The user may click 'See more questions' to load an additional two questions until there are no more questions to display. Clicking 'see more answers' will display all answers for a given question. Questions are sorted by helpfulness, and displayed as such. A search bar will functionally search questions and answers for a given input, and will reset once the search is deleted. Modal windows will overlay the page, allowing the user to post a question or answers, which will be displayed on a re-render. Users may also vote for the helpfulness of a question or answer, as well as being able to report an answer as unhelpful.
 
 ### Reviews -
 
