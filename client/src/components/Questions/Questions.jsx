@@ -18,7 +18,7 @@ export default function Questions(props) {
   const [moreQuestionsButton, setMoreQuestionsButton] = useState(true);
 
   function getQuestions() {
-    axios.get('/qa/questions', { params: { product_id: 44389, count: 100 } })
+    axios.get('/qa/questions', { params: { product_id: 44388, count: 100 } })
       .then((response) => {
         const { data } = response;
         setQuestionArray(data.results);

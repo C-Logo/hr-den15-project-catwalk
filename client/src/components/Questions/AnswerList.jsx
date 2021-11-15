@@ -9,7 +9,7 @@ export default function AnswerList(props) {
   const [defaultAnswers, setDefaultAnswers] = useState([]);
   const [defaultDisplay, setDefaultDisplay] = useState(true);
   const [displayAnswerButton, setDisplayAnswerButton] = useState('See more answers');
-  const [noAnswers, setNoAnswers] = useState(true)
+  const [noAnswers, setNoAnswers] = useState(true);
 
   function fetchAllAnswers() {
     axios.get(`/qa/questions/${questionID}/answers`, { params: { count: 10 } })
@@ -26,17 +26,15 @@ export default function AnswerList(props) {
     fetchAllAnswers();
   }, []);
 
-
-
   function renderMoreAnswers() {
     if (displayAnswerButton) {
-    setDefaultDisplay(!defaultDisplay);
-    if (displayAnswerButton === 'See more answers') {
-      setDisplayAnswerButton('Collapse');
-    } else {
-      setDisplayAnswerButton('See more answers');
+      setDefaultDisplay(!defaultDisplay);
+      if (displayAnswerButton === 'See more answers') {
+        setDisplayAnswerButton('Collapse');
+      } else {
+        setDisplayAnswerButton('See more answers');
+      }
     }
-  }
   }
 
   return (
@@ -51,8 +49,8 @@ export default function AnswerList(props) {
             <EachAnswer answer={answer} renderMoreAnswers={renderMoreAnswers} />
           </div>
         ))}
-        {noAnswers ?
-      <button onClick={renderMoreAnswers}>{displayAnswerButton}</button> : null }
+      {noAnswers
+        ? <button onClick={renderMoreAnswers}>{displayAnswerButton}</button> : null }
     </div>
   );
 }
