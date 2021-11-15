@@ -289,7 +289,7 @@ display:inline-block;
 
 .reviewBody {
   text-align: left;
-  height: 120px;
+  height: 118.5px;
   /* width: 700px; */
   min-height:fit-content;
 }
@@ -345,7 +345,7 @@ display:inline-block;
   border-radius: 50px;
   max-height: 95vh;
   width: 50%;
-  min-width: 225px;
+  min-width: 450px;
   background: #faf3dd;
   padding-left: 50px;
   padding-right: 50px;
@@ -436,8 +436,6 @@ display:inline-block;
 }
 
 #rmFooter {
-
-  height: 90px;
 }
 
 #rmButtons {

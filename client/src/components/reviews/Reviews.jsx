@@ -37,7 +37,7 @@ export default function Reviews(props) {
       .get(`/reviews?sort=${reviewSort}&count=10000&product_id=44388`)
       .then((data) => {
         setAllReviews(data.data.results);
-        // console.log(data.data.results);
+        // console.log(JSON.stringify(data.data.results));
         // debugger;
         const filteredReviews = [];
         if (ratingSort.length === 0 && searchInput.length < 3) {
@@ -227,6 +227,7 @@ export default function Reviews(props) {
                 <ModalSetUp />
                 <button
                   type="button"
+                  data-testid="showMoreReviews"
                   style={moreReviews}
                   onClick={() => {
                     setReviewCount(reviewCount + 2);
