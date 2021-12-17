@@ -57,7 +57,7 @@ export default function Main() {
         const result = Object.values(currentStyle.skus);
         // console.log('result', result);
         setSizesAndQuantities(result);
-        console.log('currentStyle', currentStyle);
+        // console.log('currentStyle', currentStyle);
         // console.log('currentproduct', product);
       }
     }
@@ -85,6 +85,7 @@ export default function Main() {
   };
 
   useEffect(() => {
+    // useParams(productId)
     getReq();
   }, []);
 

@@ -82,6 +82,8 @@ export default function Image() {
     >
       <div
         id="overview-image-container"
+        alt="mainPhoto"
+        role="photo"
         style={{
           backgroundSize: extend ? 'cover' : 'contain',
           backgroundImage: `url(${mainPhoto})`,
@@ -107,6 +109,7 @@ export default function Image() {
         </div>
         <div
           className="overview-image-next"
+          data-testid="next-button"
           role="button"
           tabIndex={0}
           style={{

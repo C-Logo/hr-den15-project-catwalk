@@ -31,7 +31,7 @@ export default function ImageThumbnails() {
             setThumbImage(index);
           }}
           onKeyDown={() => {}}
-          role="button"
+          role={`button-${index}`}
           tabIndex={-1}
           aria-label="thumbnail"
         />
